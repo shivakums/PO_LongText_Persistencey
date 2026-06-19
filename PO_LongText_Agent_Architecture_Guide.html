@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PO Long Text New Persistency — Skill Architecture Guide</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 1.5cm;
+      padding-bottom: 1.5cm;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PO Long Text New Persistency — Skill Architecture
+Guide</h1>
+</header>
+<h1 id="po-long-text-new-persistency-skill-architecture-guide">PO Long
+Text New Persistency — Skill Architecture Guide</h1>
+<p><strong>Skill Name:</strong> po-longtext-persistency-expert
+<strong>Location:</strong>
+<code>C:\Users\I308878\PO_LongText_Persistencey</code>
+<strong>Date:</strong> 2026-06-19</p>
+<hr />
+<h2 id="executive-summary">Executive Summary</h2>
+<p>This skill enables Claude to act as a senior SAP ABAP expert for the
+<strong>PO Long Text New Persistency</strong> project — migrating
+Purchase Order long texts from SAP’s compressed classic framework
+(STXH/STXL) to a new flat, SQL-readable custom table (ZPO_LONGTEXT) on
+the same SAP system.</p>
+<h3 id="the-problem-in-one-line">The Problem in One Line</h3>
+<blockquote>
+<p>SAP stores PO notes in compressed tables (STXL) that cannot be read
+by plain SQL, CDS views, or BDC programs without expensive decompression
+on every access.</p>
+</blockquote>
+<h3 id="the-solution-in-one-line">The Solution in One Line</h3>
+<blockquote>
+<p>Create a flat custom table <code>ZPO_LONGTEXT</code> on the same
+system — populated once via a migration program and kept in sync via a
+dual-write BAdI on every PO save.</p>
+</blockquote>
+<hr />
+<h2 id="skill-folder-structure-executive-overview">Skill Folder
+Structure — Executive Overview</h2>
+<pre><code>PO_LongText_Persistencey/
+│
+├── Claude.md                         THE SKILL BRAIN
+│                                     Full skill definition — triggers, tools,
+│                                     architecture, ABAP code, rules, quick ref
+│
+├── repos.yaml                        SOURCE REGISTRY
+│                                     Lists all raw knowledge documents
+│
+├── Knowledge/                        RAW SOURCE FILES
+│                                     Original handover docs, SDD, VTT transcripts
+│                                     Received from the product team — not edited
+│
+├── agent/                            STRUCTURED KNOWLEDGE FOR CLAUDE
+│   ├── knowledge/                    WHAT CLAUDE KNOWS
+│   │   ├── architecture/             HOW the system works
+│   │   ├── domain/                   WHY it exists + business rules
+│   │   └── product/                  WHAT the product spec says (future)
+│   │
+│   ├── codebase-index/               HOW TO WORK IN THE CODEBASE
+│   │   ├── codebase-overview.md      WHAT objects exist
+│   │   ├── business-rules.md         WHAT rules must never be broken
+│   │   └── data-flows.md             HOW data moves step by step
+│   │
+│   └── artifacts/                    GENERATED OUTPUTS (future)
+│                                     ABAP programs, test results
+│
+└── PO_LongText_Skill_Reference.pdf   REFERENCE GUIDE (this document)</code></pre>
+<hr />
+<h2 id="file-by-file-responsibility">File-by-File Responsibility</h2>
+<hr />
+<h3 id="claude.md-the-skill-brain">Claude.md — The Skill Brain</h3>
+<p><strong>One liner:</strong> The master file that defines the entire
+skill — Claude reads this to become a PO Long Text expert in every
+conversation.</p>
+<p><strong>Contains:</strong> - Skill name, trigger keywords, allowed
+tools - Business context — why the project exists - Complete
+architecture (single system, no Hub) - New persistence table
+<code>ZPO_LONGTEXT</code> design - Text object types (EKKO/F01, EKPO/F09
+etc.) - Full ABAP code — ZCL_PO_LONGTEXT_HANDLER, ZCL_PO_TEXT_BADI_IMPL,
+ZPO_LONGTEXT_MIGRATE - Agent behavior guidelines — how to classify and
+debug tasks - Quick reference card</p>
+<p><strong>When used:</strong> Every time this skill is invoked. Claude
+reads this first.</p>
+<hr />
+<h3 id="repos.yaml-source-document-registry">repos.yaml — Source
+Document Registry</h3>
+<p><strong>One liner:</strong> A manifest file that tells the agent
+framework which raw source documents exist and where to find them.</p>
+<p><strong>Contains:</strong> Paths to all Knowledge folder documents —
+pptx, docx, vtt files.</p>
+<p><strong>When used:</strong> By the agent framework to locate and
+index source documents. When you add a new document to the Knowledge
+folder, register it here.</p>
+<hr />
+<h3 id="knowledge-raw-source-files">Knowledge/ — Raw Source Files</h3>
+<p><strong>One liner:</strong> The original, unmodified documents
+received from the product team — the ground truth that the structured
+knowledge files are derived from.</p>
+<pre><code>Knowledge/
+├── PO Notes New Persistency/
+│   ├── PO Notes to New Persistency .pptx       ← Handover slide deck
+│   └── Purchase Order Notes - New persistency   ← Meeting transcript (VTT)
+│       - Handover - Lift &amp; Shift team (1).vtt
+│
+└── PO Notes SD implemented - Further S4 PR support required for SO topics/
+    ├── SDD New Persistency for Long Texts        ← System Design Document
+    │   current working version.docx
+    └── FW_ Further S_4 PR support required       ← Email thread / context
+        for SO topics_.docx</code></pre>
+<p><strong>When used:</strong> Source of truth. When new documents
+arrive from the team, drop them here and tell Claude to read and update
+the agent knowledge files.</p>
+<hr />
+<h2 id="agentknowledge-what-claude-knows">agent/knowledge/ — What Claude
+Knows</h2>
+<p>This folder holds structured markdown documents — summaries and
+extractions from the raw Knowledge folder, organised by topic type.</p>
+<hr />
+<h3
+id="agentknowledgearchitecturepo-text-flow-diagram.md">agent/knowledge/architecture/po-text-flow-diagram.md</h3>
+<p><strong>One liner:</strong> Shows HOW data physically flows from
+STXH/STXL to ZPO_LONGTEXT — the plumbing diagrams that Claude uses to
+trace issues end-to-end.</p>
+<p><strong>Contains:</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Section</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System landscape</td>
+<td>Single SAP system diagram — no Hub, no replication</td>
+</tr>
+<tr>
+<td>Phase 1 — Migration flow</td>
+<td>Step-by-step: SELECT STXH → READ_TEXT → DELETE → INSERT</td>
+</tr>
+<tr>
+<td>Phase 2 — Dual write flow</td>
+<td>ME21N save → SAVE_TEXT → BAdI → ZPO_LONGTEXT</td>
+</tr>
+<tr>
+<td>TDNAME construction</td>
+<td>Exact rules for building TDNAME for EKKO vs EKPO</td>
+</tr>
+<tr>
+<td>Debugging decision tree</td>
+<td>Text missing? Follow these steps in sequence</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example of what Claude can answer with this file:</strong>
+&gt; “Why is my BAdI not finding any text when I call READ_TEXT?” → &gt;
+Claude checks the TDNAME construction rule and spots the EKPO parsing
+error.</p>
+<hr />
+<h3
+id="agentknowledgedomainpo-longtext-domain.md">agent/knowledge/domain/po-longtext-domain.md</h3>
+<p><strong>One liner:</strong> Explains WHY this project exists, WHAT
+the business problem is, and WHAT rules govern the solution — the domain
+expert knowledge.</p>
+<p><strong>Contains:</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Section</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Why classic long text is difficult</td>
+<td>Compression, no SQL read, BDC problem, performance</td>
+</tr>
+<tr>
+<td>What changes / what does not</td>
+<td>STXH/STXL unchanged — ZPO_LONGTEXT is parallel</td>
+</tr>
+<tr>
+<td>Text types reference</td>
+<td>All TDID values for EKKO and EKPO with descriptions</td>
+</tr>
+<tr>
+<td>Migration rules</td>
+<td>Full load vs delta, DELETE+INSERT pattern, text deletion</td>
+</tr>
+<tr>
+<td>Dual write triggers</td>
+<td>Which BAdI method fires for which user action</td>
+</tr>
+<tr>
+<td>SO parallel</td>
+<td>How same pattern applies to VBAK/VBAP (Sales Orders)</td>
+</tr>
+<tr>
+<td>Known constraints</td>
+<td>132 char line limit, language handling, archive risk</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example of what Claude can answer with this file:</strong>
+&gt; “Should we also migrate SO long texts?” → &gt; Claude explains the
+VBAK/VBAP parallel pattern from domain knowledge, &gt; not by
+guessing.</p>
+<hr />
+<h3 id="agentknowledgeproduct-currently-empty">agent/knowledge/product/
+— Currently Empty</h3>
+<p><strong>One liner:</strong> Future home for formal product specs, SDD
+final versions, and roadmap decisions received from the product
+owner.</p>
+<p><strong>When to populate:</strong> When the SDD is finalised or new
+product decisions are communicated, place a <code>.md</code> summary
+here. Claude will use it to align all answers with the official product
+direction.</p>
+<hr />
+<h2
+id="agentcodebase-index-how-to-work-in-the-codebase">agent/codebase-index/
+— How to Work in the Codebase</h2>
+<p>This folder holds operational reference documents — the fast-lookup
+material Claude uses when working on actual implementation tasks.</p>
+<hr />
+<h3
+id="agentcodebase-indexcodebase-overview.md">agent/codebase-index/codebase-overview.md</h3>
+<p><strong>One liner:</strong> A fast index of every technical object in
+the skill — what exists, what it does, and how layers connect.</p>
+<p><strong>Contains:</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Section</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project overview</td>
+<td>Name, type, domain in 3 lines</td>
+</tr>
+<tr>
+<td>Tech stack</td>
+<td>ABAP, BAdI, STXH/STXL, READ_TEXT</td>
+</tr>
+<tr>
+<td>Key objects table</td>
+<td>ZPO_LONGTEXT, ZCL_PO_LONGTEXT_HANDLER, ME_PROCESS_PO_CUST etc.</td>
+</tr>
+<tr>
+<td>Architecture layers</td>
+<td>ERP source → migration/BAdI → persistence → BDC/reporting</td>
+</tr>
+<tr>
+<td>Critical constraints</td>
+<td>3 rules that must always be respected</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example of what Claude can answer with this file:</strong>
+&gt; “What class handles the dual-write?” → &gt; Claude immediately says
+<code>ZCL_PO_TEXT_BADI_IMPL</code> calls
+<code>ZCL_PO_LONGTEXT_HANDLER</code> &gt; without reading every other
+file.</p>
+<hr />
+<h3
+id="agentcodebase-indexbusiness-rules.md">agent/codebase-index/business-rules.md</h3>
+<p><strong>One liner:</strong> The 7 rules Claude must NEVER violate
+when generating code or giving advice — the safety guardrails for the
+skill.</p>
+<p><strong>Contains:</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Rule</th>
+<th>What It Prevents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. ZPO_LONGTEXT is parallel</td>
+<td>Never replacing STXH/STXL accidentally</td>
+</tr>
+<tr>
+<td>2. EBELP = ‘00000’ for EKKO</td>
+<td>Missing header key field causing wrong results</td>
+</tr>
+<tr>
+<td>3. TDNAME parsing for EKPO</td>
+<td>Wrong READ_TEXT returning nothing</td>
+</tr>
+<tr>
+<td>4. ORDER BY LINE_COUNTER</td>
+<td>Text rendering in wrong order</td>
+</tr>
+<tr>
+<td>5. DELETE + INSERT (not UPSERT)</td>
+<td>Orphan lines when text is shortened</td>
+</tr>
+<tr>
+<td>6. BAdI fires AFTER SAVE_TEXT</td>
+<td>READ_TEXT returning empty before text committed</td>
+</tr>
+<tr>
+<td>7. Test mode first for migration</td>
+<td>Partial writes on production data</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example of what Claude can answer with this file:</strong>
+&gt; Claude generates a migration loop — it automatically includes
+DELETE before INSERT, &gt; adds ORDER BY LINE_COUNTER, and checks EBELP
+= ‘00000’ for header texts. &gt; Without this file, these could be
+silently missed.</p>
+<hr />
+<h3
+id="agentcodebase-indexdata-flows.md">agent/codebase-index/data-flows.md</h3>
+<p><strong>One liner:</strong> Step-by-step numbered flows for every
+major operation — Claude traces these when debugging or
+implementing.</p>
+<p><strong>Contains:</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Flow</th>
+<th>Steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flow 1 — Historic migration</td>
+<td>SELECT STXH → parse TDNAME → READ_TEXT → DELETE → INSERT →
+COMMIT</td>
+</tr>
+<tr>
+<td>Flow 2 — Dual write</td>
+<td>ME21N save → SAVE_TEXT → BAdI fires → READ_TEXT → DELETE →
+INSERT</td>
+</tr>
+<tr>
+<td>Flow 3 — BDC / Report read</td>
+<td>SELECT * FROM zpo_longtext WHERE ebeln = … ORDER BY
+line_counter</td>
+</tr>
+</tbody>
+</table>
+<p>Also includes a key tables comparison:</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Written By</th>
+<th>Read By</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STXH</td>
+<td>SAVE_TEXT (SAP std)</td>
+<td>SE16, SELECT</td>
+<td>Metadata only</td>
+</tr>
+<tr>
+<td>STXL</td>
+<td>SAVE_TEXT (SAP std)</td>
+<td>READ_TEXT FM only</td>
+<td>Compressed</td>
+</tr>
+<tr>
+<td>ZPO_LONGTEXT</td>
+<td>Migration + BAdI</td>
+<td>SELECT, CDS, BDC</td>
+<td>New flat table</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example of what Claude can answer with this file:</strong>
+&gt; “My BDC program needs to read PO notes” → &gt; Claude immediately
+shows Flow 3 — SELECT from ZPO_LONGTEXT directly. &gt; No READ_TEXT
+needed. No FM call. Plain SQL.</p>
+<hr />
+<h3 id="agentartifacts-currently-empty">agent/artifacts/ — Currently
+Empty</h3>
+<p><strong>One liner:</strong> Future version-controlled home for ABAP
+programs, migration scripts, and test outputs that Claude generates
+during implementation work.</p>
+<p><strong>When to populate:</strong> After Claude generates the
+migration report <code>ZPO_LONGTEXT_MIGRATE</code> code or BAdI
+implementation — save the final version here so it is tracked alongside
+the skill.</p>
+<hr />
+<h2 id="how-all-files-work-together">How All Files Work Together</h2>
+<pre><code>User asks: &quot;My migration ran but some PO texts are missing in ZPO_LONGTEXT&quot;
+                                │
+                Claude reads    │
+                                ▼
+        business-rules.md       ← check TDNAME rule #3, EBELP rule #2
+        data-flows.md           ← trace Flow 1 step by step
+        po-text-flow-diagram.md ← use debugging decision tree
+        po-longtext-domain.md   ← check migration scope rules
+                                │
+                                ▼
+        Claude answers: &quot;Check SE16 → STXH for that PO first.
+        If STXH exists but ZPO_LONGTEXT is empty, the TDNAME
+        parsing for EKPO may be wrong — verify TDNAME format
+        is EBELN(10) + space + EBELP(5) for item texts.&quot;</code></pre>
+<hr />
+<h2 id="adding-new-knowledge-where-to-put-it">Adding New Knowledge —
+Where to Put It</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>You Receive</th>
+<th>Drop Here</th>
+<th>Then</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New SDD / design doc</td>
+<td><code>Knowledge\PO Notes SD implemented...\</code></td>
+<td>Tell Claude to read and update domain/product md files</td>
+</tr>
+<tr>
+<td>Updated handover deck</td>
+<td><code>Knowledge\PO Notes New Persistency\</code></td>
+<td>Tell Claude to read and update architecture md files</td>
+</tr>
+<tr>
+<td>Architecture change</td>
+<td><code>agent\knowledge\architecture\</code></td>
+<td>Edit po-text-flow-diagram.md directly</td>
+</tr>
+<tr>
+<td>New business rule</td>
+<td><code>agent\codebase-index\business-rules.md</code></td>
+<td>Add Rule 8, 9 etc.</td>
+</tr>
+<tr>
+<td>Generated ABAP code</td>
+<td><code>agent\artifacts\</code></td>
+<td>Save final version here</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Always update <code>repos.yaml</code></strong> when adding
+new raw documents to <code>Knowledge\</code>. <strong>Always push to
+GitHub</strong> after adding new documents.</p>
+<hr />
+<p><em>Guide prepared: 2026-06-19</em> <em>Skill: PO Long Text New
+Persistency — po-longtext-persistency-expert</em> <em>Repository:
+https://github.com/shivakums/PO_LongText_Persistencey</em></p>
+</body>
+</html>
