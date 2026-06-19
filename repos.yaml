@@ -1,0 +1,14 @@
+repos:
+  - name: PO_LongText_Persistencey
+    description: PO Long Text New Persistency — Knowledge and Skill for MPOC/CPO text migration
+    knowledge_dirs:
+      - agent/knowledge/architecture
+      - agent/knowledge/domain
+      - agent/knowledge/product
+    codebase_index_dir: agent/codebase-index
+    artifacts_dir: agent/artifacts
+    skill_file: Claude.md
+    source_documents:
+      - Knowledge/PO Notes New Persistency/PO Notes to New Persistency .pptx
+      - Knowledge/PO Notes SD implemented - Further S4 PR support required for SO topics/SDD New Persistency for Long Texts current working version.docx
+      - Knowledge/PO Notes SD implemented - Further S4 PR support required for SO topics/FW_ Further S_4 PR support required for SO topics_.docx

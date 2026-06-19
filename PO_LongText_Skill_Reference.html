@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PO Long Text New Persistency — Skill Reference Guide v2.0</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PO Long Text New Persistency — Skill Reference Guide
+v2.0</h1>
+</header>
+<h1 id="po-long-text-new-persistency-skill-reference-guide">PO Long Text
+New Persistency — Skill Reference Guide</h1>
+<p><strong>Project:</strong> PO Long Text Migration to New Persistence
+Table <strong>Skill Name:</strong> po-longtext-persistency-expert
+<strong>Location:</strong>
+<code>C:\Users\I308878\PO_LongText_Persistencey</code>
+<strong>Date:</strong> 2026-06-19 <strong>Version:</strong> 2.0 —
+corrected to single-system architecture</p>
+<hr />
+<h2 id="the-concept-how-sap-stores-long-texts">1. The Concept — How SAP
+Stores Long Texts</h2>
+<p>SAP uses a <strong>generic text framework</strong> to store free-form
+text across all business objects (POs, SOs, Material Masters, Vendors
+etc.). Two tables are involved:</p>
+<h3 id="stxh-text-header">STXH — Text Header</h3>
+<p>One row per text. Stores only metadata — no content.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TDOBJECT</td>
+<td>Which object type</td>
+<td>EKKO (PO Header) / EKPO (PO Item)</td>
+</tr>
+<tr>
+<td>TDID</td>
+<td>Which type of note</td>
+<td>F01 (General) / F02 (Delivery)</td>
+</tr>
+<tr>
+<td>TDSPRAS</td>
+<td>Language</td>
+<td>E (English) / D (German)</td>
+</tr>
+<tr>
+<td>TDNAME</td>
+<td>Document key</td>
+<td>4500001234 (PO number)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="stxl-text-lines-compressed">STXL — Text Lines (COMPRESSED)</h3>
+<p>Stores the actual text content in <strong>binary compressed cluster
+format</strong>.</p>
+<p><strong>Critical: STXL cannot be read with SE16 or plain
+SELECT.</strong> You must use the function module <code>READ_TEXT</code>
+which decompresses on the fly.</p>
+<pre class="abap"><code>&quot; The ONLY way to read SAP long text content:
+CALL FUNCTION &#39;READ_TEXT&#39;
+  EXPORTING
+    id       = &#39;F01&#39;           &quot; Text ID
+    language = &#39;E&#39;             &quot; Language
+    name     = &#39;4500001234&#39;    &quot; TDNAME (PO number for header)
+    object   = &#39;EKKO&#39;          &quot; Text object
+  TABLES
+    lines    = lt_lines.       &quot; Returns flat TLINE table (TDFORMAT + TDLINE)</code></pre>
+<h3 id="why-this-is-a-problem">Why This Is a Problem</h3>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STXL not SQL-readable</td>
+<td>Cannot use in CDS views or reports</td>
+</tr>
+<tr>
+<td>READ_TEXT required for every read</td>
+<td>Performance degrades at scale</td>
+</tr>
+<tr>
+<td>BDC programs</td>
+<td>Must call READ_TEXT FM — complex and slow</td>
+</tr>
+<tr>
+<td>Decompression overhead</td>
+<td>Expensive per call for millions of POs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="the-solution-new-flat-persistence-table">2. The Solution — New
+Flat Persistence Table</h2>
+<p>Create a custom table <code>ZPO_LONGTEXT</code> on the <strong>same
+SAP system</strong> that stores the decompressed, flat text lines. This
+table is:</p>
+<ul>
+<li>Plain SQL-readable — no decompression needed</li>
+<li>Usable directly in CDS views, reports, BDC programs</li>
+<li>Populated by a one-time migration program AND by a BAdI on every PO
+save</li>
+<li><strong>Parallel to STXH/STXL — does NOT replace them</strong></li>
+</ul>
+<h3 id="system-landscape-single-system">System Landscape — Single
+System</h3>
+<pre><code>SINGLE SAP SYSTEM (ERP / S/4HANA)
+┌──────────────────────────────────────────────────────────────────┐
+│  EKKO + EKPO (PO documents)                                       │
+│        │                                                          │
+│        ▼ SAVE_TEXT (SAP standard — unchanged)                     │
+│  STXH (header) + STXL (lines, compressed)                        │
+│        │                                                          │
+│        ▼ READ_TEXT (decompresses)                                 │
+│  ZPO_LONGTEXT — New flat custom table (same system)              │
+│  Plain SQL — BDC-ready — CDS-ready                               │
+└──────────────────────────────────────────────────────────────────┘</code></pre>
+<p><strong>No Central Hub. No replication to another system. Everything
+on one SAP system.</strong></p>
+<hr />
+<h2 id="new-persistence-table-zpo_longtext">3. New Persistence Table:
+ZPO_LONGTEXT</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Key</th>
+<th>Type</th>
+<th>Length</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MANDT</td>
+<td>✓</td>
+<td>CLNT</td>
+<td>3</td>
+<td>Client</td>
+</tr>
+<tr>
+<td>EBELN</td>
+<td>✓</td>
+<td>CHAR</td>
+<td>10</td>
+<td>Purchase Order Number</td>
+</tr>
+<tr>
+<td>EBELP</td>
+<td>✓</td>
+<td>NUMC</td>
+<td>5</td>
+<td>PO Item (00000 = header)</td>
+</tr>
+<tr>
+<td>TDOBJECT</td>
+<td>✓</td>
+<td>CHAR</td>
+<td>10</td>
+<td>EKKO or EKPO</td>
+</tr>
+<tr>
+<td>TDID</td>
+<td>✓</td>
+<td>CHAR</td>
+<td>4</td>
+<td>F01 / F02 / F09 etc.</td>
+</tr>
+<tr>
+<td>TDSPRAS</td>
+<td>✓</td>
+<td>LANG</td>
+<td>1</td>
+<td>Language Key</td>
+</tr>
+<tr>
+<td>LINE_COUNTER</td>
+<td>✓</td>
+<td>NUMC</td>
+<td>5</td>
+<td>Sequence (00001, 00002…)</td>
+</tr>
+<tr>
+<td>TDFORMAT</td>
+<td></td>
+<td>CHAR</td>
+<td>2</td>
+<td>Format indicator</td>
+</tr>
+<tr>
+<td>TDLINE</td>
+<td></td>
+<td>CHAR</td>
+<td>132</td>
+<td>Text line content — plain text</td>
+</tr>
+<tr>
+<td>MIGRATED_AT</td>
+<td></td>
+<td>DATS</td>
+<td>8</td>
+<td>Date written</td>
+</tr>
+<tr>
+<td>SOURCE</td>
+<td></td>
+<td>CHAR</td>
+<td>1</td>
+<td>M=Migration, D=Dual-write</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="text-types-reference">4. Text Types Reference</h2>
+<table>
+<thead>
+<tr>
+<th>TDOBJECT</th>
+<th>TDID</th>
+<th>Level</th>
+<th>Description</th>
+<th>EBELP in ZPO_LONGTEXT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EKKO</td>
+<td>F01</td>
+<td>Header</td>
+<td>PO Header General Note</td>
+<td>00000</td>
+</tr>
+<tr>
+<td>EKKO</td>
+<td>F02</td>
+<td>Header</td>
+<td>PO Header Delivery Text</td>
+<td>00000</td>
+</tr>
+<tr>
+<td>EKKO</td>
+<td>F03</td>
+<td>Header</td>
+<td>PO Header Terms of Payment</td>
+<td>00000</td>
+</tr>
+<tr>
+<td>EKPO</td>
+<td>F01</td>
+<td>Item</td>
+<td>PO Item General Note</td>
+<td>item number</td>
+</tr>
+<tr>
+<td>EKPO</td>
+<td>F02</td>
+<td>Item</td>
+<td>PO Item Delivery Text</td>
+<td>item number</td>
+</tr>
+<tr>
+<td>EKPO</td>
+<td>F09</td>
+<td>Item</td>
+<td>PO Item GR Text</td>
+<td>item number</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tdname-construction-in-stxh">TDNAME Construction in STXH</h3>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>TDNAME Format</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Header (EKKO)</td>
+<td>EBELN (10 chars)</td>
+<td><code>4500001234</code></td>
+</tr>
+<tr>
+<td>Item (EKPO)</td>
+<td>EBELN + space + EBELP</td>
+<td><code>4500001234 00010</code></td>
+</tr>
+</tbody>
+</table>
+<p>Getting TDNAME wrong makes READ_TEXT return nothing. Always verify in
+SE16 → STXH.</p>
+<hr />
+<h2 id="skill-structure">5. Skill Structure</h2>
+<pre><code>PO_LongText_Persistencey/
+├── Claude.md                              ← Skill definition + full ABAP code
+│     Trigger words, architecture,
+│     ZCL_PO_LONGTEXT_HANDLER,
+│     ZCL_PO_TEXT_BADI_IMPL,
+│     ZPO_LONGTEXT_MIGRATE skeleton
+│
+├── repos.yaml                             ← Source document registry
+│
+└── agent/
+    ├── knowledge/
+    │   ├── architecture/
+    │   │   └── po-text-flow-diagram.md    ← Architecture diagrams
+    │   │         Single system layout
+    │   │         Phase 1 migration flow
+    │   │         Phase 2 dual-write flow
+    │   │         TDNAME construction
+    │   │         Debugging decision tree
+    │   └── domain/
+    │       └── po-longtext-domain.md      ← Domain concepts
+    │             Classic framework explained
+    │             Text types reference
+    │             Migration rules
+    │             SO parallel pattern
+    └── codebase-index/
+        ├── codebase-overview.md           ← Object index
+        ├── business-rules.md              ← 7 invariant rules
+        └── data-flows.md                  ← 3 flows: Migrate, Dual-write, BDC Read</code></pre>
+<hr />
+<h2 id="architecture-two-phases">6. Architecture — Two Phases</h2>
+<h3 id="phase-1-historic-migration-one-time">Phase 1 — Historic
+Migration (One-Time)</h3>
+<pre><code>ZPO_LONGTEXT_MIGRATE (SE38 report)
+        ↓
+SELECT STXH WHERE TDOBJECT IN (&#39;EKKO&#39;,&#39;EKPO&#39;)
+        ↓
+For each row: parse TDNAME → EBELN + EBELP
+        ↓
+CALL FUNCTION &#39;READ_TEXT&#39; → decompress → flat lines
+        ↓
+DELETE old ZPO_LONGTEXT rows for this text
+INSERT new flat lines  (SOURCE = &#39;M&#39;)
+COMMIT WORK every 1000 POs
+        ↓
+Validate: count STXH rows vs ZPO_LONGTEXT rows</code></pre>
+<h3 id="phase-2-dual-write-ongoing">Phase 2 — Dual Write (Ongoing)</h3>
+<pre><code>User saves PO in ME21N / ME22N
+        ↓
+SAP standard: SAVE_TEXT → STXH + STXL  (unchanged)
+        ↓
+BAdI: ME_PROCESS_PO_CUST fires
+  Method PROCESS_HEADER → header texts
+  Method PROCESS_ITEM   → item texts
+        ↓
+ZCL_PO_TEXT_BADI_IMPL
+        ↓
+ZCL_PO_LONGTEXT_HANDLER→write_to_persistence()
+        ↓
+READ_TEXT → DELETE old → INSERT new  (SOURCE = &#39;D&#39;)
+        ↓
+STXH/STXL and ZPO_LONGTEXT always in sync</code></pre>
+<h3 id="bdc-reporting-read">BDC / Reporting Read</h3>
+<pre><code>Before (slow):    CALL FUNCTION &#39;READ_TEXT&#39; → decompress STXL
+After  (fast):    SELECT * FROM zpo_longtext WHERE ebeln = &#39;&lt;PO&gt;&#39;
+                    ORDER BY tdobject, tdid, tdspras, line_counter.</code></pre>
+<hr />
+<h2 id="key-business-rules">7. Key Business Rules</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Rule</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ZPO_LONGTEXT is parallel — NEVER replace STXH/STXL</td>
+<td>SAP standard depends on them</td>
+</tr>
+<tr>
+<td>2</td>
+<td>EBELP = ‘00000’ for TDOBJECT = ‘EKKO’ header texts</td>
+<td>EBELP is a key field — NULL breaks queries</td>
+</tr>
+<tr>
+<td>3</td>
+<td>TDNAME for EKPO = EBELN(10) + space + EBELP — parse carefully</td>
+<td>Wrong TDNAME → READ_TEXT returns nothing</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ORDER BY LINE_COUNTER ASCENDING always</td>
+<td>Text lines must render in correct sequence</td>
+</tr>
+<tr>
+<td>5</td>
+<td>DELETE + INSERT per text (not UPSERT)</td>
+<td>Deleted lines on STXH must be removed from ZPO_LONGTEXT</td>
+</tr>
+<tr>
+<td>6</td>
+<td>BAdI fires AFTER SAVE_TEXT — READ_TEXT in BAdI reads fresh text</td>
+<td>Calling READ_TEXT before SAVE_TEXT returns nothing</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Run migration in TEST mode first — verify counts before
+productive</td>
+<td>Prevents partial writes on errors</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="key-abap-objects">8. Key ABAP Objects</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Object</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ZPO_LONGTEXT</td>
+<td>Table</td>
+<td>New flat persistence table</td>
+</tr>
+<tr>
+<td>ZPO_LONGTEXT_MIGRATE</td>
+<td>Report (SE38)</td>
+<td>One-time migration from STXH/STXL</td>
+</tr>
+<tr>
+<td>ZCL_PO_LONGTEXT_HANDLER</td>
+<td>Class</td>
+<td>Central handler — READ_TEXT wrapper + ZPO_LONGTEXT writer</td>
+</tr>
+<tr>
+<td>ZCL_PO_TEXT_BADI_IMPL</td>
+<td>Class</td>
+<td>BAdI impl — fires on ME21N/ME22N save</td>
+</tr>
+<tr>
+<td>ME_PROCESS_PO_CUST</td>
+<td>BAdI</td>
+<td>Enhancement Spot ME_PURCHORD — PO save hook</td>
+</tr>
+<tr>
+<td>STXH</td>
+<td>SAP table</td>
+<td>Text header (source — do not modify)</td>
+</tr>
+<tr>
+<td>STXL</td>
+<td>SAP table</td>
+<td>Text lines compressed (source — do not modify)</td>
+</tr>
+<tr>
+<td>READ_TEXT</td>
+<td>Function Module</td>
+<td>Decompresses STXL → flat lines</td>
+</tr>
+<tr>
+<td>SAVE_TEXT</td>
+<td>Function Module</td>
+<td>Writes STXH + STXL (SAP standard)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="debugging-guide">9. Debugging Guide</h2>
+<pre><code>&quot;PO 4500001234 header note not in ZPO_LONGTEXT&quot;
+
+Step 1: Check STXH — does text exist on ERP?
+  SE16 → STXH WHERE TDOBJECT=&#39;EKKO&#39; AND TDNAME=&#39;4500001234&#39; AND TDID=&#39;F01&#39;
+  If NO → text never created. Not a persistence issue.
+
+Step 2: Check ZPO_LONGTEXT
+  SE16 → ZPO_LONGTEXT WHERE EBELN=&#39;4500001234&#39; AND TDOBJECT=&#39;EKKO&#39; AND TDID=&#39;F01&#39;
+  If NO → run ZPO_LONGTEXT_MIGRATE for this PO, or check BAdI is active
+
+Step 3: Check BAdI active
+  SE19 → ME_PROCESS_PO_CUST → find ZCL_PO_TEXT_BADI_IMPL
+  Must show status = Active
+
+Step 4: Check LINE_COUNTER sequence
+  SELECT from ZPO_LONGTEXT ORDER BY line_counter
+  Gaps → partial migration failure → re-run for this PO</code></pre>
+<hr />
+<h2 id="what-makes-it-extensible">10. What Makes It Extensible</h2>
+<h3 id="adding-new-text-types-e.g.-tdid-f03">Adding New Text Types
+(e.g. TDID = ‘F03’)</h3>
+<ol type="1">
+<li>Add <code>iv_tdid = 'F03'</code> call in
+<code>ZCL_PO_TEXT_BADI_IMPL→PROCESS_HEADER</code></li>
+<li>No table change needed — TDID is a key field in ZPO_LONGTEXT</li>
+<li>Re-run migration for existing POs that have F03 text</li>
+</ol>
+<h3 id="sales-order-parallel-vbakvbap">Sales Order Parallel
+(VBAK/VBAP)</h3>
+<p>Same architecture — create <code>ZSO_LONGTEXT</code> with same
+structure. Change TDOBJECT values: EKKO/EKPO → VBAK/VBAP. BAdI: use
+user-exit in VA01/VA02 instead of ME_PROCESS_PO_CUST.</p>
+<h3 id="adding-new-knowledge-documents">Adding New Knowledge
+Documents</h3>
+<p>Place new handover documents in: -
+<code>agent/knowledge/domain/</code> — domain rule updates -
+<code>agent/knowledge/product/</code> — SDD and design decisions -
+Update <code>repos.yaml</code> source_documents list</p>
+<hr />
+<p><em>Skill created: 2026-06-19 | Version 2.0 — corrected to
+single-system architecture</em> <em>Source: PO Notes New Persistency
+handover documents</em> *Skill file: C:_LongText_Persistencey.md*</p>
+</body>
+</html>

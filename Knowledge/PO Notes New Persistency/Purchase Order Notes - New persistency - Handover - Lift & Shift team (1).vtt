@@ -1,0 +1,5507 @@
+WEBVTT
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/12-0
+00:00:03.682 --> 00:00:04.442
+<v Sundaramurthy Yogalingam, Sivakumar>Recording, sorry.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/13-0
+00:00:04.842 --> 00:00:06.522
+<v MRR WDF49 A2.24B (05) (Video)>Ohh, OK, that's fine. OK then.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/18-0
+00:00:07.722 --> 00:00:11.722
+<v MRR WDF49 A2.24B (05) (Video)>Thank you. Then we'll start with it.
+Hello, everyone.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/18-1
+00:00:11.722 --> 00:00:16.018
+<v MRR WDF49 A2.24B (05) (Video)>Welcome to this handover session,
+which is sort of notes.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/18-2
+00:00:16.018 --> 00:00:22.017
+<v MRR WDF49 A2.24B (05) (Video)>I have changed the name of the topic in
+Aha. The name is a little bit different,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/18-3
+00:00:22.017 --> 00:00:27.571
+<v MRR WDF49 A2.24B (05) (Video)>but I thought that it makes sense to put
+it in this way so that it is more</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/18-4
+00:00:27.571 --> 00:00:28.682
+<v MRR WDF49 A2.24B (05) (Video)>understandable.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/20-0
+00:00:30.682 --> 00:00:35.919
+<v MRR WDF49 A2.24B (05) (Video)>Okay, so let's start with that.
+Rudikar will not be able to join because</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/20-1
+00:00:35.919 --> 00:00:39.505
+<v MRR WDF49 A2.24B (05) (Video)>of a parallel meeting,
+but Nils is already there.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/20-2
+00:00:39.505 --> 00:00:45.172
+<v MRR WDF49 A2.24B (05) (Video)>So we will have an overview about the
+topic and also the related topics linked</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/20-3
+00:00:45.172 --> 00:00:50.623
+<v MRR WDF49 A2.24B (05) (Video)>with that. And what is the, why we need,
+what is the current functionality,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/20-4
+00:00:50.623 --> 00:00:53.922
+<v MRR WDF49 A2.24B (05) (Video)>how do we handle budget sort of nodes and.
+..</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/31-0
+00:00:54.002 --> 00:00:59.384
+<v MRR WDF49 A2.24B (05) (Video)>and why we need a new persistency and
+also like what is the impact on this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/31-1
+00:00:59.384 --> 00:01:03.044
+<v MRR WDF49 A2.24B (05) (Video)>modernization,
+purchase order modernization topic.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/31-2
+00:01:03.044 --> 00:01:08.928
+<v MRR WDF49 A2.24B (05) (Video)>And we will also go through some of the
+open questions that we have where we have</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/31-3
+00:01:08.928 --> 00:01:14.668
+<v MRR WDF49 A2.24B (05) (Video)>to do some more analysis and also the
+rough effort estimation is also provided.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/31-4
+00:01:14.668 --> 00:01:15.242
+<v MRR WDF49 A2.24B (05) (Video)>Okay, so</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/36-0
+00:01:16.042 --> 00:01:23.146
+<v MRR WDF49 A2.24B (05) (Video)>I think you notes is not a new topic for
+most of the teams in procurement, I guess.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/36-1
+00:01:23.146 --> 00:01:29.911
+<v MRR WDF49 A2.24B (05) (Video)>So a lot of business objects are already
+using this subscript, not text tables,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/36-2
+00:01:29.911 --> 00:01:35.322
+<v MRR WDF49 A2.24B (05) (Video)>which is mainly a cluster table.
+STXH and STXL tables are used.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/42-0
+00:01:36.442 --> 00:01:42.045
+<v MRR WDF49 A2.24B (05) (Video)>So we, in the legacy solutions,
+we use these subscript function modules</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/42-1
+00:01:42.045 --> 00:01:47.491
+<v MRR WDF49 A2.24B (05) (Video)>like read text, save text, etc.
+to store and access these application</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/42-2
+00:01:47.491 --> 00:01:50.993
+<v MRR WDF49 A2.24B (05) (Video)>texts.
+So even purchase order has similarly,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/42-3
+00:01:50.993 --> 00:01:54.494
+<v MRR WDF49 A2.24B (05) (Video)>sales order also have similar
+functionality.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/42-4
+00:01:54.494 --> 00:01:59.162
+<v MRR WDF49 A2.24B (05) (Video)>So the problem with these cluster tables
+is that, you know,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/48-0
+00:01:59.802 --> 00:02:06.287
+<v MRR WDF49 A2.24B (05) (Video)>It is not a normal kind of table where we
+can directly build some serious views on</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/48-1
+00:02:06.287 --> 00:02:11.209
+<v MRR WDF49 A2.24B (05) (Video)>top of that or something.
+And in order to access the data from</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/48-2
+00:02:11.209 --> 00:02:15.115
+<v MRR WDF49 A2.24B (05) (Video)>these tables,
+there are no direct access methods.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/48-3
+00:02:15.115 --> 00:02:18.944
+<v MRR WDF49 A2.24B (05) (Video)>Like nowadays,
+we already hear a lot about these</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/48-4
+00:02:18.944 --> 00:02:23.162
+<v MRR WDF49 A2.24B (05) (Video)>analytical use cases, also BDC, AI topics,
+et cetera.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/52-0
+00:02:23.562 --> 00:02:29.880
+<v MRR WDF49 A2.24B (05) (Video)>in which we don't have a, you know,
+one way of doing normal VDM method is not</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/52-1
+00:02:29.880 --> 00:02:33.768
+<v MRR WDF49 A2.24B (05) (Video)>possible.
+So if you have seen it in most of the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/52-2
+00:02:33.768 --> 00:02:38.385
+<v MRR WDF49 A2.24B (05) (Video)>business subject,
+what they normally do is to access the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/52-3
+00:02:38.385 --> 00:02:42.192
+<v MRR WDF49 A2.24B (05) (Video)>node section.
+They normally use this MDP table</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/52-4
+00:02:42.192 --> 00:02:43.002
+<v MRR WDF49 A2.24B (05) (Video)>functions.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/58-0
+00:02:43.362 --> 00:02:50.308
+<v MRR WDF49 A2.24B (05) (Video)>or some teams have used the CDS views
+which are built on top of this ESH views.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/58-1
+00:02:50.308 --> 00:02:57.602
+<v MRR WDF49 A2.24B (05) (Video)>So for example, from subscript team side,
+they have already provided some views for</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/58-2
+00:02:57.602 --> 00:03:03.245
+<v MRR WDF49 A2.24B (05) (Video)>enterprise search help.
+These views are also used in a different</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/58-3
+00:03:03.245 --> 00:03:05.242
+<v MRR WDF49 A2.24B (05) (Video)>way to access the data.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/62-0
+00:03:06.442 --> 00:03:10.403
+<v MRR WDF49 A2.24B (05) (Video)>in some of the business subject.
+That is why, so already,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/62-1
+00:03:10.403 --> 00:03:15.866
+<v MRR WDF49 A2.24B (05) (Video)>because this cannot be integrated into
+all these analytical use cases also as a</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/62-2
+00:03:15.866 --> 00:03:19.349
+<v MRR WDF49 A2.24B (05) (Video)>part of CDS views, normal BDC concept,
+everything.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/62-3
+00:03:19.349 --> 00:03:24.743
+<v MRR WDF49 A2.24B (05) (Video)>So this is why SAP script teams have come
+up with the new persistency concept.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/62-4
+00:03:24.743 --> 00:03:28.362
+<v MRR WDF49 A2.24B (05) (Video)>So this is actually existing for some few
+years now.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/67-0
+00:03:29.242 --> 00:03:34.338
+<v MRR WDF49 A2.24B (05) (Video)>But a lot of teams have not moved to the
+new persistency.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/67-1
+00:03:34.338 --> 00:03:41.367
+<v MRR WDF49 A2.24B (05) (Video)>So how this topic came into our queue is
+like at first we got a meeting request</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/67-2
+00:03:41.367 --> 00:03:46.814
+<v MRR WDF49 A2.24B (05) (Video)>from the sales team.
+This one a sales team where they decided</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/67-3
+00:03:46.814 --> 00:03:48.922
+<v MRR WDF49 A2.24B (05) (Video)>to have a POC about the.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/74-0
+00:03:49.362 --> 00:03:54.393
+<v MRR WDF49 A2.24B (05) (Video)>for their business subject,
+they wanted to move it to this new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/74-1
+00:03:54.393 --> 00:04:00.382
+<v MRR WDF49 A2.24B (05) (Video)>persistency and we got a requirement to
+support this particular migration.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/74-2
+00:04:00.382 --> 00:04:05.732
+<v MRR WDF49 A2.24B (05) (Video)>So we were also not so sure, like, okay,
+by we are being involved,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/74-3
+00:04:05.732 --> 00:04:11.082
+<v MRR WDF49 A2.24B (05) (Video)>but it is mostly like they actually
+planned for a POC in 26 or 26.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/79-0
+00:04:12.762 --> 00:04:18.848
+<v MRR WDF49 A2.24B (05) (Video)>I'm not so sure whether it is already in
+productive stage that we have still see,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/79-1
+00:04:18.848 --> 00:04:24.860
+<v MRR WDF49 A2.24B (05) (Video)>but they did a POC in the beginning and
+then we had a design review also planned</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/79-2
+00:04:24.860 --> 00:04:30.426
+<v MRR WDF49 A2.24B (05) (Video)>and most of a lot of business LOBs were
+involved in this particular design</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/79-3
+00:04:30.426 --> 00:04:31.242
+<v MRR WDF49 A2.24B (05) (Video)>discussion.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/80-0
+00:04:31.722 --> 00:04:36.876
+<v MRR WDF49 A2.24B (05) (Video)>And when we listened about this design
+discussion, we also attended it.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/80-1
+00:04:36.876 --> 00:04:40.741
+<v MRR WDF49 A2.24B (05) (Video)>This is one of the topic that is in
+today's handover.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/80-2
+00:04:40.741 --> 00:04:43.962
+<v MRR WDF49 A2.24B (05) (Video)>There are actually mainly 2 topics
+involved.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/80-3
+00:04:43.962 --> 00:04:49.331
+<v MRR WDF49 A2.24B (05) (Video)>First one is about the sales long test
+replacement to the new persistency.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/80-4
+00:04:49.331 --> 00:04:54.485
+<v MRR WDF49 A2.24B (05) (Video)>We were involved in the design
+discussions and also design sign off was</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/80-5
+00:04:54.485 --> 00:04:54.842
+<v MRR WDF49 A2.24B (05) (Video)>done.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/86-0
+00:04:55.162 --> 00:04:59.888
+<v MRR WDF49 A2.24B (05) (Video)>and they went there with the POC and
+maybe I don't know whether they have</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/86-1
+00:04:59.888 --> 00:05:04.102
+<v MRR WDF49 A2.24B (05) (Video)>already done into a productive system.
+And we are not, as of now,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/86-2
+00:05:04.102 --> 00:05:08.444
+<v MRR WDF49 A2.24B (05) (Video)>whatever we have checked,
+we are not aware about any further effort</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/86-3
+00:05:08.444 --> 00:05:12.276
+<v MRR WDF49 A2.24B (05) (Video)>needed from our side.
+But we have to also still cheque with</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/86-4
+00:05:12.276 --> 00:05:16.873
+<v MRR WDF49 A2.24B (05) (Video)>this sales team whether is there any
+action item from our side. Mostly,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/86-5
+00:05:16.873 --> 00:05:20.002
+<v MRR WDF49 A2.24B (05) (Video)>we don't know if they have already moved
+to the.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/96-0
+00:05:20.002 --> 00:05:24.606
+<v MRR WDF49 A2.24B (05) (Video)>the productive landscape,
+then maybe they are expecting some tests</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/96-1
+00:05:24.606 --> 00:05:30.034
+<v MRR WDF49 A2.24B (05) (Video)>from our side as well to see whether
+everything is working fine. From our end,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/96-2
+00:05:30.034 --> 00:05:33.126
+<v MRR WDF49 A2.24B (05) (Video)>this is maybe this is what that is
+expected.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/96-3
+00:05:33.126 --> 00:05:36.493
+<v MRR WDF49 A2.24B (05) (Video)>So we are also not so sure whether there
+is any,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/96-4
+00:05:36.493 --> 00:05:39.722
+<v MRR WDF49 A2.24B (05) (Video)>this is why we have not also planned
+anything.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/100-0
+00:05:40.922 --> 00:05:45.203
+<v MRR WDF49 A2.24B (05) (Video)>for this particular backlog because
+already designed review everything was</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/100-1
+00:05:45.203 --> 00:05:49.883
+<v MRR WDF49 A2.24B (05) (Video)>completed and there was no further ask
+from other LOBs. So this is the one topic,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/100-2
+00:05:49.883 --> 00:05:53.935
+<v MRR WDF49 A2.24B (05) (Video)>sales long text replacement.
+So this is completely where we don't have</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/100-3
+00:05:53.935 --> 00:05:58.272
+<v MRR WDF49 A2.24B (05) (Video)>any development effort as of now.
+They have not also asked any support from</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/100-4
+00:05:58.272 --> 00:05:59.242
+<v MRR WDF49 A2.24B (05) (Video)>our side as well.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/106-0
+00:06:00.682 --> 00:06:05.154
+<v MRR WDF49 A2.24B (05) (Video)>So when we listen to this particular
+design discussion,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/106-1
+00:06:05.154 --> 00:06:11.461
+<v MRR WDF49 A2.24B (05) (Video)>then we also thought like how it is
+handled in purchase order business object.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/106-2
+00:06:11.461 --> 00:06:17.689
+<v MRR WDF49 A2.24B (05) (Video)>So we also have notes at the header level
+and also at the item level as well,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/106-3
+00:06:17.689 --> 00:06:21.042
+<v MRR WDF49 A2.24B (05) (Video)>and which is widely used by the customers.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/111-0
+00:06:21.882 --> 00:06:27.309
+<v MRR WDF49 A2.24B (05) (Video)>Then we also had a thought like, okay,
+then maybe similar approach have to be</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/111-1
+00:06:27.309 --> 00:06:31.623
+<v MRR WDF49 A2.24B (05) (Video)>used by us as well,
+because we are anyway planning to come up</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/111-2
+00:06:31.623 --> 00:06:34.893
+<v MRR WDF49 A2.24B (05) (Video)>with new modernization concept and
+everything.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/111-3
+00:06:34.893 --> 00:06:40.111
+<v MRR WDF49 A2.24B (05) (Video)>And the currently the way we are handling
+nodes is not the right approach.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/111-4
+00:06:40.111 --> 00:06:44.842
+<v MRR WDF49 A2.24B (05) (Video)>So what is done as of now is that in our
+APIs and all if you check.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/112-0
+00:06:45.962 --> 00:06:51.224
+<v MRR WDF49 A2.24B (05) (Video)>We are, we have built something,
+so SAP script team has provided this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/112-1
+00:06:51.224 --> 00:06:57.163
+<v MRR WDF49 A2.24B (05) (Video)>enterprise search help views to access
+the nodes using these enterprise search</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/112-2
+00:06:57.163 --> 00:07:01.222
+<v MRR WDF49 A2.24B (05) (Video)>help views,
+but this was strictly only for enterprise</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/112-3
+00:07:01.222 --> 00:07:05.206
+<v MRR WDF49 A2.24B (05) (Video)>search help,
+not it should not be used for any other</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/112-4
+00:07:05.206 --> 00:07:05.882
+<v MRR WDF49 A2.24B (05) (Video)>purposes.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/118-0
+00:07:06.362 --> 00:07:11.676
+<v MRR WDF49 A2.24B (05) (Video)>But this concept is mainly like they are
+doing a kind of,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/118-1
+00:07:11.676 --> 00:07:18.364
+<v MRR WDF49 A2.24B (05) (Video)>they are dumping the data into another
+table and then this ESH views are</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/118-2
+00:07:18.364 --> 00:07:25.053
+<v MRR WDF49 A2.24B (05) (Video)>actually built on top of that.
+So which means that sometimes we also get</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/118-3
+00:07:25.053 --> 00:07:28.442
+<v MRR WDF49 A2.24B (05) (Video)>some inconsistencies in some systems.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/128-0
+00:07:28.922 --> 00:07:34.274
+<v MRR WDF49 A2.24B (05) (Video)>because this data is not moved to this
+new enterprise search help tables.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/128-1
+00:07:34.274 --> 00:07:39.408
+<v MRR WDF49 A2.24B (05) (Video)>This is why we sometimes we are not able
+to access the notes and that.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/128-2
+00:07:39.408 --> 00:07:44.542
+<v MRR WDF49 A2.24B (05) (Video)>Sometimes the system is not prepared
+properly, then also this happens.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/128-3
+00:07:44.542 --> 00:07:50.472
+<v MRR WDF49 A2.24B (05) (Video)>And but it was clearly mentioned in their
+wiki guideline as well that this should</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/128-4
+00:07:50.472 --> 00:07:53.002
+<v MRR WDF49 A2.24B (05) (Video)>not be used for any other purposes.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/133-0
+00:07:53.482 --> 00:07:58.150
+<v MRR WDF49 A2.24B (05) (Video)>But when we,
+when I checked our APIs and everything,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/133-1
+00:07:58.150 --> 00:08:03.698
+<v MRR WDF49 A2.24B (05) (Video)>I could see that, for example,
+our purchase order not TP view.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/133-2
+00:08:03.698 --> 00:08:10.302
+<v MRR WDF49 A2.24B (05) (Video)>This is actually built on top of this
+plain long test view and this I text</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/133-3
+00:08:10.302 --> 00:08:16.202
+<v MRR WDF49 A2.24B (05) (Video)>object plain long test.
+This is actually built on top of this ESH.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/136-0
+00:08:16.522 --> 00:08:20.512
+<v MRR WDF49 A2.24B (05) (Video)>table. Yeah,
+and this is actually a replicated SAP</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/136-1
+00:08:20.512 --> 00:08:25.753
+<v MRR WDF49 A2.24B (05) (Video)>script long text tables,
+which means that whenever there is a data</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/136-2
+00:08:25.753 --> 00:08:30.290
+<v MRR WDF49 A2.24B (05) (Video)>replication issue,
+sometimes this particular table is not</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/136-3
+00:08:30.290 --> 00:08:33.731
+<v MRR WDF49 A2.24B (05) (Video)>complete.
+Then also this doesn't work fine.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/136-4
+00:08:33.731 --> 00:08:37.642
+<v MRR WDF49 A2.24B (05) (Video)>So the guidelines support using these SAP
+script.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/137-0
+00:08:38.442 --> 00:08:41.619
+<v MRR WDF49 A2.24B (05) (Video)>Yeah,
+for serious based search as already</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/137-1
+00:08:41.619 --> 00:08:46.686
+<v MRR WDF49 A2.24B (05) (Video)>mentioned in this particular wiki.
+So we also thought about, yeah,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/137-2
+00:08:46.686 --> 00:08:51.678
+<v MRR WDF49 A2.24B (05) (Video)>this is not the right approach.
+We have to actually come up with,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/137-3
+00:08:51.678 --> 00:08:55.535
+<v MRR WDF49 A2.24B (05) (Video)>maybe we also have to move to the new
+persistency.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/137-4
+00:08:55.535 --> 00:09:01.282
+<v MRR WDF49 A2.24B (05) (Video)>So recently during this modernization
+topic discussion, we also found that.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/149-0
+00:09:02.242 --> 00:09:05.978
+<v MRR WDF49 A2.24B (05) (Video)>In that case,
+we cannot use the same concept in the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/149-1
+00:09:05.978 --> 00:09:10.648
+<v MRR WDF49 A2.24B (05) (Video)>modernised APIs as well.
+So that is how this is the second topic</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/149-2
+00:09:10.648 --> 00:09:16.468
+<v MRR WDF49 A2.24B (05) (Video)>that is coming into picture where we are
+actually thinking about moving into new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/149-3
+00:09:16.468 --> 00:09:20.276
+<v MRR WDF49 A2.24B (05) (Video)>persistency,
+similar to how the sales long test team</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/149-4
+00:09:20.276 --> 00:09:20.922
+<v MRR WDF49 A2.24B (05) (Video)>has done.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/154-0
+00:09:22.202 --> 00:09:26.999
+<v MRR WDF49 A2.24B (05) (Video)>We also want to check, okay,
+how far it has gone and what are the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/154-1
+00:09:26.999 --> 00:09:32.159
+<v MRR WDF49 A2.24B (05) (Video)>issues that they have faced.
+And maybe we have to actually also cheque</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/154-2
+00:09:32.159 --> 00:09:36.156
+<v MRR WDF49 A2.24B (05) (Video)>with them how, I mean,
+about their experience as well.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/154-3
+00:09:36.156 --> 00:09:40.662
+<v MRR WDF49 A2.24B (05) (Video)>So this is support,
+I just put a screenshot about how this is</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/154-4
+00:09:40.662 --> 00:09:42.042
+<v MRR WDF49 A2.24B (05) (Video)>actually currently.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/155-0
+00:09:42.362 --> 00:09:46.565
+<v MRR WDF49 A2.24B (05) (Video)>done.
+We are actually doing it on top of I text</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/155-1
+00:09:46.565 --> 00:09:52.080
+<v MRR WDF49 A2.24B (05) (Video)>objects plain long test,
+which is actually on this ESH tables.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/155-2
+00:09:52.080 --> 00:09:58.033
+<v MRR WDF49 A2.24B (05) (Video)>And this is actually completely depending
+upon the replicated data.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/155-3
+00:09:58.033 --> 00:10:05.037
+<v MRR WDF49 A2.24B (05) (Video)>And also another issue is that this also
+doesn't support this formatting of the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/155-4
+00:10:05.037 --> 00:10:05.562
+<v MRR WDF49 A2.24B (05) (Video)>notes.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/156-0
+00:10:06.282 --> 00:10:09.514
+<v MRR WDF49 A2.24B (05) (Video)>For example,
+if there are some formats that they are</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/156-1
+00:10:09.514 --> 00:10:13.355
+<v MRR WDF49 A2.24B (05) (Video)>followed and when we take the data from
+these replicated data,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/156-2
+00:10:13.355 --> 00:10:18.050
+<v MRR WDF49 A2.24B (05) (Video)>it doesn't follow that same format.
+So this is one of the issue that we have</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/156-3
+00:10:18.050 --> 00:10:21.830
+<v MRR WDF49 A2.24B (05) (Video)>also found because we also got some
+customer tickets as well.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/156-4
+00:10:21.830 --> 00:10:25.122
+<v MRR WDF49 A2.24B (05) (Video)>So a few things are such kind of things
+are also not.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/166-0
+00:10:25.202 --> 00:10:27.162
+<v MRR WDF49 A2.24B (05) (Video)>Quotient with this current approach.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/167-0
+00:10:28.922 --> 00:10:30.202
+<v MRR WDF49 A2.24B (05) (Video)>So, um...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/168-0
+00:10:31.642 --> 00:10:38.722
+<v MRR WDF49 A2.24B (05) (Video)>Impact on modernization topic is, yeah,
+I so mostly Vikrant is kind of working on</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/168-1
+00:10:38.722 --> 00:10:42.952
+<v MRR WDF49 A2.24B (05) (Video)>this modernization topic,
+Vikrant from our team,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/168-2
+00:10:42.952 --> 00:10:48.391
+<v MRR WDF49 A2.24B (05) (Video)>World of Eleven team,
+and then we me and Nils had a discussion</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/168-3
+00:10:48.391 --> 00:10:52.362
+<v MRR WDF49 A2.24B (05) (Video)>with him about this particular topic,
+like...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/170-0
+00:10:52.922 --> 00:11:00.877
+<v MRR WDF49 A2.24B (05) (Video)>They also have some plan to include most
+of the reuse components in the initial</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/170-1
+00:11:00.877 --> 00:11:06.146
+<v MRR WDF49 A2.24B (05) (Video)>phase like C2702.
+So minimum viable scope is already</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/170-2
+00:11:06.146 --> 00:11:13.802
+<v MRR WDF49 A2.24B (05) (Video)>planned, but for North wrap reuse,
+if this moving into new persistency is a.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/171-0
+00:11:14.602 --> 00:11:19.183
+<v MRR WDF49 A2.24B (05) (Video)>prerequisite for that,
+then currently it is actually done as a</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/171-1
+00:11:19.183 --> 00:11:23.181
+<v MRR WDF49 A2.24B (05) (Video)>soft commitment,
+but I'm sure that we have to actually</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/171-2
+00:11:23.181 --> 00:11:29.070
+<v MRR WDF49 A2.24B (05) (Video)>start working on it already so that we
+will come up with the proper solution for</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/171-3
+00:11:29.070 --> 00:11:34.304
+<v MRR WDF49 A2.24B (05) (Video)>it in the later releases. Yeah,
+so this is the current status as of now</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/171-4
+00:11:34.304 --> 00:11:34.522
+<v MRR WDF49 A2.24B (05) (Video)>and</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/172-0
+00:11:35.242 --> 00:11:40.221
+<v MRR WDF49 A2.24B (05) (Video)>We also had,
+we also checked like from procurement</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/172-1
+00:11:40.221 --> 00:11:44.516
+<v MRR WDF49 A2.24B (05) (Video)>side,
+there is already one team who handles</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/172-2
+00:11:44.516 --> 00:11:51.350
+<v MRR WDF49 A2.24B (05) (Video)>this notes to reuse topic,
+Bangalore 4 team, which belongs to Vishal.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/172-3
+00:11:51.350 --> 00:11:57.402
+<v MRR WDF49 A2.24B (05) (Video)>Then we also have to actually align on
+this particular topic.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/193-0
+00:11:58.122 --> 00:12:02.695
+<v MRR WDF49 A2.24B (05) (Video)>Like even if we are moving to new
+persistency and we will be,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/193-1
+00:12:02.695 --> 00:12:08.522
+<v MRR WDF49 A2.24B (05) (Video)>there are very less business objects
+which are more to a new persistency as of</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/193-2
+00:12:08.522 --> 00:12:13.538
+<v MRR WDF49 A2.24B (05) (Video)>now. And in future as well,
+other procurement business objects also</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/193-3
+00:12:13.538 --> 00:12:18.922
+<v MRR WDF49 A2.24B (05) (Video)>have to move to new persistency.
+And in that case, we need to have some.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/199-0
+00:12:19.242 --> 00:12:24.069
+<v MRR WDF49 A2.24B (05) (Video)>guideline that has to be formed and it
+can be a phased approach.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/199-1
+00:12:24.069 --> 00:12:30.159
+<v MRR WDF49 A2.24B (05) (Video)>At first I mean we can think about moving
+this purchase order specific notes into</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/199-2
+00:12:30.159 --> 00:12:36.174
+<v MRR WDF49 A2.24B (05) (Video)>this new persistency and then later maybe
+other business objects can also follow</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/199-3
+00:12:36.174 --> 00:12:36.842
+<v MRR WDF49 A2.24B (05) (Video)>the same.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/205-0
+00:12:38.362 --> 00:12:41.865
+<v MRR WDF49 A2.24B (05) (Video)>But we don't,
+on this nursery use topic in procurement</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/205-1
+00:12:41.865 --> 00:12:44.986
+<v MRR WDF49 A2.24B (05) (Video)>area,
+there is a separate team for that already.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/205-2
+00:12:44.986 --> 00:12:49.444
+<v MRR WDF49 A2.24B (05) (Video)>So we may have to, you know,
+align with that particular team as well.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/205-3
+00:12:49.444 --> 00:12:51.482
+<v MRR WDF49 A2.24B (05) (Video)>This is what we found as of now.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/206-0
+00:12:54.042 --> 00:12:57.162
+<v MRR WDF49 A2.24B (05) (Video)>Okay, so any questions as of now?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/211-0
+00:13:02.362 --> 00:13:06.581
+<v MRR WDF49 A2.24B (05) (Video)>Okay, if no, I will go further,
+more deeper into the topic.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/211-1
+00:13:06.581 --> 00:13:10.519
+<v MRR WDF49 A2.24B (05) (Video)>So they have already,
+SAP's SAP script team has already</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/211-2
+00:13:10.519 --> 00:13:15.230
+<v MRR WDF49 A2.24B (05) (Video)>published the guidelines,
+how to move to the new persistency. Yes,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/211-3
+00:13:15.230 --> 00:13:15.722
+<v MRR WDF49 A2.24B (05) (Video)>Shweta.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/218-0
+00:13:17.002 --> 00:13:22.048
+<v Vijaya Rao, Shweta>Yeah, just regarding the first topic,
+right, the sales and billing document,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/218-1
+00:13:22.048 --> 00:13:26.176
+<v Vijaya Rao, Shweta>long text migration.
+So is there any development expected from</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/213-0
+00:13:22.202 --> 00:13:22.602
+<v MRR WDF49 A2.24B (05) (Video)>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/218-2
+00:13:26.176 --> 00:13:31.157
+<v Vijaya Rao, Shweta>the PO team here or our role is limited
+to review and testing and providing</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/215-0
+00:13:28.682 --> 00:13:29.082
+<v MRR WDF49 A2.24B (05) (Video)>No.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/218-3
+00:13:31.157 --> 00:13:36.202
+<v Vijaya Rao, Shweta>feedback on the sales implementation,
+right, if I understand this correctly?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/225-0
+00:13:34.762 --> 00:13:40.199
+<v MRR WDF49 A2.24B (05) (Video)>Yeah, this is our understanding as well.
+Yeah, this is our understanding as well.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/219-0
+00:13:36.442 --> 00:13:36.762
+<v Vijaya Rao, Shweta>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/220-0
+00:13:37.922 --> 00:13:38.402
+<v Vijaya Rao, Shweta>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/225-1
+00:13:40.199 --> 00:13:45.371
+<v MRR WDF49 A2.24B (05) (Video)>We participate in the design discussions
+and also design sign off was already</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/225-2
+00:13:45.371 --> 00:13:48.354
+<v MRR WDF49 A2.24B (05) (Video)>completed and they continued with their
+POC.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/225-3
+00:13:48.354 --> 00:13:53.194
+<v MRR WDF49 A2.24B (05) (Video)>I doubt that whether this is already
+available in 2608. I'm not so sure.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/225-4
+00:13:53.194 --> 00:13:54.122
+<v MRR WDF49 A2.24B (05) (Video)>They have not.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/229-0
+00:13:54.202 --> 00:13:58.113
+<v MRR WDF49 A2.24B (05) (Video)>come back to us.
+So the only open point is that, I mean,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/229-1
+00:13:58.113 --> 00:14:03.534
+<v MRR WDF49 A2.24B (05) (Video)>during the design discussion as well,
+we also found that somewhere we may have</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/229-2
+00:14:03.534 --> 00:14:07.445
+<v MRR WDF49 A2.24B (05) (Video)>some dependency because in sales,
+not long text as well,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/229-3
+00:14:07.445 --> 00:14:12.522
+<v MRR WDF49 A2.24B (05) (Video)>there is a concept about referencing,
+you know, referencing of the notes.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/235-0
+00:14:12.962 --> 00:14:19.877
+<v MRR WDF49 A2.24B (05) (Video)>So the reference can be taken from the
+previous document or maybe one or two</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/235-1
+00:14:19.877 --> 00:14:24.458
+<v MRR WDF49 A2.24B (05) (Video)>levels below that or something.
+And there is some,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/235-2
+00:14:24.458 --> 00:14:31.732
+<v MRR WDF49 A2.24B (05) (Video)>this is where they were not sure how it
+can be considered because there were few</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/235-3
+00:14:31.732 --> 00:14:36.042
+<v MRR WDF49 A2.24B (05) (Video)>challenges in achieving this referencing
+topic.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/240-0
+00:14:36.522 --> 00:14:42.789
+<v MRR WDF49 A2.24B (05) (Video)>And they mentioned that if all business
+object who are being referenced when,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/240-1
+00:14:42.789 --> 00:14:48.413
+<v MRR WDF49 A2.24B (05) (Video)>so maybe I'll come to this referencing
+topic later in purchase order,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/240-2
+00:14:48.413 --> 00:14:54.359
+<v MRR WDF49 A2.24B (05) (Video)>but similar concept or more complicated
+concept is there in a sales side,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/240-3
+00:14:54.359 --> 00:14:55.242
+<v MRR WDF49 A2.24B (05) (Video)>but when...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/245-0
+00:14:55.642 --> 00:15:00.851
+<v MRR WDF49 A2.24B (05) (Video)>all business objects who are involved in
+this referencing is not more to this new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/245-1
+00:15:00.851 --> 00:15:03.963
+<v MRR WDF49 A2.24B (05) (Video)>persistency,
+then sales team will not be able to</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/245-2
+00:15:03.963 --> 00:15:06.758
+<v MRR WDF49 A2.24B (05) (Video)>achieve that full feature parity.
+You know,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/245-3
+00:15:06.758 --> 00:15:10.759
+<v MRR WDF49 A2.24B (05) (Video)>they cannot unless until the all business
+object, for example,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/245-4
+00:15:10.759 --> 00:15:15.269
+<v MRR WDF49 A2.24B (05) (Video)>if they are telling that in sales,
+they are telling that that notes is</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/245-5
+00:15:15.269 --> 00:15:17.682
+<v MRR WDF49 A2.24B (05) (Video)>referenced from the previous document.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/250-0
+00:15:18.082 --> 00:15:23.342
+<v MRR WDF49 A2.24B (05) (Video)>but that particular business object is
+not more to the new persistency,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/250-1
+00:15:23.342 --> 00:15:28.821
+<v MRR WDF49 A2.24B (05) (Video)>then this cannot be marked as completed
+or something. They mentioned that.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/250-2
+00:15:28.821 --> 00:15:32.108
+<v MRR WDF49 A2.24B (05) (Video)>But further,
+we don't have much information.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/250-3
+00:15:32.108 --> 00:15:36.564
+<v MRR WDF49 A2.24B (05) (Video)>In that case, also,
+this echo long text can be actually used</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/250-4
+00:15:36.564 --> 00:15:38.682
+<v MRR WDF49 A2.24B (05) (Video)>as a reference in their case.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/253-0
+00:15:39.162 --> 00:15:45.261
+<v MRR WDF49 A2.24B (05) (Video)>But they never forced any business object
+to move to this new persistency because</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/253-1
+00:15:45.261 --> 00:15:48.682
+<v MRR WDF49 A2.24B (05) (Video)>of this requirement. It is just that they.
+..</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/307-0
+00:15:50.823 --> 00:15:56.018
+<v MRR WDF49 A2.24B (05) (Video)>that okay, there is something like this.
+So that is where we had this in our</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/307-1
+00:15:56.018 --> 00:15:59.458
+<v MRR WDF49 A2.24B (05) (Video)>backlog.
+But when this modernization topic is came</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/307-2
+00:15:59.458 --> 00:16:02.832
+<v MRR WDF49 A2.24B (05) (Video)>into picture,
+then we decided to take it further.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/307-3
+00:16:02.832 --> 00:16:06.205
+<v MRR WDF49 A2.24B (05) (Video)>But to answer your question,
+sales document side,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/307-4
+00:16:06.205 --> 00:16:09.983
+<v MRR WDF49 A2.24B (05) (Video)>I'm not expecting any development effort
+from our side.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/314-0
+00:16:10.303 --> 00:16:15.103
+<v MRR WDF49 A2.24B (05) (Video)>Mostly a testing effort is maximum that I
+can think about. Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/318-0
+00:16:16.343 --> 00:16:19.343
+<v Hartmann, Nils>That may, yeah, so maybe.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/353-0
+00:16:21.343 --> 00:16:29.263
+<v Hartmann, Nils>Yeah, maybe on this Fiori reuse component.
+So what you said is completely right.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/353-1
+00:16:29.263 --> 00:16:34.543
+<v Hartmann, Nils>So basically,
+we should cheque whether stuff works as</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/353-2
+00:16:34.543 --> 00:16:39.823
+<v Hartmann, Nils>before, but if it does not work,
+then we have to look</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/391-0
+00:16:39.863 --> 00:16:45.117
+<v Hartmann, Nils>what needs to be adopted that, well,
+it works again.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/391-1
+00:16:45.117 --> 00:16:53.146
+<v Hartmann, Nils>And this especially would be especially
+the case where we have direct selects on</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/391-2
+00:16:53.146 --> 00:17:00.383
+<v Hartmann, Nils>the old subscript tables for any reason.
+So my understanding of what's a</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/381-0
+00:16:56.143 --> 00:16:57.423
+<v MRR WDF49 A2.24B (05) (Video)>Yes, yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/431-0
+00:17:00.943 --> 00:17:07.204
+<v Hartmann, Nils>showed us or told us is like if you use
+the standard APIs of the old subscript,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/431-1
+00:17:07.204 --> 00:17:11.431
+<v Hartmann, Nils>so the function group, function modules,
+so then you,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/431-2
+00:17:11.431 --> 00:17:17.223
+<v Hartmann, Nils>it's no matter where the persistency is,
+you will get the text, you know,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/431-3
+00:17:17.223 --> 00:17:19.023
+<v Hartmann, Nils>for you it's invisible.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/466-0
+00:17:19.823 --> 00:17:25.204
+<v Hartmann, Nils>But as soon as you directly select on the
+database tables, for sure,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/466-1
+00:17:25.204 --> 00:17:30.974
+<v Hartmann, Nils>once you have migrated, it's gone.
+So then there will be nothing in those</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/466-2
+00:17:30.974 --> 00:17:36.667
+<v Hartmann, Nils>STXH tables that you will find.
+And it's more like finding exactly those</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/466-3
+00:17:36.667 --> 00:17:38.383
+<v Hartmann, Nils>cases where this might</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/499-0
+00:17:39.983 --> 00:17:44.219
+<v Hartmann, Nils>might apply.
+And if we have in our reuse component,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/499-1
+00:17:44.219 --> 00:17:48.618
+<v Hartmann, Nils>for example,
+cases like this where we have to address</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/499-2
+00:17:48.618 --> 00:17:48.863
+<v Hartmann, Nils>it.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/500-0
+00:17:49.823 --> 00:17:50.223
+<v MRR WDF49 A2.24B (05) (Video)>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/553-0
+00:17:51.663 --> 00:17:57.681
+<v MRR WDF49 A2.24B (05) (Video)>So, what, that's right. Also,
+from to add to that point, when they do,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/506-0
+00:17:54.223 --> 00:17:54.423
+<v Vijaya Rao, Shweta>Yes.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/553-1
+00:17:57.681 --> 00:18:03.615
+<v MRR WDF49 A2.24B (05) (Video)>when in sales side as well,
+when they are actually moving to this new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/553-2
+00:18:03.615 --> 00:18:08.023
+<v MRR WDF49 A2.24B (05) (Video)>persistency,
+what happens is that they are kind of,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/553-3
+00:18:08.023 --> 00:18:11.583
+<v MRR WDF49 A2.24B (05) (Video)>instead of using this STXH and STXL table.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/598-0
+00:18:11.983 --> 00:18:15.664
+<v MRR WDF49 A2.24B (05) (Video)>they will be also writing into a new
+persistency,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/598-1
+00:18:15.664 --> 00:18:20.596
+<v MRR WDF49 A2.24B (05) (Video)>but there is also a silent data migration
+which is also happening.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/598-2
+00:18:20.596 --> 00:18:25.086
+<v MRR WDF49 A2.24B (05) (Video)>And unless and until the silent data
+migration is completed,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/598-3
+00:18:25.086 --> 00:18:29.503
+<v MRR WDF49 A2.24B (05) (Video)>normally they will be actually writing to
+both persistency,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/598-4
+00:18:29.503 --> 00:18:31.343
+<v MRR WDF49 A2.24B (05) (Video)>the old subscript tables.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/659-0
+00:18:31.823 --> 00:18:35.398
+<v MRR WDF49 A2.24B (05) (Video)>and also to the new persistency table as
+well,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/659-1
+00:18:35.398 --> 00:18:39.505
+<v MRR WDF49 A2.24B (05) (Video)>unless until the sign in data migration
+is completed.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/659-2
+00:18:39.505 --> 00:18:45.513
+<v MRR WDF49 A2.24B (05) (Video)>But then all these old function modules,
+like read text and all these function</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/659-3
+00:18:45.513 --> 00:18:49.240
+<v MRR WDF49 A2.24B (05) (Video)>modules,
+will still work correctly because it is</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/659-4
+00:18:49.240 --> 00:18:53.423
+<v MRR WDF49 A2.24B (05) (Video)>already handled in their APIs that it has
+to look for.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/701-0
+00:18:53.903 --> 00:18:59.086
+<v MRR WDF49 A2.24B (05) (Video)>New persistency tables,
+and if the silent data migration is not</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/701-1
+00:18:59.086 --> 00:19:03.298
+<v MRR WDF49 A2.24B (05) (Video)>completed,
+right to move both database both tables.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/701-2
+00:19:03.298 --> 00:19:09.291
+<v MRR WDF49 A2.24B (05) (Video)>This is this is already handled by them,
+yeah, but if you have any cases,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/701-3
+00:19:09.291 --> 00:19:13.503
+<v MRR WDF49 A2.24B (05) (Video)>if we have direct select to these
+subscript tables.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/740-0
+00:19:13.863 --> 00:19:17.376
+<v MRR WDF49 A2.24B (05) (Video)>then it will not work.
+But as far as we see,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/740-1
+00:19:17.376 --> 00:19:22.061
+<v MRR WDF49 A2.24B (05) (Video)>or in most of the cases,
+I guess we are directly using this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/740-2
+00:19:22.061 --> 00:19:27.527
+<v MRR WDF49 A2.24B (05) (Video)>function modules or the class APIs
+provided by them. So in that case,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/740-3
+00:19:27.527 --> 00:19:31.743
+<v MRR WDF49 A2.24B (05) (Video)>it should work fine. Yes, Hasan,
+you have a question.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/733-0
+00:19:29.663 --> 00:19:30.023
+<v Vijaya Rao, Shweta>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/757-0
+00:19:33.223 --> 00:19:38.670
+<v Shaik, Hasan>Is this new persistency like a GBT tables
+are we talking about are completely</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/757-1
+00:19:38.670 --> 00:19:41.463
+<v Shaik, Hasan>different tables not to reuse or not so?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/760-0
+00:19:43.103 --> 00:19:44.743
+<v MRR WDF49 A2.24B (05) (Video)>Which table you are talking about?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/787-0
+00:19:45.343 --> 00:19:49.987
+<v Shaik, Hasan>We have not reuse tables, right?
+Both tables, SGBT underscore tables.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/772-0
+00:19:48.383 --> 00:19:48.543
+<v MRR WDF49 A2.24B (05) (Video)>Mm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/787-1
+00:19:49.987 --> 00:19:53.503
+<v Shaik, Hasan>So is it those tables which we are
+talking about or?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/821-0
+00:19:55.263 --> 00:20:02.132
+<v MRR WDF49 A2.24B (05) (Video)>Yes, I think this new persistency,
+that is a separate table design that is</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/788-0
+00:19:55.983 --> 00:19:56.383
+<v Shaik, Hasan>Ohh.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/821-1
+00:20:02.132 --> 00:20:09.826
+<v MRR WDF49 A2.24B (05) (Video)>actually even sales team has come up with.
+I think these is GBT related one is also</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/821-2
+00:20:09.826 --> 00:20:14.223
+<v MRR WDF49 A2.24B (05) (Video)>somehow linked with this new persistency.
+Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/830-0
+00:20:15.823 --> 00:20:20.223
+<v Shaik, Hasan>Okay, okay, but it is completely new,
+you are saying.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/827-0
+00:20:17.023 --> 00:20:18.303
+<v Hartmann, Nils>But, but...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/870-0
+00:20:21.423 --> 00:20:28.197
+<v Hartmann, Nils>And it's even application specific tables.
+So my understanding in the end,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/839-0
+00:20:25.983 --> 00:20:26.383
+<v MRR WDF49 A2.24B (05) (Video)>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/870-1
+00:20:28.197 --> 00:20:35.784
+<v Hartmann, Nils>it's even like the applications decide on
+the design of, not completely the design,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/870-2
+00:20:35.784 --> 00:20:38.223
+<v Hartmann, Nils>but how the tables are cut.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/873-0
+00:20:39.903 --> 00:20:40.623
+<v Hartmann, Nils>So, you could...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/907-0
+00:20:39.983 --> 00:20:44.701
+<v MRR WDF49 A2.24B (05) (Video)>So this is the STD.
+I guess this has the details.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/869-0
+00:20:40.703 --> 00:20:41.263
+<v Shaik, Hasan>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/907-1
+00:20:44.701 --> 00:20:52.156
+<v MRR WDF49 A2.24B (05) (Video)>They have came up with their own table
+concept and then they also mark in this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/907-2
+00:20:52.156 --> 00:20:59.423
+<v MRR WDF49 A2.24B (05) (Video)>notes reuse component that okay they are
+using these new persistence tables.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/934-0
+00:21:01.743 --> 00:21:05.193
+<v MRR WDF49 A2.24B (05) (Video)>I,
+so this is the table structure they have</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/934-1
+00:21:05.193 --> 00:21:09.426
+<v MRR WDF49 A2.24B (05) (Video)>come up with, I guess. Yeah, no,
+this is the old one.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/934-2
+00:21:09.426 --> 00:21:13.503
+<v MRR WDF49 A2.24B (05) (Video)>There is another one they have came up
+with, and...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/939-0
+00:21:15.423 --> 00:21:17.743
+<v MRR WDF49 A2.24B (05) (Video)>Now, this is the old way of doing it.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/978-0
+00:21:23.423 --> 00:21:28.495
+<v MRR WDF49 A2.24B (05) (Video)>Actually, this SDD has, okay,
+this is a new persistency related. Yeah,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/978-1
+00:21:28.495 --> 00:21:33.639
+<v MRR WDF49 A2.24B (05) (Video)>so they have came up with two options
+about the new persistency design,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/978-2
+00:21:33.639 --> 00:21:36.783
+<v MRR WDF49 A2.24B (05) (Video)>and then we actually decide on one of
+them.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1000-0
+00:21:38.943 --> 00:21:41.897
+<v MRR WDF49 A2.24B (05) (Video)>Yeah,
+but whatever you mention is is the BT</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1000-1
+00:21:41.897 --> 00:21:46.463
+<v MRR WDF49 A2.24B (05) (Video)>that particular persistency table is also
+somehow linked with this.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1006-0
+00:21:47.983 --> 00:21:50.463
+<v MRR WDF49 A2.24B (05) (Video)>I'm not too sure, but yeah,
+this is somehow linked with it.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1055-0
+00:21:51.823 --> 00:21:56.687
+<v Shaik, Hasan>So also from the PO side,
+is it like we are going to work on this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1055-1
+00:21:56.687 --> 00:22:02.731
+<v Shaik, Hasan>migration part of like from our whatever
+the text we have stored in SDXH and SDXL</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1055-2
+00:22:02.731 --> 00:22:07.743
+<v Shaik, Hasan>to be migrated to the new tables?
+Is that what is backlog is about?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1104-0
+00:22:08.463 --> 00:22:13.216
+<v MRR WDF49 A2.24B (05) (Video)>The second backlog is for that.
+The second item that we are talking of,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1104-1
+00:22:13.216 --> 00:22:18.233
+<v MRR WDF49 A2.24B (05) (Video)>the first one was about the sales one.
+This where we are not expecting much</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1069-0
+00:22:15.143 --> 00:22:15.663
+<v Shaik, Hasan>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1104-2
+00:22:18.233 --> 00:22:22.128
+<v MRR WDF49 A2.24B (05) (Video)>development effort,
+but mostly the testing or if we have a</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1078-0
+00:22:19.503 --> 00:22:20.143
+<v Shaik, Hasan>Mmhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1104-3
+00:22:22.128 --> 00:22:27.343
+<v MRR WDF49 A2.24B (05) (Video)>direct select from SDF such tables or
+something that we have to work up on it.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1147-0
+00:22:27.743 --> 00:22:33.098
+<v MRR WDF49 A2.24B (05) (Video)>Second one is about purchase order
+specific nodes where we will be moving to</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1147-1
+00:22:33.098 --> 00:22:37.479
+<v MRR WDF49 A2.24B (05) (Video)>the new persistency.
+And we have to come up with an idea about</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1147-2
+00:22:37.479 --> 00:22:42.277
+<v MRR WDF49 A2.24B (05) (Video)>like how it has to be done.
+And also we have to also align with this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1147-3
+00:22:42.277 --> 00:22:47.423
+<v MRR WDF49 A2.24B (05) (Video)>procurement nodes reuse owners as well
+about this architecture guideline.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1206-0
+00:22:48.783 --> 00:22:51.910
+<v Shaik, Hasan>Also,
+is it like going forward the new POs text</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1206-1
+00:22:51.910 --> 00:22:55.885
+<v Shaik, Hasan>which are going to get created,
+will they get automatically?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1206-2
+00:22:55.885 --> 00:23:01.098
+<v Shaik, Hasan>We should change some approach like in
+the coding so that it goes to new tables</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1206-3
+00:23:01.098 --> 00:23:05.984
+<v Shaik, Hasan>or will it continue as is and we only
+work on the migration job which will</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1206-4
+00:23:05.984 --> 00:23:09.307
+<v Shaik, Hasan>transfer,
+keep transferring the nodes from SDXs to</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1206-5
+00:23:09.307 --> 00:23:09.503
+<v Shaik, Hasan>it.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1208-0
+00:23:09.743 --> 00:23:10.623
+<v Shaik, Hasan>New tables.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1248-0
+00:23:11.503 --> 00:23:17.157
+<v MRR WDF49 A2.24B (05) (Video)>So the new ones,
+what I understand is the new ones will be,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1248-1
+00:23:17.157 --> 00:23:21.397
+<v MRR WDF49 A2.24B (05) (Video)>I mean,
+unless until this complete migration</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1248-2
+00:23:21.397 --> 00:23:26.203
+<v MRR WDF49 A2.24B (05) (Video)>process is completed,
+it will be returned to both.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1248-3
+00:23:26.203 --> 00:23:31.103
+<v MRR WDF49 A2.24B (05) (Video)>Once and that is DM is completed,
+then only to the.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1252-0
+00:23:31.263 --> 00:23:34.303
+<v MRR WDF49 A2.24B (05) (Video)>New persistence is what I understand.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1307-0
+00:23:36.383 --> 00:23:39.316
+<v Vijaya Rao, Shweta>Yeah,
+so what is the final expected outcome of</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1259-0
+00:23:36.703 --> 00:23:37.663
+<v Hartmann, Nils>Yeah, Yan.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1307-1
+00:23:39.316 --> 00:23:42.748
+<v Vijaya Rao, Shweta>this backlog?
+Is it a design proposal or a feasibility</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1307-2
+00:23:42.748 --> 00:23:47.429
+<v Vijaya Rao, Shweta>or an actual implementation of this?
+Because this is not a customer facing</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1307-3
+00:23:47.429 --> 00:23:51.984
+<v Vijaya Rao, Shweta>feature, right? If I understand,
+it's more on the internal modernization</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1307-4
+00:23:51.984 --> 00:23:54.543
+<v Vijaya Rao, Shweta>that we are doing to the subscript. Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1334-0
+00:23:55.103 --> 00:24:03.998
+<v Hartmann, Nils>No, it, it, it depends a little bit,
+so yeah, you're you're first of all right,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1334-1
+00:24:03.998 --> 00:24:12.783
+<v Hartmann, Nils>so this is at least so one is for sure we
+need to be safe on the usage of the.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1372-0
+00:24:13.583 --> 00:24:19.657
+<v Hartmann, Nils>the sales long text.
+So this was basically the first backlog</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1372-1
+00:24:19.657 --> 00:24:26.628
+<v Hartmann, Nils>that was basically issued by the SD
+colleagues. They said we migrate.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1372-2
+00:24:26.628 --> 00:24:32.703
+<v Hartmann, Nils>So this is for sure we migrate and you
+need to be sure that.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1397-0
+00:24:33.503 --> 00:24:38.416
+<v Hartmann, Nils>If you consume SD long text that in your
+application,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1397-1
+00:24:38.416 --> 00:24:45.423
+<v Hartmann, Nils>this works as before so that we don't
+have regressions with regards to that.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1434-0
+00:24:47.103 --> 00:24:54.078
+<v Hartmann, Nils>That is one step. The second step is,
+so when we have seen this,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1401-0
+00:24:48.463 --> 00:24:48.783
+<v Vijaya Rao, Shweta>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1434-1
+00:24:54.078 --> 00:25:02.448
+<v Hartmann, Nils>and actually this migration is kind of a
+logical step in terms of, let's say,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1434-2
+00:25:02.448 --> 00:25:05.023
+<v Hartmann, Nils>put it as modernization.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1476-0
+00:25:05.583 --> 00:25:12.191
+<v Hartmann, Nils>So if we plan in the purchase order to
+use the new RAP reuse component for the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1476-1
+00:25:12.191 --> 00:25:15.956
+<v Hartmann, Nils>nodes,
+a precondition is also the migration.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1476-2
+00:25:15.956 --> 00:25:22.815
+<v Hartmann, Nils>So this is then what Jiss also mentioned.
+This is kind of a soft commitment as of</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1476-3
+00:25:22.815 --> 00:25:25.743
+<v Hartmann, Nils>now. And for sure, we don't want to</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1477-0
+00:25:26.223 --> 00:25:26.943
+<v Hartmann, Nils>Ten.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1515-0
+00:25:28.383 --> 00:25:35.835
+<v Hartmann, Nils>handicraft something that writes into the,
+that uses the old APIs only because we</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1515-1
+00:25:35.835 --> 00:25:42.559
+<v Hartmann, Nils>lack now, for example, this migration.
+So this is kind of a precondition.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1515-2
+00:25:42.559 --> 00:25:47.103
+<v Hartmann, Nils>And then what also was mentioned,
+so in terms of.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1554-0
+00:25:47.743 --> 00:25:54.161
+<v Hartmann, Nils>BDC, so data products, for example,
+it's also kind of a precondition if we</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1554-1
+00:25:54.161 --> 00:26:01.520
+<v Hartmann, Nils>want to enable that text can be extracted.
+Also, then you're only on top of this one,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1554-2
+00:26:01.520 --> 00:26:08.023
+<v Hartmann, Nils>you really can put proper CDS views that
+can be extracted. However, this is</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1560-0
+00:26:08.263 --> 00:26:08.303
+<v Hartmann, Nils>A</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1589-0
+00:26:09.703 --> 00:26:16.601
+<v Hartmann, Nils>not kind of a project or a concept that
+you directly can execute because we kind</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1589-1
+00:26:16.601 --> 00:26:23.158
+<v Hartmann, Nils>of only have the blueprint from SD.
+We can look up what did they do and then</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1589-2
+00:26:23.158 --> 00:26:28.183
+<v Hartmann, Nils>decide on how we can transfer that
+concept to procurement.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1598-0
+00:26:32.103 --> 00:26:34.743
+<v Vijaya Rao, Shweta>OK, so are there is SP.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1597-0
+00:26:32.903 --> 00:26:34.103
+<v Hartmann, Nils>And, and it.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1660-0
+00:26:35.543 --> 00:26:41.800
+<v Hartmann, Nils>Sorry, and is it in procurement for sure?
+It hasn't, you know, it's broader,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1616-0
+00:26:41.703 --> 00:26:42.183
+<v Vijaya Rao, Shweta>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1660-1
+00:26:41.800 --> 00:26:46.675
+<v Hartmann, Nils>like our current text object that we have
+is Echo and Echo,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1660-2
+00:26:46.675 --> 00:26:52.445
+<v Hartmann, Nils>so this means it's not only purchase
+order, it's then, you know, well,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1660-3
+00:26:52.445 --> 00:26:56.183
+<v Hartmann, Nils>all the other contracts scheduling
+agreement.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1645-0
+00:26:53.863 --> 00:26:53.983
+<v Babu, Christopher>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1685-0
+00:26:56.423 --> 00:27:02.069
+<v Hartmann, Nils>about central procurement.
+I don't know whether it's also reused.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1685-1
+00:27:02.069 --> 00:27:06.347
+<v Hartmann, Nils>But this does not affect only the
+purchase order.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1685-2
+00:27:06.347 --> 00:27:11.223
+<v Hartmann, Nils>So we're somehow not isolated here.
+So we need to, yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1706-0
+00:27:12.903 --> 00:27:21.711
+<v Hartmann, Nils>discuss or make everybody aware on the
+concept and what we plan and what we plan</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1706-1
+00:27:21.711 --> 00:27:24.103
+<v Hartmann, Nils>first and then second.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1749-0
+00:27:27.663 --> 00:27:33.546
+<v Shaik, Hasan>So my understanding is like then we are
+targeting a individual job or something,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1711-0
+00:27:28.743 --> 00:27:28.903
+<v Vijaya Rao, Shweta>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1749-1
+00:27:33.546 --> 00:27:39.429
+<v Shaik, Hasan>a separate report which can just shift
+the data from old tables to new tables is</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1749-2
+00:27:39.429 --> 00:27:42.987
+<v Shaik, Hasan>what I understand from this conversion
+till now.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1749-3
+00:27:42.987 --> 00:27:46.183
+<v Shaik, Hasan>Are we going to make any core changes
+also?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1761-0
+00:27:46.423 --> 00:27:51.919
+<v Shaik, Hasan>which will affect the way of saving or
+reading the data is what my other</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1761-1
+00:27:51.919 --> 00:27:52.823
+<v Shaik, Hasan>question is.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1777-0
+00:27:56.663 --> 00:28:03.703
+<v Hartmann, Nils>Uh, so, so, as I said,
+so the the the persistency is hidden.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1833-0
+00:28:04.823 --> 00:28:10.783
+<v Hartmann, Nils>hidden by the APIs of the basis nodes
+functionality, first of all.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1833-1
+00:28:10.783 --> 00:28:17.544
+<v Hartmann, Nils>So this means we would not now change
+anything in our old applications with</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1833-2
+00:28:17.544 --> 00:28:22.614
+<v Hartmann, Nils>regards to that,
+because the assumption is it just works</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1833-3
+00:28:22.614 --> 00:28:26.795
+<v Hartmann, Nils>as before.
+So even if you now write into a new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1833-4
+00:28:26.795 --> 00:28:27.863
+<v Hartmann, Nils>persistency,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1893-0
+00:28:29.303 --> 00:28:33.755
+<v Hartmann, Nils>It would, yeah, you would,
+where it reads from and where it writes</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1893-1
+00:28:33.755 --> 00:28:38.074
+<v Hartmann, Nils>to, you don't, as you basically,
+if you call the function model,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1893-2
+00:28:38.074 --> 00:28:41.729
+<v Hartmann, Nils>you don't know,
+so it's kind of a configuration below.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1860-0
+00:28:38.423 --> 00:28:38.983
+<v Babu, Christopher>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1893-3
+00:28:41.729 --> 00:28:45.317
+<v Hartmann, Nils>I don't know exactly what you then need
+to implement,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1865-0
+00:28:42.343 --> 00:28:42.583
+<v MRR WDF49 A2.24B (05) (Video)>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1893-4
+00:28:45.317 --> 00:28:49.703
+<v Hartmann, Nils>whether you need to then implement a
+class or something that's...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1908-0
+00:28:49.743 --> 00:28:55.654
+<v Hartmann, Nils>that writes into the persistency for sure.
+You most likely find it in that design</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1900-0
+00:28:54.223 --> 00:28:54.343
+<v MRR WDF49 A2.24B (05) (Video)>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1908-1
+00:28:55.654 --> 00:28:56.303
+<v Hartmann, Nils>document.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1959-0
+00:28:57.063 --> 00:29:01.131
+<v MRR WDF49 A2.24B (05) (Video)>Yeah, also in this wiki,
+what subscript team has provided about</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1959-1
+00:29:01.131 --> 00:29:05.516
+<v MRR WDF49 A2.24B (05) (Video)>the new buses moving to new persistency,
+it has most of the details,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1959-2
+00:29:05.516 --> 00:29:10.601
+<v MRR WDF49 A2.24B (05) (Video)>like what all things have to be changed
+and what all things we have to manually</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1959-3
+00:29:10.601 --> 00:29:14.415
+<v MRR WDF49 A2.24B (05) (Video)>change, like for example,
+direct select have to be changed,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/1959-4
+00:29:14.415 --> 00:29:16.703
+<v MRR WDF49 A2.24B (05) (Video)>but otherwise whatever was selected.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2006-0
+00:29:17.143 --> 00:29:21.335
+<v MRR WDF49 A2.24B (05) (Video)>using this old APIs or function modules
+will work as it is.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2006-1
+00:29:21.335 --> 00:29:26.784
+<v MRR WDF49 A2.24B (05) (Video)>Even if you move to new persistency,
+we don't have to do any adoption is what</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2006-2
+00:29:26.784 --> 00:29:30.137
+<v MRR WDF49 A2.24B (05) (Video)>I understand.
+But whenever we have some things,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2006-3
+00:29:30.137 --> 00:29:34.818
+<v MRR WDF49 A2.24B (05) (Video)>a few things like, for example,
+this particular place where we are</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2006-4
+00:29:34.818 --> 00:29:37.543
+<v MRR WDF49 A2.24B (05) (Video)>directly built on top of this ESH view.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2035-0
+00:29:38.183 --> 00:29:44.946
+<v MRR WDF49 A2.24B (05) (Video)>These things have to be changed,
+but maybe we have to actually use this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2035-1
+00:29:44.946 --> 00:29:52.743
+<v MRR WDF49 A2.24B (05) (Video)>node reuse business object itself in such
+cases. Yes, Rajesh, you have a question?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2074-0
+00:29:52.423 --> 00:29:58.436
+<v Chinnakonda, Rajesh>Yeah, so here in the slide itself,
+we are saying text objects, EKKO, PO,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2074-1
+00:29:58.436 --> 00:30:04.614
+<v Chinnakonda, Rajesh>are used not only by purchase order team,
+so is it possible to move to new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2074-2
+00:30:04.614 --> 00:30:10.463
+<v Chinnakonda, Rajesh>persistency only for PO text?
+So that means we have to still discover.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2104-0
+00:30:11.063 --> 00:30:16.035
+<v Chinnakonda, Rajesh>by looking at existing solution that
+whether we can move to new persistency or</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2104-1
+00:30:16.035 --> 00:30:18.993
+<v Chinnakonda, Rajesh>not is it?
+How are we answering this question?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2104-2
+00:30:18.993 --> 00:30:20.503
+<v Chinnakonda, Rajesh>This is not clear to me.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2145-0
+00:30:19.303 --> 00:30:22.615
+<v MRR WDF49 A2.24B (05) (Video)>No,
+these are actually a part of the research</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2145-1
+00:30:22.615 --> 00:30:27.943
+<v MRR WDF49 A2.24B (05) (Video)>topic, actually, because Rajesh,
+this particular topic was never touched.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2106-0
+00:30:23.263 --> 00:30:23.823
+<v Chinnakonda, Rajesh>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2145-2
+00:30:27.943 --> 00:30:32.911
+<v MRR WDF49 A2.24B (05) (Video)>Moving to the new persistency,
+it purchase order was just there as a</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2145-3
+00:30:32.911 --> 00:30:36.295
+<v MRR WDF49 A2.24B (05) (Video)>backlog,
+because we when we attended the sales</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2145-4
+00:30:36.295 --> 00:30:38.743
+<v MRR WDF49 A2.24B (05) (Video)>long test migration design review.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2141-0
+00:30:38.263 --> 00:30:38.743
+<v Chinnakonda, Rajesh>Thank you.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2186-0
+00:30:39.063 --> 00:30:44.416
+<v MRR WDF49 A2.24B (05) (Video)>Then we actually found about all these
+things and then we actually thought about,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2186-1
+00:30:44.416 --> 00:30:47.157
+<v MRR WDF49 A2.24B (05) (Video)>okay,
+when we move to this new modernised</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2186-2
+00:30:47.157 --> 00:30:50.421
+<v MRR WDF49 A2.24B (05) (Video)>purchase order concept,
+then we have to actually,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2186-3
+00:30:50.421 --> 00:30:54.273
+<v MRR WDF49 A2.24B (05) (Video)>even if we have to use this,
+reuse nodes business subject,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2186-4
+00:30:54.273 --> 00:30:57.863
+<v MRR WDF49 A2.24B (05) (Video)>then we have to actually move to new
+persistency. But.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2234-0
+00:30:57.903 --> 00:31:03.557
+<v MRR WDF49 A2.24B (05) (Video)>to move to this new persistency and also
+to come up with the scope for the same</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2234-1
+00:31:03.557 --> 00:31:06.879
+<v MRR WDF49 A2.24B (05) (Video)>because in our case, this echo and echo,
+well,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2234-2
+00:31:06.879 --> 00:31:12.322
+<v MRR WDF49 A2.24B (05) (Video)>we might be the same text objects are
+used to buy multiple business objects.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2234-3
+00:31:12.322 --> 00:31:17.623
+<v MRR WDF49 A2.24B (05) (Video)>Then at what level we can actually do
+this and what are the possibilities.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2294-0
+00:31:17.983 --> 00:31:22.615
+<v MRR WDF49 A2.24B (05) (Video)>is what we have to actually see.
+So maybe when I go through these known</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2294-1
+00:31:22.615 --> 00:31:25.703
+<v MRR WDF49 A2.24B (05) (Video)>issues,
+and also I have some more points listed</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2294-2
+00:31:25.703 --> 00:31:28.791
+<v MRR WDF49 A2.24B (05) (Video)>later,
+these are the known things that we found</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2294-3
+00:31:28.791 --> 00:31:32.201
+<v MRR WDF49 A2.24B (05) (Video)>during our internal discussion,
+we found few things,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2294-4
+00:31:32.201 --> 00:31:37.026
+<v MRR WDF49 A2.24B (05) (Video)>which I actually tried to put it over
+here. But for this particular topic,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2294-5
+00:31:37.026 --> 00:31:39.921
+<v MRR WDF49 A2.24B (05) (Video)>we have to actually start with the
+research,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2294-6
+00:31:39.921 --> 00:31:42.623
+<v MRR WDF49 A2.24B (05) (Video)>like kind of discovery or research itself.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2336-0
+00:31:42.983 --> 00:31:48.597
+<v MRR WDF49 A2.24B (05) (Video)>because we are not yet sure what are the
+capabilities of current purchase order</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2336-1
+00:31:48.597 --> 00:31:53.440
+<v MRR WDF49 A2.24B (05) (Video)>notes topic and also what are things that
+supported in public cloud.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2336-2
+00:31:53.440 --> 00:31:56.738
+<v MRR WDF49 A2.24B (05) (Video)>So what are questions that we had in our
+mind?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2336-3
+00:31:56.738 --> 00:32:02.423
+<v MRR WDF49 A2.24B (05) (Video)>It is already listed down and we have to
+actually kind of do some more research.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2340-0
+00:32:02.503 --> 00:32:04.583
+<v MRR WDF49 A2.24B (05) (Video)>and then come up with a plan for this.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2341-0
+00:32:05.943 --> 00:32:06.103
+<v Hartmann, Nils>Mm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2373-0
+00:32:06.743 --> 00:32:12.113
+<v Chinnakonda, Rajesh>That will be part of the scope of 2702.
+I thought when you explained that this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2373-1
+00:32:12.113 --> 00:32:17.143
+<v Chinnakonda, Rajesh>could be relevant only for the modern
+view, but not for the current view.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2428-0
+00:32:18.183 --> 00:32:22.511
+<v MRR WDF49 A2.24B (05) (Video)>Your current view will work.
+Even if we move to new persistency,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2428-1
+00:32:22.511 --> 00:32:27.904
+<v MRR WDF49 A2.24B (05) (Video)>the current view will still work because
+this is the understanding that we have,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2380-0
+00:32:23.223 --> 00:32:23.903
+<v Chinnakonda, Rajesh>I love you.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2392-0
+00:32:27.703 --> 00:32:28.103
+<v Chinnakonda, Rajesh>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2428-2
+00:32:27.904 --> 00:32:31.766
+<v MRR WDF49 A2.24B (05) (Video)>but we have to actually cheque how does
+it work. We have,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2428-3
+00:32:31.766 --> 00:32:36.626
+<v MRR WDF49 A2.24B (05) (Video)>because we have not done a research on
+this particular new moving to new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2428-4
+00:32:36.626 --> 00:32:39.223
+<v MRR WDF49 A2.24B (05) (Video)>persistency yet, so we are not able to.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2471-0
+00:32:39.623 --> 00:32:44.666
+<v MRR WDF49 A2.24B (05) (Video)>Actually say that whether there will be
+any impact on existing things or</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2471-1
+00:32:44.666 --> 00:32:49.777
+<v MRR WDF49 A2.24B (05) (Video)>something that that is my problem,
+but as per whatever I see from the SAP</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2471-2
+00:32:49.777 --> 00:32:54.475
+<v MRR WDF49 A2.24B (05) (Video)>script new persistency wiki,
+most of the APIs are actually handling</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2471-3
+00:32:54.475 --> 00:32:57.652
+<v MRR WDF49 A2.24B (05) (Video)>both,
+but when it is completely moving to new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2471-4
+00:32:57.652 --> 00:32:59.863
+<v MRR WDF49 A2.24B (05) (Video)>persistency, what about the old?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2531-0
+00:33:00.863 --> 00:33:05.006
+<v MRR WDF49 A2.24B (05) (Video)>APIs, these things we still have to see.
+So whatever, yeah,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2531-1
+00:33:05.006 --> 00:33:10.391
+<v MRR WDF49 A2.24B (05) (Video)>maybe we will discuss what are the open
+points or what are the topics that we</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2478-0
+00:33:05.543 --> 00:33:05.863
+<v Hartmann, Nils>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2485-0
+00:33:05.703 --> 00:33:06.263
+<v Chinnakonda, Rajesh>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2531-2
+00:33:10.391 --> 00:33:15.639
+<v MRR WDF49 A2.24B (05) (Video)>already know about and then we can
+discuss it further about your questions.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2508-0
+00:33:15.223 --> 00:33:16.183
+<v Chinnakonda, Rajesh>Okay, yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2531-3
+00:33:15.639 --> 00:33:19.989
+<v MRR WDF49 A2.24B (05) (Video)>Does that make sense? Okay,
+because now we are talking without</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2517-0
+00:33:17.063 --> 00:33:18.743
+<v Chinnakonda, Rajesh>Shut, yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2531-4
+00:33:19.989 --> 00:33:23.303
+<v MRR WDF49 A2.24B (05) (Video)>actually discussing the current problems,
+yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2530-0
+00:33:23.463 --> 00:33:24.423
+<v Chinnakonda, Rajesh>Yes, yes.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2535-0
+00:33:23.943 --> 00:33:26.183
+<v MRR WDF49 A2.24B (05) (Video)>OK, so.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2601-0
+00:33:27.543 --> 00:33:31.289
+<v MRR WDF49 A2.24B (05) (Video)>So as it is mentioned over here,
+the wiki is already provided.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2601-1
+00:33:31.289 --> 00:33:36.106
+<v MRR WDF49 A2.24B (05) (Video)>It's not only about just moving to new
+persistency and build CDS on top of that.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2601-2
+00:33:36.106 --> 00:33:41.101
+<v MRR WDF49 A2.24B (05) (Video)>It is also about like we have to actually
+first cheque what are the functionalities</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2601-3
+00:33:41.101 --> 00:33:44.669
+<v MRR WDF49 A2.24B (05) (Video)>that are supported.
+And we didn't have any backlog for this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2601-4
+00:33:44.669 --> 00:33:48.534
+<v MRR WDF49 A2.24B (05) (Video)>analysis in the last release.
+So this will be a part of this new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2601-5
+00:33:48.534 --> 00:33:51.983
+<v MRR WDF49 A2.24B (05) (Video)>release and that research and everything
+have to be done.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2646-0
+00:33:52.063 --> 00:33:56.017
+<v MRR WDF49 A2.24B (05) (Video)>For this,
+so one thing is sales had also mentioned</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2646-1
+00:33:56.017 --> 00:33:59.894
+<v MRR WDF49 A2.24B (05) (Video)>about referencing of the text, like,
+for example,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2646-2
+00:33:59.894 --> 00:34:04.778
+<v MRR WDF49 A2.24B (05) (Video)>there can be multiple level of
+referencing, like, for example,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2646-3
+00:34:04.778 --> 00:34:10.128
+<v MRR WDF49 A2.24B (05) (Video)>there is one document and that C,
+and then actually this is actually</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2646-4
+00:34:10.128 --> 00:34:10.903
+<v MRR WDF49 A2.24B (05) (Video)>reference.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2701-0
+00:34:11.103 --> 00:34:15.904
+<v MRR WDF49 A2.24B (05) (Video)>from this is actually a full-on document
+and then it is coming from another</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2701-1
+00:34:15.904 --> 00:34:19.126
+<v MRR WDF49 A2.24B (05) (Video)>previous business subject and something
+like that.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2701-2
+00:34:19.126 --> 00:34:23.043
+<v MRR WDF49 A2.24B (05) (Video)>So there can be multiple level of
+referencing. And similarly,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2701-3
+00:34:23.043 --> 00:34:26.202
+<v MRR WDF49 A2.24B (05) (Video)>even PO actually support referencing of
+the text,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2701-4
+00:34:26.202 --> 00:34:29.171
+<v MRR WDF49 A2.24B (05) (Video)>but maybe it is not as complicated like
+Sales,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2701-5
+00:34:29.171 --> 00:34:33.783
+<v MRR WDF49 A2.24B (05) (Video)>but we have to also understand how this
+referencing of text work in the.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2768-0
+00:34:34.983 --> 00:34:40.276
+<v MRR WDF49 A2.24B (05) (Video)>Currently how it works because we were
+also internally discussing and we are</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2768-1
+00:34:40.276 --> 00:34:43.781
+<v MRR WDF49 A2.24B (05) (Video)>also not so sure how this referencing
+work in SAP,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2768-2
+00:34:43.781 --> 00:34:48.524
+<v MRR WDF49 A2.24B (05) (Video)>S1A public cloud in purchase order.
+So currently what all things are</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2768-3
+00:34:48.524 --> 00:34:53.611
+<v MRR WDF49 A2.24B (05) (Video)>supported we are also not so sure.
+So for this particular part we have to</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2768-4
+00:34:53.611 --> 00:34:58.423
+<v MRR WDF49 A2.24B (05) (Video)>actually cheque the existing scope about
+the referencing part and if.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2811-0
+00:34:59.223 --> 00:35:03.927
+<v MRR WDF49 A2.24B (05) (Video)>I'm also not so sure whether referencing
+is allowed in public cloud.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2811-1
+00:35:03.927 --> 00:35:09.041
+<v MRR WDF49 A2.24B (05) (Video)>So if it is allowed in public cloud,
+then how to incorporate it in the new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2811-2
+00:35:09.041 --> 00:35:12.109
+<v MRR WDF49 A2.24B (05) (Video)>persistency,
+which means that when we do the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2811-3
+00:35:12.109 --> 00:35:15.313
+<v MRR WDF49 A2.24B (05) (Video)>referencing,
+the original text lies in another</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2811-4
+00:35:15.313 --> 00:35:19.063
+<v MRR WDF49 A2.24B (05) (Video)>business subject,
+not in the current business subject.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2851-0
+00:35:19.623 --> 00:35:23.844
+<v MRR WDF49 A2.24B (05) (Video)>So, how,
+how say what is the approach the sales</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2851-1
+00:35:23.844 --> 00:35:30.174
+<v MRR WDF49 A2.24B (05) (Video)>team has done to consider these
+referencing of this long text object is</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2851-2
+00:35:30.174 --> 00:35:36.242
+<v MRR WDF49 A2.24B (05) (Video)>what we have to also understand if
+purchase order is also supporting</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2851-3
+00:35:36.242 --> 00:35:39.583
+<v MRR WDF49 A2.24B (05) (Video)>referencing, then third thing is that.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2901-0
+00:35:40.503 --> 00:35:46.451
+<v MRR WDF49 A2.24B (05) (Video)>The we use the text objects echo and echo,
+so if you cheque this S.T.X.H.S.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2901-1
+00:35:46.451 --> 00:35:50.677
+<v MRR WDF49 A2.24B (05) (Video)>Excel tables,
+you can see that there are several text</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2901-2
+00:35:50.677 --> 00:35:54.981
+<v MRR WDF49 A2.24B (05) (Video)>IDs which are mentioned,
+but all of them are not used,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2901-3
+00:35:54.981 --> 00:35:58.503
+<v MRR WDF49 A2.24B (05) (Video)>and what we are to actually first see is..
+.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2950-0
+00:35:59.423 --> 00:36:06.859
+<v MRR WDF49 A2.24B (05) (Video)>What is the current solution, and is it,
+and as this is used by multiple business</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2950-1
+00:36:06.859 --> 00:36:10.486
+<v MRR WDF49 A2.24B (05) (Video)>subjects,
+is it possible to move to new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2950-2
+00:36:10.486 --> 00:36:16.833
+<v MRR WDF49 A2.24B (05) (Video)>persistently only for PO text?
+And we also have to cheque whether the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2950-3
+00:36:16.833 --> 00:36:19.463
+<v MRR WDF49 A2.24B (05) (Video)>text IDs that are used by PO.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2998-0
+00:36:19.863 --> 00:36:23.990
+<v MRR WDF49 A2.24B (05) (Video)>Is it actually shared by other business
+objects as well?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2998-1
+00:36:23.990 --> 00:36:30.073
+<v MRR WDF49 A2.24B (05) (Video)>Is it also used by other business objects?
+This is like about checking the existing</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2998-2
+00:36:30.073 --> 00:36:33.476
+<v MRR WDF49 A2.24B (05) (Video)>solution,
+what all text IDs are used in PO and</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2998-3
+00:36:33.476 --> 00:36:37.386
+<v MRR WDF49 A2.24B (05) (Video)>whether it is,
+is it possible to move only these IDs?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/2998-4
+00:36:37.386 --> 00:36:39.703
+<v MRR WDF49 A2.24B (05) (Video)>Then is it also possible to use?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3041-0
+00:36:40.743 --> 00:36:45.668
+<v MRR WDF49 A2.24B (05) (Video)>So another question that we also had is
+like whenever we have checked,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3041-1
+00:36:45.668 --> 00:36:49.969
+<v MRR WDF49 A2.24B (05) (Video)>our understanding is that to use this
+nodes wrap reuse layer,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3041-2
+00:36:49.969 --> 00:36:53.091
+<v MRR WDF49 A2.24B (05) (Video)>we need to have more to the new
+persistency.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3041-3
+00:36:53.091 --> 00:36:58.710
+<v MRR WDF49 A2.24B (05) (Video)>But is there any possibility to use nodes
+wrap reuse layer without moving to new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3041-4
+00:36:58.710 --> 00:36:59.543
+<v MRR WDF49 A2.24B (05) (Video)>persistency?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3101-0
+00:36:59.903 --> 00:37:03.769
+<v MRR WDF49 A2.24B (05) (Video)>This actually have to be checked with the
+core nodes team.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3101-1
+00:37:03.769 --> 00:37:07.242
+<v MRR WDF49 A2.24B (05) (Video)>This is something we still have to do
+some analysis,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3101-2
+00:37:07.242 --> 00:37:10.649
+<v MRR WDF49 A2.24B (05) (Video)>but as per our understanding,
+this is not possible.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3101-3
+00:37:10.649 --> 00:37:15.694
+<v MRR WDF49 A2.24B (05) (Video)>But we can also see that most of the
+business objects have not moved to this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3101-4
+00:37:15.694 --> 00:37:18.577
+<v MRR WDF49 A2.24B (05) (Video)>new persistency.
+Then we are also thinking,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3101-5
+00:37:18.577 --> 00:37:23.623
+<v MRR WDF49 A2.24B (05) (Video)>is there any workaround available or is
+there any possibility to move it to?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3127-0
+00:37:24.103 --> 00:37:27.954
+<v MRR WDF49 A2.24B (05) (Video)>A new wrap reuse layer without moving to
+new persistency.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3127-1
+00:37:27.954 --> 00:37:32.138
+<v MRR WDF49 A2.24B (05) (Video)>This is something that we can actually
+cheque with North Team.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3127-2
+00:37:32.138 --> 00:37:37.583
+<v MRR WDF49 A2.24B (05) (Video)>This is some of the one of the open point,
+then further this thing is that about.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3174-0
+00:37:39.543 --> 00:37:42.620
+<v MRR WDF49 A2.24B (05) (Video)>Okay,
+so this is also mentioned in their</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3174-1
+00:37:42.620 --> 00:37:47.650
+<v MRR WDF49 A2.24B (05) (Video)>subscript new persistency wiki.
+They also mentioned about the text</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3174-2
+00:37:47.650 --> 00:37:50.877
+<v MRR WDF49 A2.24B (05) (Video)>references.
+This is not actually supported</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3174-3
+00:37:50.877 --> 00:37:57.032
+<v MRR WDF49 A2.24B (05) (Video)>out-of-the-box. So we have to actually,
+maybe someone has to go through this wiki</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3174-4
+00:37:57.032 --> 00:37:57.783
+<v MRR WDF49 A2.24B (05) (Video)>in detail.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3225-0
+00:37:58.183 --> 00:38:03.705
+<v MRR WDF49 A2.24B (05) (Video)>and then clarify about this with the
+nodes team and also understanding from</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3225-1
+00:38:03.705 --> 00:38:09.736
+<v MRR WDF49 A2.24B (05) (Video)>sales team is also makes sense to like,
+you know, how they handle such situations.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3225-2
+00:38:09.736 --> 00:38:15.258
+<v MRR WDF49 A2.24B (05) (Video)>Then another question that we had, I mean,
+that came up during our internal</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3225-3
+00:38:15.258 --> 00:38:20.852
+<v MRR WDF49 A2.24B (05) (Video)>discussion is that is it possible for
+public cloud customers to create their</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3225-4
+00:38:20.852 --> 00:38:21.143
+<v MRR WDF49 A2.24B (05) (Video)>own?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3279-0
+00:38:21.703 --> 00:38:25.936
+<v MRR WDF49 A2.24B (05) (Video)>header or item text,
+like their own new text IDs can be,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3279-1
+00:38:25.936 --> 00:38:31.729
+<v MRR WDF49 A2.24B (05) (Video)>can they introduce new text IDs so that
+they can have a new one more tab over</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3279-2
+00:38:31.729 --> 00:38:35.813
+<v MRR WDF49 A2.24B (05) (Video)>there to enter new text.
+So is it possible to do that?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3279-3
+00:38:35.813 --> 00:38:39.675
+<v MRR WDF49 A2.24B (05) (Video)>Is it allowed?
+Is there an SSCUI provided for this?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3279-4
+00:38:39.675 --> 00:38:41.383
+<v MRR WDF49 A2.24B (05) (Video)>That has to be checked.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3325-0
+00:38:41.623 --> 00:38:47.346
+<v MRR WDF49 A2.24B (05) (Video)>Then about referencing,
+how referencing is done in purchase order.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3325-1
+00:38:47.346 --> 00:38:51.275
+<v MRR WDF49 A2.24B (05) (Video)>As of now,
+there are few 2 IMGs or like about</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3325-2
+00:38:51.275 --> 00:38:57.852
+<v MRR WDF49 A2.24B (05) (Video)>copying or referencing for header text
+and also for item text that is in IMG</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3325-3
+00:38:57.852 --> 00:39:03.063
+<v MRR WDF49 A2.24B (05) (Video)>that is an IMG view for this.
+Here actually for header text.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3369-0
+00:39:03.223 --> 00:39:07.321
+<v MRR WDF49 A2.24B (05) (Video)>So for example,
+here we are actually telling that target</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3369-1
+00:39:07.321 --> 00:39:10.484
+<v MRR WDF49 A2.24B (05) (Video)>header text.
+This is actually these are the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3369-2
+00:39:10.484 --> 00:39:15.229
+<v MRR WDF49 A2.24B (05) (Video)>referencing source text.
+We are also not so sure how it works and</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3369-3
+00:39:15.229 --> 00:39:20.046
+<v MRR WDF49 A2.24B (05) (Video)>is it supported in public cloud.
+This is also something we have to</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3369-4
+00:39:20.046 --> 00:39:24.503
+<v MRR WDF49 A2.24B (05) (Video)>actually find what is the current scope.
+Then another one is.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3400-0
+00:39:25.423 --> 00:39:29.881
+<v MRR WDF49 A2.24B (05) (Video)>Which all business objects are using,
+so this I already mentioned the last</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3400-1
+00:39:29.881 --> 00:39:32.497
+<v MRR WDF49 A2.24B (05) (Video)>slide,
+which all business objects are using</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3400-2
+00:39:32.497 --> 00:39:36.183
+<v MRR WDF49 A2.24B (05) (Video)>these text objects, echo and echo,
+whether we can actually...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3451-0
+00:39:38.983 --> 00:39:41.959
+<v MRR WDF49 A2.24B (05) (Video)>Yeah,
+so cheque the business objects other than</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3451-1
+00:39:41.959 --> 00:39:46.548
+<v MRR WDF49 A2.24B (05) (Video)>purchase order, which is supported,
+which is actually using the same text</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3451-2
+00:39:46.548 --> 00:39:50.269
+<v MRR WDF49 A2.24B (05) (Video)>objects, echo and echo.
+So we have to actually cheque this,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3451-3
+00:39:50.269 --> 00:39:53.928
+<v MRR WDF49 A2.24B (05) (Video)>the current scope about this. And also,
+this is something,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3451-4
+00:39:53.928 --> 00:39:58.827
+<v MRR WDF49 A2.24B (05) (Video)>this is more about like the previous
+slide itself where I have mentioned about</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3451-5
+00:39:58.827 --> 00:39:59.943
+<v MRR WDF49 A2.24B (05) (Video)>is it possible to.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3501-0
+00:39:59.983 --> 00:40:03.798
+<v MRR WDF49 A2.24B (05) (Video)>move PO business object into new
+persistency,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3501-1
+00:40:03.798 --> 00:40:08.775
+<v MRR WDF49 A2.24B (05) (Video)>like without affecting other business
+objects. For example,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3501-2
+00:40:08.775 --> 00:40:15.411
+<v MRR WDF49 A2.24B (05) (Video)>there's a transaction called SC75 where
+we actually can see all the object text</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3501-3
+00:40:15.411 --> 00:40:21.383
+<v MRR WDF49 A2.24B (05) (Video)>objects and the text IDs linked with,
+I mean, text objects can be seen.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3572-0
+00:40:21.863 --> 00:40:25.938
+<v MRR WDF49 A2.24B (05) (Video)>So if there is a persistency hand,
+so there is a field called persistency</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3572-1
+00:40:25.938 --> 00:40:28.581
+<v MRR WDF49 A2.24B (05) (Video)>handler.
+If there is a class mentioned in that,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3572-2
+00:40:28.581 --> 00:40:32.435
+<v MRR WDF49 A2.24B (05) (Video)>this means that those objects have
+actually moved to new persistency.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3572-3
+00:40:32.435 --> 00:40:35.463
+<v MRR WDF49 A2.24B (05) (Video)>So for example,
+here you can see that for sales header</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3572-4
+00:40:35.463 --> 00:40:38.602
+<v MRR WDF49 A2.24B (05) (Video)>text and item text,
+you can see the persistency handler.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3572-5
+00:40:38.602 --> 00:40:41.465
+<v MRR WDF49 A2.24B (05) (Video)>Similarly for material master,
+also product master,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3572-6
+00:40:41.465 --> 00:40:43.943
+<v MRR WDF49 A2.24B (05) (Video)>they have actually moved to new
+persistency.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3620-0
+00:40:45.543 --> 00:40:50.459
+<v MRR WDF49 A2.24B (05) (Video)>So this one is this assignment is at text
+object level,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3620-1
+00:40:50.459 --> 00:40:57.394
+<v MRR WDF49 A2.24B (05) (Video)>but is it is also possible to have a
+persistency class at the text ID level as</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3620-2
+00:40:57.394 --> 00:41:01.520
+<v MRR WDF49 A2.24B (05) (Video)>well.
+So if the same text object like echo and</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3620-3
+00:41:01.520 --> 00:41:05.383
+<v MRR WDF49 A2.24B (05) (Video)>echo is used by multiple business
+subjects.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3684-0
+00:41:05.703 --> 00:41:09.000
+<v MRR WDF49 A2.24B (05) (Video)>But at text ID level, if we can say that,
+okay,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3684-1
+00:41:09.000 --> 00:41:14.563
+<v MRR WDF49 A2.24B (05) (Video)>this is only specific to purchase order,
+then there is also an option to do this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3684-2
+00:41:14.563 --> 00:41:18.616
+<v MRR WDF49 A2.24B (05) (Video)>persistency handler.
+So I could see it in SC75 at text ID.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3684-3
+00:41:18.616 --> 00:41:22.393
+<v MRR WDF49 A2.24B (05) (Video)>So if you can see here,
+there is a tab called text ID.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3684-4
+00:41:22.393 --> 00:41:26.583
+<v MRR WDF49 A2.24B (05) (Video)>So at text ID level also,
+we can have a persistence handler.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3701-0
+00:41:27.543 --> 00:41:33.342
+<v MRR WDF49 A2.24B (05) (Video)>So this is something we are to actually
+analyse in detail as a part of this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3701-1
+00:41:33.342 --> 00:41:37.463
+<v MRR WDF49 A2.24B (05) (Video)>particular backlog. Then, okay,
+this is 1 topic then.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3769-0
+00:41:40.863 --> 00:41:44.742
+<v MRR WDF49 A2.24B (05) (Video)>Is it pause? Okay,
+last 6th one is if it is possible to come</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3769-1
+00:41:44.742 --> 00:41:49.512
+<v MRR WDF49 A2.24B (05) (Video)>up with a solution only for purchase
+order text and later adopted by other</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3769-2
+00:41:49.512 --> 00:41:53.964
+<v MRR WDF49 A2.24B (05) (Video)>business searches. So this one,
+I need to update this particular line</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3769-3
+00:41:53.964 --> 00:41:58.925
+<v MRR WDF49 A2.24B (05) (Video)>because we already had a meeting with
+Vikas and Chinmay about this because we</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3769-4
+00:41:58.925 --> 00:42:02.423
+<v MRR WDF49 A2.24B (05) (Video)>wanted to actually make them aware that
+there is some.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3817-0
+00:42:02.583 --> 00:42:06.727
+<v MRR WDF49 A2.24B (05) (Video)>topic discussion going on like this about
+moving to new persistency.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3817-1
+00:42:06.727 --> 00:42:11.652
+<v MRR WDF49 A2.24B (05) (Video)>And then also echo and echo tech subjects
+are already shared by multiple business</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3817-2
+00:42:11.652 --> 00:42:14.174
+<v MRR WDF49 A2.24B (05) (Video)>subjects,
+which means that other teams in</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3817-3
+00:42:14.174 --> 00:42:18.559
+<v MRR WDF49 A2.24B (05) (Video)>procurement will also be affected.
+So this is something we already had a</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3817-4
+00:42:18.559 --> 00:42:23.063
+<v MRR WDF49 A2.24B (05) (Video)>call with Vikas and he is now currently
+aware about this particular topic.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3820-0
+00:42:23.703 --> 00:42:25.143
+<v MRR WDF49 A2.24B (05) (Video)>So we have to also...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3865-0
+00:42:26.383 --> 00:42:31.743
+<v MRR WDF49 A2.24B (05) (Video)>whether it's possible to come up with
+some architecture guideline for different</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3865-1
+00:42:31.743 --> 00:42:35.161
+<v MRR WDF49 A2.24B (05) (Video)>business subject is what we are actually
+checking.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3865-2
+00:42:35.161 --> 00:42:40.320
+<v MRR WDF49 A2.24B (05) (Video)>This is something Vikas also mentioned
+that we may have to cheque it in that</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3865-3
+00:42:40.320 --> 00:42:43.336
+<v MRR WDF49 A2.24B (05) (Video)>detail.
+It is not only about moving purchase</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3865-4
+00:42:43.336 --> 00:42:44.743
+<v MRR WDF49 A2.24B (05) (Video)>order nodes to a new.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3868-0
+00:42:45.783 --> 00:42:46.823
+<v MRR WDF49 A2.24B (05) (Video)>Persistency.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3872-0
+00:42:49.583 --> 00:42:50.983
+<v MRR WDF49 A2.24B (05) (Video)>Give me a second, I...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3889-0
+00:42:52.663 --> 00:42:57.023
+<v MRR WDF49 A2.24B (05) (Video)>Okay,
+so these are the questions that I have</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3889-1
+00:42:57.023 --> 00:43:01.383
+<v MRR WDF49 A2.24B (05) (Video)>mentioned and here I also about yes,
+Rajesh.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3925-0
+00:43:02.223 --> 00:43:05.397
+<v Chinnakonda, Rajesh>No,
+when you say it's not only purchase order</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3925-1
+00:43:05.397 --> 00:43:09.399
+<v Chinnakonda, Rajesh>but other business objects,
+but what is the scope for us?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3925-2
+00:43:09.399 --> 00:43:14.229
+<v Chinnakonda, Rajesh>Is it only purchase order or even for
+other business objects? I mean,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3917-0
+00:43:13.383 --> 00:43:14.143
+<v MRR WDF49 A2.24B (05) (Video)>So, Arber.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3925-3
+00:43:14.229 --> 00:43:16.023
+<v Chinnakonda, Rajesh>I hope it's not, but yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3977-0
+00:43:16.263 --> 00:43:20.412
+<v MRR WDF49 A2.24B (05) (Video)>Yeah, for us, see, for us,
+we want to actually for purchase,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3977-1
+00:43:20.412 --> 00:43:25.581
+<v MRR WDF49 A2.24B (05) (Video)>at least for PO modernization topic,
+our actually idea is to have moving to</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3977-2
+00:43:25.581 --> 00:43:29.661
+<v MRR WDF49 A2.24B (05) (Video)>new persistency and then,
+but when we go dig deeper in this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3977-3
+00:43:29.661 --> 00:43:34.218
+<v MRR WDF49 A2.24B (05) (Video)>architecture guideline,
+this is where we are actually seeing that,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3977-4
+00:43:34.218 --> 00:43:37.143
+<v MRR WDF49 A2.24B (05) (Video)>okay,
+same text object is used by multiple</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/3977-5
+00:43:37.143 --> 00:43:38.503
+<v MRR WDF49 A2.24B (05) (Video)>business structures.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4012-0
+00:43:38.783 --> 00:43:43.650
+<v MRR WDF49 A2.24B (05) (Video)>then what is the impact?
+That's why these open questions,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4012-1
+00:43:43.650 --> 00:43:49.440
+<v MRR WDF49 A2.24B (05) (Video)>clarifying these open questions is very
+important before we come to,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4012-2
+00:43:49.440 --> 00:43:56.069
+<v MRR WDF49 A2.24B (05) (Video)>currently the scope is not finalised on
+this, Rajesh, because as far as I see,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4012-3
+00:43:56.069 --> 00:43:58.503
+<v MRR WDF49 A2.24B (05) (Video)>we can't finalise this scope.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4052-0
+00:43:58.663 --> 00:44:04.282
+<v MRR WDF49 A2.24B (05) (Video)>over here as of now until unless we've
+come up with what all things are</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4052-1
+00:44:04.282 --> 00:44:10.525
+<v MRR WDF49 A2.24B (05) (Video)>supported in public cloud and echo and
+echo text of just like what all business</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4052-2
+00:44:10.525 --> 00:44:16.066
+<v MRR WDF49 A2.24B (05) (Video)>objects are getting affected.
+We need to have these details as of now.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4052-3
+00:44:16.066 --> 00:44:17.783
+<v MRR WDF49 A2.24B (05) (Video)>That is missing. Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4090-0
+00:44:18.183 --> 00:44:22.881
+<v MRR WDF49 A2.24B (05) (Video)>Once we come up with an idea of that,
+then we will actually,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4090-1
+00:44:22.881 --> 00:44:28.657
+<v MRR WDF49 A2.24B (05) (Video)>definitely there is a separate team for
+nose reuse topic as far as I know,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4090-2
+00:44:28.657 --> 00:44:33.508
+<v MRR WDF49 A2.24B (05) (Video)>Bangalore 4 team is,
+and Vikas also mentioned that Bangalore 4</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4090-3
+00:44:33.508 --> 00:44:36.743
+<v MRR WDF49 A2.24B (05) (Video)>team is actually responsible for that. So.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4107-0
+00:44:38.263 --> 00:44:41.912
+<v MRR WDF49 A2.24B (05) (Video)>But everything have to be aligned with
+that particular team,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4107-1
+00:44:41.912 --> 00:44:44.903
+<v MRR WDF49 A2.24B (05) (Video)>definitely when we come up with some
+suggestions.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4153-0
+00:44:45.623 --> 00:44:49.496
+<v Chinnakonda, Rajesh>Yeah, so I mean,
+if there is a deadline by which we have</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4153-1
+00:44:49.496 --> 00:44:52.961
+<v Chinnakonda, Rajesh>to migrate,
+I think it's not only purchase orders,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4153-2
+00:44:52.961 --> 00:44:56.018
+<v Chinnakonda, Rajesh>but purchase contracts,
+schedule agreements,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4153-3
+00:44:56.018 --> 00:44:59.143
+<v Chinnakonda, Rajesh>which are using these notes on EKKO and
+EKPO.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4153-4
+00:44:59.143 --> 00:45:04.103
+<v Chinnakonda, Rajesh>I think they would also suffer the same,
+you know, requirement, I think.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4158-0
+00:45:04.903 --> 00:45:08.583
+<v Chinnakonda, Rajesh>But then if they have not planned,
+then how are they going to?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4163-0
+00:45:09.343 --> 00:45:11.703
+<v Chinnakonda, Rajesh>You know, incorporate this, so...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4210-0
+00:45:13.103 --> 00:45:16.193
+<v MRR WDF49 A2.24B (05) (Video)>Yeah,
+this is something that's why we also</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4172-0
+00:45:13.383 --> 00:45:13.943
+<v Chinnakonda, Rajesh>Jammula.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4210-1
+00:45:16.193 --> 00:45:21.438
+<v MRR WDF49 A2.24B (05) (Video)>involved Vikas when we saw this,
+that seeing that this is actually going</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4210-2
+00:45:21.438 --> 00:45:25.102
+<v MRR WDF49 A2.24B (05) (Video)>deeper,
+because that's why we also included Vikas.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4210-3
+00:45:25.102 --> 00:45:28.335
+<v MRR WDF49 A2.24B (05) (Video)>We don't know whether we have to also
+later,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4210-4
+00:45:28.335 --> 00:45:32.503
+<v MRR WDF49 A2.24B (05) (Video)>maybe it will come up as a cross topic.
+I am not so sure.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4215-0
+00:45:33.463 --> 00:45:36.943
+<v MRR WDF49 A2.24B (05) (Video)>Um, at least, um, what is your opinion,
+LS?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4208-0
+00:45:33.543 --> 00:45:34.023
+<v Chinnakonda, Rajesh>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4211-0
+00:45:35.143 --> 00:45:35.263
+<v Hartmann, Nils>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4262-0
+00:45:38.103 --> 00:45:42.509
+<v Hartmann, Nils>Yeah,
+so this is this is exactly kind of the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4262-1
+00:45:42.509 --> 00:45:48.970
+<v Hartmann, Nils>issue. So, when we started with that one,
+it was more like, okay,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4262-2
+00:45:48.970 --> 00:45:55.040
+<v Hartmann, Nils>if we want to use this reuse component,
+this reuse component,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4262-3
+00:45:55.040 --> 00:45:58.663
+<v Hartmann, Nils>we need to do the migration and this.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4322-0
+00:45:59.623 --> 00:46:03.985
+<v Hartmann, Nils>in the 1st place applies for the purchase
+order. However,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4271-0
+00:46:03.223 --> 00:46:03.383
+<v MRR WDF49 A2.24B (05) (Video)>No.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4322-1
+00:46:03.985 --> 00:46:08.497
+<v Hartmann, Nils>if you then look into the topic,
+you see it's much broader.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4322-2
+00:46:08.497 --> 00:46:14.514
+<v Hartmann, Nils>It's like an iceberg, you know, you see,
+you only see the tip and then you see,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4288-0
+00:46:10.743 --> 00:46:10.823
+<v MRR WDF49 A2.24B (05) (Video)>The.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4291-0
+00:46:11.143 --> 00:46:11.783
+<v Chinnakonda, Rajesh>Correct.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4322-3
+00:46:14.514 --> 00:46:20.455
+<v Hartmann, Nils>so if we, if we want to migrate this,
+does this make sense at all that we only</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4322-4
+00:46:20.455 --> 00:46:23.463
+<v Hartmann, Nils>migrate the purchase order stuff because</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4363-0
+00:46:23.543 --> 00:46:28.907
+<v Hartmann, Nils>We have the other ones are also basically
+affected.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4363-1
+00:46:28.907 --> 00:46:36.953
+<v Hartmann, Nils>What about maybe not even the echo echo,
+but also I info record, for example,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4363-2
+00:46:36.953 --> 00:46:43.143
+<v Hartmann, Nils>or the purchase requisition?
+So does it has, so is it then?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4347-0
+00:46:37.463 --> 00:46:37.623
+<v MRR WDF49 A2.24B (05) (Video)>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4412-0
+00:46:43.463 --> 00:46:49.257
+<v Hartmann, Nils>kind of a beneficial if we say, oh,
+we do this in one project or one big</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4412-1
+00:46:49.257 --> 00:46:52.908
+<v Hartmann, Nils>project,
+or is it better to have it like just</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4412-2
+00:46:52.908 --> 00:46:57.273
+<v Hartmann, Nils>mentioned, like a phased approach,
+then we start with,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4412-3
+00:46:57.273 --> 00:47:03.623
+<v Hartmann, Nils>is it possible at all that we start only
+with purchase order texts, or is it...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4447-0
+00:47:05.143 --> 00:47:09.042
+<v Hartmann, Nils>Yeah,
+is it more suitable to have it on the,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4447-1
+00:47:09.042 --> 00:47:13.027
+<v Hartmann, Nils>you said, the echo, echo level,
+but you know,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4447-2
+00:47:13.027 --> 00:47:19.438
+<v Hartmann, Nils>also an aspect is now we separated
+basically our business object now also</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4447-3
+00:47:19.438 --> 00:47:23.943
+<v Hartmann, Nils>into different structure packages.
+So is it even...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4481-0
+00:47:27.063 --> 00:47:30.706
+<v Hartmann, Nils>Vish from our side that all is in one
+table,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4481-1
+00:47:30.706 --> 00:47:36.374
+<v Hartmann, Nils>or is it like every every application
+should have this its own table?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4481-2
+00:47:36.374 --> 00:47:40.503
+<v Hartmann, Nils>This is quite,
+it's basically not so clear, and...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4483-0
+00:47:41.943 --> 00:47:42.423
+<v Hartmann, Nils>Um...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4528-0
+00:47:43.383 --> 00:47:47.352
+<v Hartmann, Nils>Also the, I mean,
+the first idea of this one,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4528-1
+00:47:47.352 --> 00:47:54.168
+<v Hartmann, Nils>it basically was initiated by the sales
+team when they came up with the thing.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4528-2
+00:47:54.168 --> 00:48:00.380
+<v Hartmann, Nils>Because it's like when they showed this
+to us, we first of all saw, ah,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4528-3
+00:48:00.380 --> 00:48:04.263
+<v Hartmann, Nils>this is basically exactly what we also
+need.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4585-0
+00:48:04.823 --> 00:48:10.308
+<v Hartmann, Nils>And sales is quite similar to us,
+so they maybe even more complicated,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4585-1
+00:48:10.308 --> 00:48:14.094
+<v Hartmann, Nils>but basically have the same issues like
+we have.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4585-2
+00:48:14.094 --> 00:48:19.502
+<v Hartmann, Nils>So they also have old legacy code and
+stuff like this. So this, like,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4585-3
+00:48:19.502 --> 00:48:23.597
+<v Hartmann, Nils>that was there are,
+when we saw this first, we said,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4585-4
+00:48:23.597 --> 00:48:27.383
+<v Hartmann, Nils>let's park this concept that they have,
+and then</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4597-0
+00:48:27.703 --> 00:48:31.535
+<v Hartmann, Nils>look into it once we look into the
+modernization of the purchase order</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4597-1
+00:48:31.535 --> 00:48:34.503
+<v Hartmann, Nils>because this is maybe exactly what we
+also need to do.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4623-0
+00:48:35.943 --> 00:48:39.314
+<v Hartmann, Nils>This does not directly clarify now the
+scope,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4623-1
+00:48:39.314 --> 00:48:45.103
+<v Hartmann, Nils>but maybe how we came to this topic or
+the was the approach to of this to this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4623-2
+00:48:45.103 --> 00:48:45.543
+<v Hartmann, Nils>topic.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4628-0
+00:48:47.743 --> 00:48:47.943
+<v Chinnakonda, Rajesh>Mm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4679-0
+00:48:47.863 --> 00:48:53.909
+<v MRR WDF49 A2.24B (05) (Video)>And this will also come into picture
+later as well because of this BDC and AI</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4679-1
+00:48:53.909 --> 00:48:58.947
+<v MRR WDF49 A2.24B (05) (Video)>topics, all these things,
+because notes will not be a part of it</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4679-2
+00:48:58.947 --> 00:49:05.225
+<v MRR WDF49 A2.24B (05) (Video)>unless until we move to new persistency.
+That's why we thought at least we start</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4679-3
+00:49:05.225 --> 00:49:07.783
+<v MRR WDF49 A2.24B (05) (Video)>with some analysis from our side.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4729-0
+00:49:09.303 --> 00:49:15.101
+<v MRR WDF49 A2.24B (05) (Video)>And then, you know, based on the analysis,
+we can actually say that, okay,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4729-1
+00:49:15.101 --> 00:49:20.822
+<v MRR WDF49 A2.24B (05) (Video)>this is possible or not possible in the
+upcoming release as 2702 or 2708,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4729-2
+00:49:20.822 --> 00:49:24.920
+<v MRR WDF49 A2.24B (05) (Video)>whatever it is,
+we have to actually have some money.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4729-3
+00:49:24.920 --> 00:49:27.703
+<v MRR WDF49 A2.24B (05) (Video)>So this is why we thought that this.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4754-0
+00:49:27.943 --> 00:49:31.038
+<v MRR WDF49 A2.24B (05) (Video)>backlog might be needed to do start with
+analysis.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4726-0
+00:49:29.143 --> 00:49:29.263
+<v Hartmann, Nils>Yes.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4754-1
+00:49:31.038 --> 00:49:35.833
+<v MRR WDF49 A2.24B (05) (Video)>Maybe we are just touching the door,
+but if still late we have to actually dig</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4754-2
+00:49:35.833 --> 00:49:36.743
+<v MRR WDF49 A2.24B (05) (Video)>deeper in this.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4794-0
+00:49:36.983 --> 00:49:40.676
+<v Chinnakonda, Rajesh>Yeah,
+so just wanted to clarify what is the end</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4794-1
+00:49:40.676 --> 00:49:45.909
+<v Chinnakonda, Rajesh>goal for 2702? So exactly,
+like we can still be in discovery phase.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4794-2
+00:49:45.909 --> 00:49:51.218
+<v Chinnakonda, Rajesh>We may not deliver anything,
+but we would have discovered much more.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4794-3
+00:49:51.218 --> 00:49:55.143
+<v Chinnakonda, Rajesh>We would have maybe come up with some
+kind of a...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4817-0
+00:49:56.183 --> 00:49:59.318
+<v Chinnakonda, Rajesh>you know,
+concept that can be applied not only for</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4800-0
+00:49:58.663 --> 00:49:59.263
+<v Hartmann, Nils>Mm-hmm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4817-1
+00:49:59.318 --> 00:50:02.576
+<v Chinnakonda, Rajesh>PO, but some,
+some all other objects in procurement,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4817-2
+00:50:02.576 --> 00:50:06.079
+<v Chinnakonda, Rajesh>something like that.
+Is that the boundary or what is the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4817-3
+00:50:06.079 --> 00:50:07.063
+<v Chinnakonda, Rajesh>boundary for us?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4832-0
+00:50:11.143 --> 00:50:14.983
+<v Chinnakonda, Rajesh>What is what is expected in 2002 at the
+end, yeah?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4823-0
+00:50:11.463 --> 00:50:11.703
+<v MRR WDF49 A2.24B (05) (Video)>And.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4866-0
+00:50:16.903 --> 00:50:21.499
+<v MRR WDF49 A2.24B (05) (Video)>So as I mentioned,
+the information that I got from Vikrant</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4836-0
+00:50:19.063 --> 00:50:19.543
+<v Hartmann, Nils>Hey.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4866-1
+00:50:21.499 --> 00:50:25.549
+<v MRR WDF49 A2.24B (05) (Video)>is that 2702,
+there is a soft commit fund for nodes</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4866-2
+00:50:25.549 --> 00:50:31.313
+<v MRR WDF49 A2.24B (05) (Video)>reuse. But if this is not possible,
+we have to make it transparent to the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4866-3
+00:50:31.313 --> 00:50:31.703
+<v MRR WDF49 A2.24B (05) (Video)>team.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4891-0
+00:50:34.343 --> 00:50:40.743
+<v MRR WDF49 A2.24B (05) (Video)>This is, I mean, we don't, I mean,
+I'm not aware about any clear-cut,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4891-1
+00:50:40.743 --> 00:50:45.223
+<v MRR WDF49 A2.24B (05) (Video)>you know,
+guideline for this particular backlog.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4937-0
+00:50:48.183 --> 00:50:52.252
+<v MRR WDF49 A2.24B (05) (Video)>We only know that,
+so when they asked us about effort</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4937-1
+00:50:52.252 --> 00:50:58.281
+<v MRR WDF49 A2.24B (05) (Video)>estimation, what is effort estimation?
+But currently we don't have the scope of</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4937-2
+00:50:58.281 --> 00:51:04.235
+<v MRR WDF49 A2.24B (05) (Video)>finalized. If it is only about, okay,
+if it is possible from framework side to</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4937-3
+00:51:04.235 --> 00:51:08.983
+<v MRR WDF49 A2.24B (05) (Video)>segregate only purchase order specific
+text, I mean, text IDs.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4992-0
+00:51:09.303 --> 00:51:12.792
+<v MRR WDF49 A2.24B (05) (Video)>to the new persistency.
+I'm just assuming like that if it is</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4992-1
+00:51:12.792 --> 00:51:17.140
+<v MRR WDF49 A2.24B (05) (Video)>possible after the analysis is done,
+if you are finding that purchase order</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4992-2
+00:51:17.140 --> 00:51:19.886
+<v MRR WDF49 A2.24B (05) (Video)>specific,
+this one is actually separately used.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4992-3
+00:51:19.886 --> 00:51:22.746
+<v MRR WDF49 A2.24B (05) (Video)>None of the other business subjects are
+affected.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4992-4
+00:51:22.746 --> 00:51:26.750
+<v MRR WDF49 A2.24B (05) (Video)>When we are moving to new persistency,
+what is the effort estimation?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/4992-5
+00:51:26.750 --> 00:51:30.583
+<v MRR WDF49 A2.24B (05) (Video)>So this is the effort estimation that we
+have mentioned over here.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5034-0
+00:51:31.063 --> 00:51:38.003
+<v MRR WDF49 A2.24B (05) (Video)>like 80 PDs and plus some 15 PD or
+something additional if we need to do</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5034-1
+00:51:38.003 --> 00:51:43.232
+<v MRR WDF49 A2.24B (05) (Video)>some additional analysis of 15 to 20 PD
+extra is what,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5034-2
+00:51:43.232 --> 00:51:50.743
+<v MRR WDF49 A2.24B (05) (Video)>so around 100 PD is what we are assuming.
+But first to come up with the scope.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5073-0
+00:51:51.223 --> 00:51:56.445
+<v MRR WDF49 A2.24B (05) (Video)>Also, even for 2702,
+first we have to actually clarify all</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5073-1
+00:51:56.445 --> 00:52:02.376
+<v MRR WDF49 A2.24B (05) (Video)>these open points and then only we can
+actually say. Maybe Rajesh,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5073-2
+00:52:02.376 --> 00:52:08.838
+<v MRR WDF49 A2.24B (05) (Video)>it is also better if you align with the
+Ruediger about this because from</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5073-3
+00:52:08.838 --> 00:52:10.343
+<v MRR WDF49 A2.24B (05) (Video)>engineering side.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5122-0
+00:52:10.583 --> 00:52:15.732
+<v MRR WDF49 A2.24B (05) (Video)>We just want to see whether we can
+incorporate nodes in the modernised API</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5080-0
+00:52:14.263 --> 00:52:14.743
+<v Chinnakonda, Rajesh>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5122-1
+00:52:15.732 --> 00:52:21.498
+<v MRR WDF49 A2.24B (05) (Video)>is what I see from this is my perspective.
+But so for that we have to do start with</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5122-2
+00:52:21.498 --> 00:52:25.274
+<v MRR WDF49 A2.24B (05) (Video)>the research topic and analysis and then
+we say, okay,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5122-3
+00:52:25.274 --> 00:52:30.423
+<v MRR WDF49 A2.24B (05) (Video)>this is not possible by 2702 or is it
+possible by 2702 is what we have to.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5125-0
+00:52:30.743 --> 00:52:31.543
+<v MRR WDF49 A2.24B (05) (Video)>Actually, see.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5123-0
+00:52:32.423 --> 00:52:32.823
+<v Chinnakonda, Rajesh>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5127-0
+00:52:33.863 --> 00:52:34.183
+<v Hartmann, Nils>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5135-0
+00:52:34.263 --> 00:52:36.983
+<v Chinnakonda, Rajesh>Then this is very open, yeah, so yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5193-0
+00:52:37.303 --> 00:52:40.423
+<v MRR WDF49 A2.24B (05) (Video)>Yes,
+it is very open and I want you to also</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5143-0
+00:52:40.423 --> 00:52:40.583
+<v Hartmann, Nils>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5193-1
+00:52:40.423 --> 00:52:43.543
+<v MRR WDF49 A2.24B (05) (Video)>make it transparent to Ruediger and
+others.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5150-0
+00:52:42.303 --> 00:52:42.423
+<v Hartmann, Nils>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5193-2
+00:52:43.543 --> 00:52:48.862
+<v MRR WDF49 A2.24B (05) (Video)>And that's why there is a lot of
+coordination is needed in this particular</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5193-3
+00:52:48.862 --> 00:52:53.401
+<v MRR WDF49 A2.24B (05) (Video)>topic. Also, we have to also,
+whenever these open questions are</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5175-0
+00:52:50.823 --> 00:52:54.423
+<v Sundaramurthy Yogalingam, Sivakumar>Can you answer?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5193-4
+00:52:53.401 --> 00:52:56.592
+<v MRR WDF49 A2.24B (05) (Video)>clarified,
+we need to have a common meeting,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5193-5
+00:52:56.592 --> 00:52:59.783
+<v MRR WDF49 A2.24B (05) (Video)>including this procurement notes reuse
+team.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5182-0
+00:52:59.463 --> 00:52:59.703
+<v Sundaramurthy Yogalingam, Sivakumar>Right.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5246-0
+00:53:00.263 --> 00:53:05.314
+<v MRR WDF49 A2.24B (05) (Video)>plus modernization topic like Vikrant and
+team and also Vikas and Chinmay,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5184-0
+00:53:00.583 --> 00:53:00.823
+<v Sundaramurthy Yogalingam, Sivakumar>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5246-1
+00:53:05.314 --> 00:53:10.229
+<v MRR WDF49 A2.24B (05) (Video)>everyone have to be involved in this
+particular discussion once the open</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5211-0
+00:53:09.943 --> 00:53:10.103
+<v Sundaramurthy Yogalingam, Sivakumar>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5246-2
+00:53:10.229 --> 00:53:15.415
+<v MRR WDF49 A2.24B (05) (Video)>questions are clarified. Also here,
+I try to put the contact details because</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5246-3
+00:53:15.415 --> 00:53:20.802
+<v MRR WDF49 A2.24B (05) (Video)>I also want to explain one more slide,
+then we can actually come to the further</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5246-4
+00:53:20.802 --> 00:53:21.543
+<v MRR WDF49 A2.24B (05) (Video)>discussion.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5301-0
+00:53:22.063 --> 00:53:25.858
+<v MRR WDF49 A2.24B (05) (Video)>If you see here,
+you can see that for sales long text</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5252-0
+00:53:23.943 --> 00:53:24.703
+<v Sundaramurthy Yogalingam, Sivakumar>Call.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5301-1
+00:53:25.858 --> 00:53:29.091
+<v MRR WDF49 A2.24B (05) (Video)>topic,
+I was actually in touch with Chris and</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5257-0
+00:53:26.343 --> 00:53:26.983
+<v Sundaramurthy Yogalingam, Sivakumar>The best.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5301-2
+00:53:29.091 --> 00:53:32.535
+<v MRR WDF49 A2.24B (05) (Video)>Karen Fan,
+but mostly Chris is involved from the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5301-3
+00:53:32.535 --> 00:53:36.471
+<v MRR WDF49 A2.24B (05) (Video)>development side.
+He actually helped me to come up with</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5301-4
+00:53:36.471 --> 00:53:40.688
+<v MRR WDF49 A2.24B (05) (Video)>this scope. You know,
+so they were mentioning around 70 PD,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5301-5
+00:53:40.688 --> 00:53:44.343
+<v MRR WDF49 A2.24B (05) (Video)>but I also added some more extra PDs from
+our side.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5347-0
+00:53:44.823 --> 00:53:51.409
+<v MRR WDF49 A2.24B (05) (Video)>And also as a buffer and maybe around 100
+PDF, everything it will come around that,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5347-1
+00:53:51.409 --> 00:53:54.937
+<v MRR WDF49 A2.24B (05) (Video)>yeah.
+Then from Apache PO architecture side,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5347-2
+00:53:54.937 --> 00:54:01.523
+<v MRR WDF49 A2.24B (05) (Video)>we also want to get involved because this
+is also affecting the core modernization.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5347-3
+00:54:01.523 --> 00:54:04.503
+<v MRR WDF49 A2.24B (05) (Video)>And then Vikrant is actually from the.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5407-0
+00:54:04.743 --> 00:54:07.980
+<v MRR WDF49 A2.24B (05) (Video)>be a modernization topic,
+then I will also try,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5407-1
+00:54:07.980 --> 00:54:13.104
+<v MRR WDF49 A2.24B (05) (Video)>we have to also include this BLR 0 for
+team. And this is subscript conduct.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5407-2
+00:54:13.104 --> 00:54:16.409
+<v MRR WDF49 A2.24B (05) (Video)>We can actually find it in this
+particular wiki.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5407-3
+00:54:16.409 --> 00:54:21.129
+<v MRR WDF49 A2.24B (05) (Video)>We were not in touch with them yet,
+so that's why I have not provided</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5407-4
+00:54:21.129 --> 00:54:24.770
+<v MRR WDF49 A2.24B (05) (Video)>specific names.
+And then I have also provided a rough</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5407-5
+00:54:24.770 --> 00:54:28.277
+<v MRR WDF49 A2.24B (05) (Video)>estimate.
+I just estimated 5 PD for sales long test</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5407-6
+00:54:28.277 --> 00:54:29.423
+<v MRR WDF49 A2.24B (05) (Video)>step replacement.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5444-0
+00:54:29.623 --> 00:54:33.446
+<v MRR WDF49 A2.24B (05) (Video)>topic,
+if any testing or any other effort is</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5444-1
+00:54:33.446 --> 00:54:37.779
+<v MRR WDF49 A2.24B (05) (Video)>needed from our side.
+Then for scope finalization,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5444-2
+00:54:37.779 --> 00:54:43.556
+<v MRR WDF49 A2.24B (05) (Video)>around 15 PDs from the new team,
+like your team, and from our team,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5444-3
+00:54:43.556 --> 00:54:48.823
+<v MRR WDF49 A2.24B (05) (Video)>like I am sure that there will be a lot
+of meetings that may.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5497-0
+00:54:49.383 --> 00:54:55.325
+<v MRR WDF49 A2.24B (05) (Video)>might be needed to clarify a few things
+or review the findings from the research</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5497-1
+00:54:55.325 --> 00:54:59.874
+<v MRR WDF49 A2.24B (05) (Video)>topic and everything.
+So I just mentioned that 10 PD from our</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5497-2
+00:54:59.874 --> 00:55:05.962
+<v MRR WDF49 A2.24B (05) (Video)>side and also implementation testing and
+everything around ATPD is what this as of</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5497-3
+00:55:05.962 --> 00:55:07.063
+<v MRR WDF49 A2.24B (05) (Video)>now we planned.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5545-0
+00:55:08.343 --> 00:55:13.895
+<v MRR WDF49 A2.24B (05) (Video)>I try to summarise the action items over
+here, like for the first topic,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5545-1
+00:55:13.895 --> 00:55:19.371
+<v MRR WDF49 A2.24B (05) (Video)>about the sales long test topic,
+whether do we have to have any testing</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5545-2
+00:55:19.371 --> 00:55:23.934
+<v MRR WDF49 A2.24B (05) (Video)>effort from our side,
+testing or any other effort is needed</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5545-3
+00:55:23.934 --> 00:55:27.888
+<v MRR WDF49 A2.24B (05) (Video)>from our side.
+This has to be actually checked with</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5545-4
+00:55:27.888 --> 00:55:31.463
+<v MRR WDF49 A2.24B (05) (Video)>Chris and team,
+whether they are already done.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5597-0
+00:55:33.303 --> 00:55:37.784
+<v MRR WDF49 A2.24B (05) (Video)>delivered everything in 2608 and if yes,
+do the CNE testing effort,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5597-1
+00:55:37.784 --> 00:55:42.265
+<v MRR WDF49 A2.24B (05) (Video)>then that has to be clarified.
+Then we have to actually investigate</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5597-2
+00:55:42.265 --> 00:55:47.537
+<v MRR WDF49 A2.24B (05) (Video)>about the PO text referencing scope and
+we have to also cheque whether what all</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5597-3
+00:55:47.537 --> 00:55:51.293
+<v MRR WDF49 A2.24B (05) (Video)>things are actually currently supported
+in public cloud,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5597-4
+00:55:51.293 --> 00:55:53.863
+<v MRR WDF49 A2.24B (05) (Video)>whether customers can create their own.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5653-0
+00:55:55.143 --> 00:55:59.590
+<v MRR WDF49 A2.24B (05) (Video)>header or text items, etc.
+And whether the SSUIs are already</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5653-1
+00:55:59.590 --> 00:56:04.474
+<v MRR WDF49 A2.24B (05) (Video)>provided to the customers or not,
+those things have to be checked.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5653-2
+00:56:04.474 --> 00:56:08.192
+<v MRR WDF49 A2.24B (05) (Video)>Then how the referencing is handled by
+sales team.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5653-3
+00:56:08.192 --> 00:56:12.056
+<v MRR WDF49 A2.24B (05) (Video)>We have to also cheque with us,
+with Chris and team.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5653-4
+00:56:12.056 --> 00:56:16.503
+<v MRR WDF49 A2.24B (05) (Video)>And then we have to also cheque like how
+this echo and echo.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5685-0
+00:56:16.583 --> 00:56:21.294
+<v MRR WDF49 A2.24B (05) (Video)>or text objects are shared by other
+business subject,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5685-1
+00:56:21.294 --> 00:56:27.051
+<v MRR WDF49 A2.24B (05) (Video)>then is it possible to move to without
+moving to new persistency?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5685-2
+00:56:27.051 --> 00:56:31.064
+<v MRR WDF49 A2.24B (05) (Video)>Is it possible to do this, reuse notes,
+APIs?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5685-3
+00:56:31.064 --> 00:56:34.903
+<v MRR WDF49 A2.24B (05) (Video)>And then we also want to see how to
+handle.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5729-0
+00:56:37.063 --> 00:56:40.164
+<v MRR WDF49 A2.24B (05) (Video)>Okay,
+clarify how to handle the text references</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5729-1
+00:56:40.164 --> 00:56:44.364
+<v MRR WDF49 A2.24B (05) (Video)>with new persistence APIs.
+I think I have already mentioned that</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5729-2
+00:56:44.364 --> 00:56:48.823
+<v MRR WDF49 A2.24B (05) (Video)>before. Okay, and then in AC 75,
+like whether we can actually do the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5729-3
+00:56:48.823 --> 00:56:53.540
+<v MRR WDF49 A2.24B (05) (Video)>persistency class maintenance,
+whether at ID level or text object level,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5729-4
+00:56:53.540 --> 00:56:55.543
+<v MRR WDF49 A2.24B (05) (Video)>which option can we choose and.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5767-0
+00:56:56.903 --> 00:57:03.408
+<v MRR WDF49 A2.24B (05) (Video)>is maintaining a text ID level will solve
+this dependency with other business</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5767-1
+00:57:03.408 --> 00:57:09.580
+<v MRR WDF49 A2.24B (05) (Video)>objects is what we can actually check.
+Then once we these open topics are</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5767-2
+00:57:09.580 --> 00:57:13.250
+<v MRR WDF49 A2.24B (05) (Video)>clarified,
+we need to have a common meeting</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5767-3
+00:57:13.250 --> 00:57:16.503
+<v MRR WDF49 A2.24B (05) (Video)>including Vikas and Chinmay and others.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5811-0
+00:57:16.943 --> 00:57:20.519
+<v MRR WDF49 A2.24B (05) (Video)>Also,
+we have to include that other BLR sort of</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5811-1
+00:57:20.519 --> 00:57:26.555
+<v MRR WDF49 A2.24B (05) (Video)>14. I think I have not mentioned that.
+I will add that once we have to have come</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5811-2
+00:57:26.555 --> 00:57:30.727
+<v MRR WDF49 A2.24B (05) (Video)>up with a reuse concept to move to the
+new persistency,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5811-3
+00:57:30.727 --> 00:57:35.943
+<v MRR WDF49 A2.24B (05) (Video)>which is aligned with the BLR sort of 14.
+This is actually mentioned.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5861-0
+00:57:36.263 --> 00:57:41.795
+<v MRR WDF49 A2.24B (05) (Video)>Then also we have to also align with
+Vikrant and team once this is actually</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5861-1
+00:57:41.795 --> 00:57:47.327
+<v MRR WDF49 A2.24B (05) (Video)>finally the scope is finalized. Yeah.
+And we will have more action items if</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5861-2
+00:57:47.327 --> 00:57:50.676
+<v MRR WDF49 A2.24B (05) (Video)>needed.
+But this is like something rough idea</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5861-3
+00:57:50.676 --> 00:57:54.606
+<v MRR WDF49 A2.24B (05) (Video)>that I had.
+I just tried to put it in a table so that</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5849-0
+00:57:54.263 --> 00:57:54.743
+<v Hartmann, Nils>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5861-4
+00:57:54.606 --> 00:57:56.863
+<v MRR WDF49 A2.24B (05) (Video)>maybe it can be useful for you.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5901-0
+00:57:58.103 --> 00:58:04.746
+<v Hartmann, Nils>Actually, it would be cool if we could,
+would get as far as the sales team at</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5901-1
+00:58:04.746 --> 00:58:10.964
+<v Hartmann, Nils>that point in time when we pitched in,
+right? So they had their concept,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5881-0
+00:58:08.983 --> 00:58:09.463
+<v Sundaramurthy Yogalingam, Sivakumar>Yes, it was.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5894-0
+00:58:10.583 --> 00:58:14.903
+<v Sundaramurthy Yogalingam, Sivakumar>But,
+how do I use the idea of some patterns?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5901-2
+00:58:10.964 --> 00:58:16.926
+<v Hartmann, Nils>they had then the design, they,
+and they did also proof of concept on</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5885-0
+00:58:12.623 --> 00:58:13.143
+<v MRR WDF49 A2.24B (05) (Video)>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5901-3
+00:58:16.926 --> 00:58:17.863
+<v Hartmann, Nils>that stuff.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5898-0
+00:58:17.263 --> 00:58:18.103
+<v Sundaramurthy Yogalingam, Sivakumar>Just a second.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5967-0
+00:58:20.183 --> 00:58:23.962
+<v Hartmann, Nils>And then I guess also for our solution in
+the end,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5967-1
+00:58:23.962 --> 00:58:29.891
+<v Hartmann, Nils>it is like that we anyhow also need kind
+of the same review that the sales team</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5920-0
+00:58:26.823 --> 00:58:27.623
+<v Sundaramurthy Yogalingam, Sivakumar>The other ones.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5967-2
+00:58:29.891 --> 00:58:32.781
+<v Hartmann, Nils>did.
+So we also need to inform all the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5967-3
+00:58:32.781 --> 00:58:37.894
+<v Hartmann, Nils>applications because it's basically the
+same for the purchase order.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5937-0
+00:58:34.103 --> 00:58:34.503
+<v Sundaramurthy Yogalingam, Sivakumar>Thank you.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5942-0
+00:58:36.463 --> 00:58:36.543
+<v MRR WDF49 A2.24B (05) (Video)>Who?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5967-4
+00:58:37.894 --> 00:58:43.823
+<v Hartmann, Nils>It's used in many places and we at least
+need to inform the other applications.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5958-0
+00:58:43.223 --> 00:58:43.303
+<v Sundaramurthy Yogalingam, Sivakumar>Ohh.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5990-0
+00:58:43.943 --> 00:58:48.917
+<v Hartmann, Nils>and they also need to do some,
+maybe some regression testing. I mean,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5990-1
+00:58:48.917 --> 00:58:54.743
+<v Hartmann, Nils>now know it from the sales and I suppose
+there's not much of a difference, but...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/5984-0
+00:58:52.543 --> 00:58:52.983
+<v Sundaramurthy Yogalingam, Sivakumar>What is it?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6014-0
+00:58:56.903 --> 00:59:00.730
+<v Hartmann, Nils>Yeah,
+we also would need to do the same thing.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6014-1
+00:59:00.730 --> 00:59:07.080
+<v Hartmann, Nils>So it's like, first of all, internally,
+we need to align the concept and then</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6014-2
+00:59:07.080 --> 00:59:10.663
+<v Hartmann, Nils>also roll the concept out in all of us
+for.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6025-0
+00:59:23.223 --> 00:59:25.343
+<v MRR WDF49 A2.24B (05) (Video)>So, I think this is this.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6046-0
+00:59:24.343 --> 00:59:30.167
+<v Chinnakonda, Rajesh>I didn't follow the first action item.
+Cheque if any testing effort is required</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6046-1
+00:59:30.167 --> 00:59:31.623
+<v Chinnakonda, Rajesh>from left and shift.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6094-0
+00:59:30.503 --> 00:59:36.198
+<v MRR WDF49 A2.24B (05) (Video)>Yeah, so there are two topics, Rajesh.
+So first one is about the sales long text,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6048-0
+00:59:32.903 --> 00:59:33.303
+<v Chinnakonda, Rajesh>Oh.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6094-1
+00:59:36.198 --> 00:59:41.686
+<v MRR WDF49 A2.24B (05) (Video)>the POC. They have done a POC in 2608,
+and this is where we were also involved</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6094-2
+00:59:41.686 --> 00:59:47.173
+<v MRR WDF49 A2.24B (05) (Video)>in the design review and everything.
+And after that, we did the design review,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6085-0
+00:59:45.623 --> 00:59:46.103
+<v Sundaramurthy Yogalingam, Sivakumar>On the screen.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6094-3
+00:59:47.173 --> 00:59:48.423
+<v MRR WDF49 A2.24B (05) (Video)>sign off was done.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6166-0
+00:59:48.823 --> 00:59:51.516
+<v MRR WDF49 A2.24B (05) (Video)>And after that,
+we are not sure like whether there are</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6166-1
+00:59:51.516 --> 00:59:54.942
+<v MRR WDF49 A2.24B (05) (Video)>any action items from our side.
+They also didn't mention anything and</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6166-2
+00:59:54.942 --> 00:59:57.488
+<v MRR WDF49 A2.24B (05) (Video)>they didn't come back to us as well.
+So we have to,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6166-3
+00:59:57.488 --> 01:00:00.230
+<v MRR WDF49 A2.24B (05) (Video)>if we have to close that particular
+backlog completely,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6166-4
+01:00:00.230 --> 01:00:03.706
+<v MRR WDF49 A2.24B (05) (Video)>we have to actually cheque with them
+whether there is any other effort</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6166-5
+01:00:03.706 --> 01:00:06.937
+<v MRR WDF49 A2.24B (05) (Video)>required from our side,
+whether any regression tests or something</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6166-6
+01:00:06.937 --> 01:00:10.511
+<v MRR WDF49 A2.24B (05) (Video)>has to be done. We are not aware.
+This is something that we can actually</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6166-7
+01:00:10.511 --> 01:00:11.343
+<v MRR WDF49 A2.24B (05) (Video)>cheque with them.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6208-0
+01:00:11.943 --> 01:00:16.868
+<v MRR WDF49 A2.24B (05) (Video)>And we are also not so sure whether they
+are already in productive usage or not.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6208-1
+01:00:16.868 --> 01:00:21.732
+<v MRR WDF49 A2.24B (05) (Video)>So this is something we have to actually
+clarify with the Chris and other team.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6208-2
+01:00:21.732 --> 01:00:25.866
+<v MRR WDF49 A2.24B (05) (Video)>This is for the first backlog.
+This is the only action item for the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6208-3
+01:00:25.866 --> 01:00:30.183
+<v MRR WDF49 A2.24B (05) (Video)>first backlog that I have mentioned.
+Second backlog is specific to PO.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6210-0
+01:00:30.583 --> 01:00:32.343
+<v MRR WDF49 A2.24B (05) (Video)>Be on nodes of persistency.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6234-0
+01:00:37.143 --> 01:00:43.292
+<v Chinnakonda, Rajesh>Do you have this meeting discussions what
+you did with sales team and so where</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6234-1
+01:00:43.292 --> 01:00:45.783
+<v Chinnakonda, Rajesh>should we start? How do we know?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6241-0
+01:00:46.743 --> 01:00:50.743
+<v Chinnakonda, Rajesh>Do we go about simply asking or should we
+have some background?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6290-0
+01:00:52.343 --> 01:00:58.583
+<v MRR WDF49 A2.24B (05) (Video)>We only have a backlog and I think the
+backlog is already mentioned in one of</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6290-1
+01:00:58.583 --> 01:01:03.943
+<v MRR WDF49 A2.24B (05) (Video)>the slide is already mentioned.
+I think it is linked with that aha</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6259-0
+01:01:00.743 --> 01:01:01.223
+<v Chinnakonda, Rajesh>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6290-2
+01:01:03.943 --> 01:01:07.943
+<v MRR WDF49 A2.24B (05) (Video)>requirement as well.
+The initial aha requirement,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6290-3
+01:01:07.943 --> 01:01:12.583
+<v MRR WDF49 A2.24B (05) (Video)>I think you will be able to see all the
+links over there.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6322-0
+01:01:13.023 --> 01:01:17.879
+<v MRR WDF49 A2.24B (05) (Video)>So this is the backlog that I have. Also,
+they have,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6322-1
+01:01:17.879 --> 01:01:23.011
+<v MRR WDF49 A2.24B (05) (Video)>I have saved the design document in the
+latest version.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6297-0
+01:01:18.103 --> 01:01:18.663
+<v Sundaramurthy Yogalingam, Sivakumar>Thank you.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6322-2
+01:01:23.011 --> 01:01:29.975
+<v MRR WDF49 A2.24B (05) (Video)>I will also cheque whether they have
+shared a new recording of the meeting.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6322-3
+01:01:29.975 --> 01:01:30.983
+<v MRR WDF49 A2.24B (05) (Video)>There were.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6368-0
+01:01:32.343 --> 01:01:38.508
+<v MRR WDF49 A2.24B (05) (Video)>two or three review meetings for this.
+I need to see whether they have stored it</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6368-1
+01:01:38.508 --> 01:01:42.923
+<v MRR WDF49 A2.24B (05) (Video)>somewhere. But yeah,
+this is the latest SDD that we have.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6368-2
+01:01:42.923 --> 01:01:48.936
+<v MRR WDF49 A2.24B (05) (Video)>So we did an offering review of this
+design document and then we were supposed</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6368-3
+01:01:48.936 --> 01:01:51.143
+<v MRR WDF49 A2.24B (05) (Video)>to put some questions in the.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6408-0
+01:01:51.583 --> 01:01:55.571
+<v MRR WDF49 A2.24B (05) (Video)>this one and then they answer to us in
+during the meeting.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6408-1
+01:01:55.571 --> 01:01:59.898
+<v MRR WDF49 A2.24B (05) (Video)>So the design document is actually well
+explained, I would say.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6408-2
+01:01:59.898 --> 01:02:05.577
+<v MRR WDF49 A2.24B (05) (Video)>So going through the design document will
+help to get some understanding about what</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6408-3
+01:02:05.577 --> 01:02:07.943
+<v MRR WDF49 A2.24B (05) (Video)>is the method that they have tried.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6415-0
+01:02:09.303 --> 01:02:13.143
+<v MRR WDF49 A2.24B (05) (Video)>And also maybe an alignment with Chris
+and Team will also help.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6427-0
+01:02:22.703 --> 01:02:25.703
+<v Hartmann, Nils>And, basically, I would suppose also with.
+..</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6471-0
+01:02:27.463 --> 01:02:31.973
+<v Hartmann, Nils>with the colleagues from Bangalore 4 on.
+So first of all,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6471-1
+01:02:31.973 --> 01:02:37.338
+<v Hartmann, Nils>they do the the the notes reuse and the
+in the box, but also I mean,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6471-2
+01:02:37.338 --> 01:02:43.481
+<v Hartmann, Nils>they're owning the purchase requisition.
+So I mean, this is also very similar,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6471-3
+01:02:43.481 --> 01:02:44.103
+<v Hartmann, Nils>I guess.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6488-0
+01:02:45.623 --> 01:02:49.346
+<v Hartmann, Nils>So, if, if we,
+if you receive texts from sales order,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6488-1
+01:02:49.346 --> 01:02:54.103
+<v Hartmann, Nils>they normally should come through the
+purchase requisition, I guess.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6492-0
+01:03:02.023 --> 01:03:02.743
+<v Sundaramurthy Yogalingam, Sivakumar>I am to.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6493-0
+01:03:03.543 --> 01:03:04.063
+<v Chinnakonda, Rajesh>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6546-0
+01:03:10.183 --> 01:03:15.126
+<v Babu, Christopher>I mean, from the implementation point,
+so we have implemented reuse components</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6501-0
+01:03:10.583 --> 01:03:11.063
+<v MRR WDF49 A2.24B (05) (Video)>So...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6546-1
+01:03:15.126 --> 01:03:18.130
+<v Babu, Christopher>for most of our applications,
+but in this case,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6546-2
+01:03:18.130 --> 01:03:23.386
+<v Babu, Christopher>along with the implementation of reuse or
+checking whether it works with the legacy</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6546-3
+01:03:23.386 --> 01:03:26.077
+<v Babu, Christopher>PO,
+we have to cheque if the existing text</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6546-4
+01:03:26.077 --> 01:03:29.143
+<v Babu, Christopher>can be migrated into the latest reuse
+component.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6552-0
+01:03:29.183 --> 01:03:33.863
+<v Babu, Christopher>The additional tasks that I see here,
+right?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6602-0
+01:03:35.223 --> 01:03:39.488
+<v MRR WDF49 A2.24B (05) (Video)>Yeah, Christopher,
+I would say that there are a lot of</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6602-1
+01:03:39.488 --> 01:03:45.460
+<v MRR WDF49 A2.24B (05) (Video)>topics under this and it is also better
+to also split it into smaller sends.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6602-2
+01:03:45.460 --> 01:03:51.664
+<v MRR WDF49 A2.24B (05) (Video)>And that will be also helpful because we
+didn't even start with this particular</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6582-0
+01:03:49.343 --> 01:03:49.623
+<v Sundaramurthy Yogalingam, Sivakumar>What?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6602-3
+01:03:51.664 --> 01:03:52.983
+<v MRR WDF49 A2.24B (05) (Video)>topic at all. So.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6591-0
+01:03:53.423 --> 01:03:53.943
+<v Babu, Christopher>That's good.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6636-0
+01:03:54.583 --> 01:03:57.465
+<v MRR WDF49 A2.24B (05) (Video)>Yeah,
+so it is better to like whatever action</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6601-0
+01:03:56.743 --> 01:03:56.863
+<v Chinnakonda, Rajesh>PI.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6636-1
+01:03:57.465 --> 01:04:01.350
+<v MRR WDF49 A2.24B (05) (Video)>item or whatever topic that we have to
+cheque linked with it.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6636-2
+01:04:01.350 --> 01:04:04.545
+<v MRR WDF49 A2.24B (05) (Video)>I think it does make sense to split it
+into small,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6636-3
+01:04:04.545 --> 01:04:08.743
+<v MRR WDF49 A2.24B (05) (Video)>small parts and then it will be helpful
+during the analysis phase.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6684-0
+01:04:10.503 --> 01:04:14.841
+<v Chinnakonda, Rajesh>You mentioned PO team was involved in the
+STD review,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6684-1
+01:04:14.841 --> 01:04:20.866
+<v Chinnakonda, Rajesh>then you also say that you need to test
+it further. That's one of the bad,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6684-2
+01:04:20.866 --> 01:04:25.365
+<v Chinnakonda, Rajesh>you know, action items.
+You also participated in, yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6664-0
+01:04:21.943 --> 01:04:22.103
+<v Hartmann, Nils>Ohh.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6672-0
+01:04:22.343 --> 01:04:24.343
+<v MRR WDF49 A2.24B (05) (Video)>That is for the sales long texting.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6684-3
+01:04:25.365 --> 01:04:29.783
+<v Chinnakonda, Rajesh>So who exactly who participated here from
+the PO team?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6675-0
+01:04:26.343 --> 01:04:26.423
+<v MRR WDF49 A2.24B (05) (Video)>It.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6685-0
+01:04:32.263 --> 01:04:33.543
+<v MRR WDF49 A2.24B (05) (Video)>Nils and hi.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6714-0
+01:04:34.183 --> 01:04:38.588
+<v Chinnakonda, Rajesh>Okay, yourself. Okay.
+Then here you also say that you need to</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6691-0
+01:04:36.343 --> 01:04:36.903
+<v MRR WDF49 A2.24B (05) (Video)>Yes.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6714-1
+01:04:38.588 --> 01:04:43.562
+<v Chinnakonda, Rajesh>follow a similar approach before we
+consider nodes reuse component in</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6714-2
+01:04:43.562 --> 01:04:44.983
+<v Chinnakonda, Rajesh>modernization topic.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6759-0
+01:04:47.423 --> 01:04:51.103
+<v Chinnakonda, Rajesh>I mean,
+you already decide to take that approach</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6759-1
+01:04:51.103 --> 01:04:55.383
+<v Chinnakonda, Rajesh>and then we consider the nodes to use
+component. I mean,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6759-2
+01:04:55.383 --> 01:04:59.364
+<v Chinnakonda, Rajesh>if you clearly outline which is the
+better approach,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6759-3
+01:04:59.364 --> 01:05:04.621
+<v Chinnakonda, Rajesh>then makes life easier for us.
+So right now we are not able to figure</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6759-4
+01:05:04.621 --> 01:05:06.273
+<v Chinnakonda, Rajesh>whether we are in a...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6774-0
+01:05:07.063 --> 01:05:12.583
+<v Chinnakonda, Rajesh>A better position to do any take any
+concrete decisions, because you...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6817-0
+01:05:11.903 --> 01:05:15.113
+<v MRR WDF49 A2.24B (05) (Video)>No,
+our understanding is also that if you</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6817-1
+01:05:15.113 --> 01:05:20.692
+<v MRR WDF49 A2.24B (05) (Video)>have to use the nodes to reuse APIs,
+then we might have to move to a new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6783-0
+01:05:18.023 --> 01:05:18.583
+<v Chinnakonda, Rajesh>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6817-2
+01:05:20.692 --> 01:05:26.729
+<v MRR WDF49 A2.24B (05) (Video)>persistency. This is our understanding,
+but I don't know whether there is any,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6817-3
+01:05:26.729 --> 01:05:29.863
+<v MRR WDF49 A2.24B (05) (Video)>we never contacted this nodes reuse team.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6857-0
+01:05:30.263 --> 01:05:35.559
+<v MRR WDF49 A2.24B (05) (Video)>to clarify this, okay,
+so we have not taken this backlog at all.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6820-0
+01:05:32.183 --> 01:05:32.823
+<v Chinnakonda, Rajesh>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6857-1
+01:05:35.559 --> 01:05:40.122
+<v MRR WDF49 A2.24B (05) (Video)>So this was never,
+so that's what all these things were</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6857-2
+01:05:40.122 --> 01:05:46.315
+<v MRR WDF49 A2.24B (05) (Video)>actually a part of this particular hot
+topic and this was not taken at all.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6857-3
+01:05:46.315 --> 01:05:50.063
+<v MRR WDF49 A2.24B (05) (Video)>So this is why I have mentioned it over
+here.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6853-0
+01:05:49.383 --> 01:05:49.543
+<v Chinnakonda, Rajesh>The.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6892-0
+01:05:50.823 --> 01:05:55.566
+<v Chinnakonda, Rajesh>So, do I understand then? I mean,
+maybe I am coming back again.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6892-1
+01:05:55.566 --> 01:06:01.050
+<v Chinnakonda, Rajesh>Is sales long text using new persistency?
+Is it using the nodes approach?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6892-2
+01:06:01.050 --> 01:06:04.534
+<v Chinnakonda, Rajesh>The nodes reuse component approach? No,
+right?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6892-3
+01:06:04.534 --> 01:06:07.943
+<v Chinnakonda, Rajesh>They are not using the nodes reuse
+component.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6897-0
+01:06:10.903 --> 01:06:12.903
+<v MRR WDF49 A2.24B (05) (Video)>Nils, do you know about it?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6914-0
+01:06:13.663 --> 01:06:19.706
+<v Hartmann, Nils>But I'm actually not sure what they,
+so you mean in terms of their their up</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6907-0
+01:06:17.383 --> 01:06:17.703
+<v Chinnakonda, Rajesh>Ohh.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6914-1
+01:06:19.706 --> 01:06:20.263
+<v Hartmann, Nils>object?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6926-0
+01:06:20.663 --> 01:06:25.143
+<v Chinnakonda, Rajesh>Yes, I mean, here is, you know,
+when they migrated the long text, yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6918-0
+01:06:22.023 --> 01:06:22.743
+<v Hartmann, Nils>Oh.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6936-0
+01:06:30.983 --> 01:06:31.543
+<v Chinnakonda, Rajesh>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6964-0
+01:06:43.783 --> 01:06:44.263
+<v Hartmann, Nils>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6974-0
+01:06:44.343 --> 01:06:46.983
+<v MRR WDF49 A2.24B (05) (Video)>I remember that they were also a part of
+that review.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6972-0
+01:06:44.503 --> 01:06:44.663
+<v Hartmann, Nils>Mm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6997-0
+01:06:48.503 --> 01:06:51.601
+<v Chinnakonda, Rajesh>I mean,
+you have this long text week and doc X,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6997-1
+01:06:51.601 --> 01:06:54.569
+<v Chinnakonda, Rajesh>right?
+Is it mentioned anywhere that they are</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/6997-2
+01:06:54.569 --> 01:06:58.183
+<v Chinnakonda, Rajesh>using the most reuse?
+Can you please click on it and...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7000-0
+01:07:00.783 --> 01:07:01.863
+<v MRR WDF49 A2.24B (05) (Video)>Which one are you talking?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7012-0
+01:07:02.503 --> 01:07:05.383
+<v Chinnakonda, Rajesh>SDD new persistency for long text written.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7006-0
+01:07:03.063 --> 01:07:03.183
+<v MRR WDF49 A2.24B (05) (Video)>Yes.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7013-0
+01:07:05.703 --> 01:07:06.183
+<v MRR WDF49 A2.24B (05) (Video)>This one.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7015-0
+01:07:06.823 --> 01:07:07.223
+<v Chinnakonda, Rajesh>Oh.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7051-0
+01:07:07.263 --> 01:07:10.916
+<v Hartmann, Nils>Yeah,
+I think that here at least they do not</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7051-1
+01:07:10.916 --> 01:07:17.006
+<v Hartmann, Nils>mention that this is a reason for them.
+So I guess they only mentioned the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7037-0
+01:07:13.103 --> 01:07:13.703
+<v Chinnakonda, Rajesh>Mmh.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7051-2
+01:07:17.006 --> 01:07:20.903
+<v Hartmann, Nils>accessibility of the text,
+if I'm not mistaken.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7047-0
+01:07:19.183 --> 01:07:19.423
+<v Chinnakonda, Rajesh>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7097-0
+01:07:22.503 --> 01:07:27.989
+<v Chinnakonda, Rajesh>And probably it is not used because if
+they had used a reuse component,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7053-0
+01:07:23.223 --> 01:07:23.543
+<v Hartmann, Nils>So.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7097-1
+01:07:27.989 --> 01:07:34.008
+<v Chinnakonda, Rajesh>there must be some mention of this, right?
+This is the latest document, right?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7071-0
+01:07:31.703 --> 01:07:32.023
+<v Hartmann, Nils>Mm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7097-2
+01:07:34.008 --> 01:07:39.570
+<v Chinnakonda, Rajesh>It's not some version which you took
+earlier. This is a living document,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7146-0
+01:07:39.063 --> 01:07:41.587
+<v MRR WDF49 A2.24B (05) (Video)>No,
+this is the latest version that I am</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7097-3
+01:07:39.570 --> 01:07:40.103
+<v Chinnakonda, Rajesh>I hope.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7146-1
+01:07:41.587 --> 01:07:45.466
+<v MRR WDF49 A2.24B (05) (Video)>aware about because they have sent in the
+this one that, yeah,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7100-0
+01:07:42.743 --> 01:07:43.383
+<v Chinnakonda, Rajesh>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7146-2
+01:07:45.466 --> 01:07:48.606
+<v MRR WDF49 A2.24B (05) (Video)>they this is the latest version that I am.
+I mean,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7146-3
+01:07:48.606 --> 01:07:52.977
+<v MRR WDF49 A2.24B (05) (Video)>when you are discussing with Chris,
+you will be able to get the latest</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7121-0
+01:07:48.743 --> 01:07:50.343
+<v Chinnakonda, Rajesh>Yeah, it is.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7146-4
+01:07:52.977 --> 01:07:56.117
+<v MRR WDF49 A2.24B (05) (Video)>version.
+I think this is the latest version that I</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7146-5
+01:07:56.117 --> 01:07:57.903
+<v MRR WDF49 A2.24B (05) (Video)>am aware about. I don't have.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7159-0
+01:07:58.503 --> 01:08:04.823
+<v MRR WDF49 A2.24B (05) (Video)>access to any of other latest versions.
+This is the latest one that I'm aware.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7156-0
+01:08:03.783 --> 01:08:04.063
+<v Chinnakonda, Rajesh>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7183-0
+01:08:05.623 --> 01:08:08.713
+<v Chinnakonda, Rajesh>Alright,
+and not to use component exist in our</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7166-0
+01:08:07.863 --> 01:08:08.023
+<v Hartmann, Nils>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7183-1
+01:08:08.713 --> 01:08:12.263
+<v Chinnakonda, Rajesh>procurement team alone, right?
+Is it is it something?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7224-0
+01:08:11.183 --> 01:08:15.395
+<v Hartmann, Nils>And, no, no, wait. So,
+there are two different ones.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7224-1
+01:08:15.395 --> 01:08:21.196
+<v Hartmann, Nils>This is always complicated. So,
+there's a nodes reuse component that was</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7194-0
+01:08:17.463 --> 01:08:17.863
+<v Chinnakonda, Rajesh>Ohh.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7224-2
+01:08:21.196 --> 01:08:26.917
+<v Hartmann, Nils>built by the procurement team.
+This is for the consumption in the fuel,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7224-3
+01:08:26.917 --> 01:08:29.063
+<v Hartmann, Nils>the procurement Fiori apps.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7221-0
+01:08:29.543 --> 01:08:30.023
+<v Chinnakonda, Rajesh>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7226-0
+01:08:29.783 --> 01:08:30.423
+<v Hartmann, Nils>Only.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7275-0
+01:08:31.503 --> 01:08:34.570
+<v Hartmann, Nils>Yeah, so,
+and this is this is also where I</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7275-1
+01:08:34.570 --> 01:08:38.421
+<v Hartmann, Nils>mentioned him,
+so this is owned by by Vikas and Team,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7275-2
+01:08:38.421 --> 01:08:41.916
+<v Hartmann, Nils>so Bangalore Four, and this is also where,
+well,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7275-3
+01:08:41.916 --> 01:08:47.479
+<v Hartmann, Nils>we might look into whether there are,
+for example, selects on this XTH, XTXL,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7275-4
+01:08:47.479 --> 01:08:50.903
+<v Hartmann, Nils>and stuff like that,
+so they need to cheque it.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7323-0
+01:08:52.103 --> 01:08:59.121
+<v Hartmann, Nils>But there's now a let's a reuse component
+from the basis team, a reuse component,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7323-1
+01:08:59.121 --> 01:09:06.054
+<v Hartmann, Nils>like a dependent object that you can can
+include into a natively into a business</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7296-0
+01:09:03.903 --> 01:09:04.423
+<v Chinnakonda, Rajesh>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7323-2
+01:09:06.054 --> 01:09:10.162
+<v Hartmann, Nils>object.
+So this is not the reuse component that</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7323-3
+01:09:10.162 --> 01:09:11.703
+<v Hartmann, Nils>was so far used in</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7362-0
+01:09:12.263 --> 01:09:18.107
+<v Hartmann, Nils>in at least not from the.
+So we also use reuse component here,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7362-1
+01:09:18.107 --> 01:09:22.837
+<v Hartmann, Nils>but not that the same.
+That's something different.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7339-0
+01:09:19.623 --> 01:09:20.183
+<v Chinnakonda, Rajesh>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7362-2
+01:09:22.837 --> 01:09:29.609
+<v Hartmann, Nils>And exactly this reuse component,
+this one requires most likely this new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7362-3
+01:09:29.609 --> 01:09:33.783
+<v Hartmann, Nils>persistency because they're built on top
+of.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7363-0
+01:09:34.823 --> 01:09:35.463
+<v Hartmann, Nils>Um...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7411-0
+01:09:36.543 --> 01:09:42.049
+<v Hartmann, Nils>CDS views that then build up from the
+database tables.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7369-0
+01:09:36.823 --> 01:09:37.463
+<v Chinnakonda, Rajesh>Thank you.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7382-0
+01:09:41.623 --> 01:09:41.663
+<v Sundaramurthy Yogalingam, Sivakumar>Ohh.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7411-1
+01:09:42.049 --> 01:09:49.959
+<v Hartmann, Nils>But this is not the reuse component that
+is in that we have. We have also one,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7411-2
+01:09:49.959 --> 01:09:53.463
+<v Hartmann, Nils>but it's procurement developed one.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7402-0
+01:09:51.143 --> 01:09:51.543
+<v Chinnakonda, Rajesh>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7422-0
+01:09:54.503 --> 01:09:58.143
+<v Chinnakonda, Rajesh>Yeah,
+so the the basis component does not</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7422-1
+01:09:58.143 --> 01:10:02.996
+<v Chinnakonda, Rajesh>provide the UI.
+It only offers the wrap object and then</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7422-2
+01:10:02.996 --> 01:10:03.343
+<v Chinnakonda, Rajesh>the.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7450-0
+01:10:04.663 --> 01:10:09.096
+<v Hartmann, Nils>Not completely sure.
+I don't know it to be honest.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7426-0
+01:10:05.383 --> 01:10:06.103
+<v Chinnakonda, Rajesh>Not.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7433-0
+01:10:07.823 --> 01:10:08.423
+<v Chinnakonda, Rajesh>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7450-1
+01:10:09.096 --> 01:10:14.225
+<v Hartmann, Nils>So I know that, for example,
+in the supplier confirmation,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7450-2
+01:10:14.225 --> 01:10:15.703
+<v Hartmann, Nils>this is included.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7449-0
+01:10:15.943 --> 01:10:16.503
+<v Chinnakonda, Rajesh>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7488-0
+01:10:18.383 --> 01:10:23.270
+<v Hartmann, Nils>Whether there is a,
+so ideally there's also a UI from the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7488-1
+01:10:23.270 --> 01:10:29.084
+<v Hartmann, Nils>reuse components in the end.
+So that's then the kind of the benefits</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7488-2
+01:10:29.084 --> 01:10:34.983
+<v Hartmann, Nils>that you have that you inherit then also
+a UI once this is available.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7483-0
+01:10:35.623 --> 01:10:36.103
+<v Chinnakonda, Rajesh>K.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7519-0
+01:10:36.903 --> 01:10:42.267
+<v Hartmann, Nils>And I think this also applies for the
+output management, for example.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7519-1
+01:10:42.267 --> 01:10:48.397
+<v Hartmann, Nils>I think also they have an own wrap use
+component and also they should have done</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7503-0
+01:10:42.823 --> 01:10:43.623
+<v Chinnakonda, Rajesh>Hey, bud.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7512-0
+01:10:48.063 --> 01:10:49.303
+<v Chinnakonda, Rajesh>Thank you.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7519-2
+01:10:48.397 --> 01:10:49.623
+<v Hartmann, Nils>a UI in the end.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7516-0
+01:10:50.983 --> 01:10:51.703
+<v Chinnakonda, Rajesh>Give me a minute.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7545-0
+01:10:51.463 --> 01:10:58.401
+<v Hartmann, Nils>Point is, right now we don't,
+it's not in UI is not right in the scope,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7523-0
+01:10:52.663 --> 01:10:53.303
+<v Chinnakonda, Rajesh>Oh, OK.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7536-0
+01:10:54.943 --> 01:10:58.023
+<v Chinnakonda, Rajesh>About 50. And there we.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7545-1
+01:10:58.401 --> 01:10:59.943
+<v Hartmann, Nils>so this is then.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7540-0
+01:10:59.143 --> 01:10:59.623
+<v Chinnakonda, Rajesh>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7587-0
+01:11:00.823 --> 01:11:04.559
+<v Hartmann, Nils>I mean,
+this is maybe then also something that</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7587-1
+01:11:04.559 --> 01:11:08.136
+<v Hartmann, Nils>could be clarified with the respective
+team,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7587-2
+01:11:08.136 --> 01:11:12.906
+<v Hartmann, Nils>whether there is an UI and whether or if
+there is no, none,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7587-3
+01:11:12.906 --> 01:11:18.232
+<v Hartmann, Nils>when they will provide it.
+So it's for sure always good if we have</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7587-4
+01:11:18.232 --> 01:11:19.663
+<v Hartmann, Nils>the plan in focus.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7590-0
+01:11:19.743 --> 01:11:21.783
+<v Hartmann, Nils>because otherwise then you get nothing.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7596-0
+01:11:23.143 --> 01:11:24.263
+<v Hartmann, Nils>But yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7594-0
+01:11:23.303 --> 01:11:23.783
+<v MRR WDF49 A2.24B (05) (Video)>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7595-0
+01:11:23.863 --> 01:11:24.263
+<v Chinnakonda, Rajesh>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7650-0
+01:11:26.183 --> 01:11:31.583
+<v MRR WDF49 A2.24B (05) (Video)>This notes are up the page,
+they actually talk about nodes UI as well,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7650-1
+01:11:31.583 --> 01:11:37.439
+<v MRR WDF49 A2.24B (05) (Video)>which is a kind of reuse, but yeah,
+we have not we are not aware about it in</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7617-0
+01:11:33.303 --> 01:11:33.463
+<v Hartmann, Nils>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7650-2
+01:11:37.439 --> 01:11:41.242
+<v MRR WDF49 A2.24B (05) (Video)>detail,
+but this has this is mentioning something</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7637-0
+01:11:39.783 --> 01:11:40.023
+<v Chinnakonda, Rajesh>KIT.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7650-3
+01:11:41.242 --> 01:11:43.143
+<v MRR WDF49 A2.24B (05) (Video)>about reuse UI for nodes.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7684-0
+01:11:44.263 --> 01:11:49.600
+<v Chinnakonda, Rajesh>So, my understanding is,
+unless you bring that in purchase order</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7684-1
+01:11:49.600 --> 01:11:53.951
+<v Chinnakonda, Rajesh>of Fiori app,
+how are we going to do that migration?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7684-2
+01:11:53.951 --> 01:11:57.810
+<v Chinnakonda, Rajesh>I mean,
+do we show the existing notes or text,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7684-3
+01:11:57.810 --> 01:12:02.983
+<v Chinnakonda, Rajesh>you know, capturing space,
+capture that notes and text, and...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7728-0
+01:12:03.103 --> 01:12:07.247
+<v Chinnakonda, Rajesh>But then rather than sending it into our
+existing long text,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7728-1
+01:12:07.247 --> 01:12:12.885
+<v Chinnakonda, Rajesh>but send it to the new persistency layer.
+Is that the approach that we are looking</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7728-2
+01:12:12.885 --> 01:12:15.941
+<v Chinnakonda, Rajesh>for?
+We never imagined to migrate to the new</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7728-3
+01:12:15.941 --> 01:12:18.183
+<v Chinnakonda, Rajesh>nodes component, right? Notes UI.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7734-0
+01:12:20.423 --> 01:12:22.103
+<v Chinnakonda, Rajesh>That's how it looks like.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7748-0
+01:12:20.743 --> 01:12:25.303
+<v Hartmann, Nils>No, yeah, but you know,
+we basically in the consumption,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7748-1
+01:12:25.303 --> 01:12:28.583
+<v Hartmann, Nils>we should be agnostic of the persistency.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7746-0
+01:12:29.303 --> 01:12:29.703
+<v Chinnakonda, Rajesh>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7790-0
+01:12:30.623 --> 01:12:34.901
+<v Hartmann, Nils>It should be like whether you,
+at least now,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7790-1
+01:12:34.901 --> 01:12:40.701
+<v Hartmann, Nils>let's maybe first of all take this,
+the ABAP implementation,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7790-2
+01:12:40.701 --> 01:12:48.687
+<v Hartmann, Nils>where the persistency is, lies in the end,
+you don't know once you consume the APIs</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7771-0
+01:12:43.623 --> 01:12:43.743
+<v MRR WDF49 A2.24B (05) (Video)>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7790-3
+01:12:48.687 --> 01:12:50.303
+<v Hartmann, Nils>of the subscript.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7791-0
+01:12:50.423 --> 01:12:51.303
+<v Hartmann, Nils>Skies.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7794-0
+01:12:52.263 --> 01:12:53.303
+<v Chinnakonda, Rajesh>Mhm, mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7797-0
+01:12:52.503 --> 01:12:54.823
+<v Hartmann, Nils>So, this is first of all.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7843-0
+01:12:56.103 --> 01:13:00.497
+<v Hartmann, Nils>At least what they tell us,
+it's basically like, ah,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7843-1
+01:13:00.497 --> 01:13:06.383
+<v Hartmann, Nils>you can do the migration and you will,
+there will be no effect at all,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7843-2
+01:13:06.383 --> 01:13:13.264
+<v Hartmann, Nils>first of all. So maybe, I don't know it,
+so maybe you need to implement some class</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7843-3
+01:13:13.264 --> 01:13:15.503
+<v Hartmann, Nils>to write stuff. But I mean.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7876-0
+01:13:15.623 --> 01:13:21.386
+<v Hartmann, Nils>There should be a framework that does at
+least the stuff and also does a decision</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7876-1
+01:13:21.386 --> 01:13:25.954
+<v Hartmann, Nils>based on the configuration,
+where to write it, where to read it.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7876-2
+01:13:25.954 --> 01:13:30.663
+<v Hartmann, Nils>And stuff like this should be in this
+design of the SD colleagues.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7927-0
+01:13:31.623 --> 01:13:38.457
+<v Hartmann, Nils>But besides that, so old reports,
+they should work as before and you should</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7927-1
+01:13:38.457 --> 01:13:41.784
+<v Hartmann, Nils>not,
+so it's not like you do a major</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7927-2
+01:13:41.784 --> 01:13:48.887
+<v Hartmann, Nils>refactoring of your legacy applications
+if you migrate to the new persistency,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7903-0
+01:13:46.983 --> 01:13:47.463
+<v Chinnakonda, Rajesh>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7927-3
+01:13:48.887 --> 01:13:53.383
+<v Hartmann, Nils>because you have to read from somewhere
+else, no.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7910-0
+01:13:49.423 --> 01:13:49.863
+<v Chinnakonda, Rajesh>Beautiful.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7917-0
+01:13:52.583 --> 01:13:52.903
+<v Chinnakonda, Rajesh>Thakur.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7934-0
+01:13:53.783 --> 01:13:57.543
+<v Hartmann, Nils>It should be basically,
+you should be agnostic of that one.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7924-0
+01:13:55.063 --> 01:13:55.703
+<v Chinnakonda, Rajesh>OK.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7943-0
+01:13:58.023 --> 01:13:59.383
+<v Chinnakonda, Rajesh>Okay, so, so...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7987-0
+01:13:58.663 --> 01:14:02.588
+<v Hartmann, Nils>See, all the, the,
+the only thing they say is,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7987-1
+01:14:02.588 --> 01:14:07.599
+<v Hartmann, Nils>if you want to use this RAP reuse
+component in your RAP BO,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7987-2
+01:14:07.599 --> 01:14:13.028
+<v Hartmann, Nils>this would only work,
+would not work with the STXH, STXL tables.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7987-3
+01:14:13.028 --> 01:14:16.786
+<v Hartmann, Nils>There you need, I don't know,
+that for sure,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7987-4
+01:14:16.786 --> 01:14:21.463
+<v Hartmann, Nils>they don't use function modules.
+There you need to use.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7992-0
+01:14:23.543 --> 01:14:26.583
+<v Hartmann, Nils>Then the new persistency,
+this is what they say.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/7991-0
+01:14:25.943 --> 01:14:26.343
+<v Chinnakonda, Rajesh>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8023-0
+01:14:27.783 --> 01:14:34.748
+<v Chinnakonda, Rajesh>So, from a managed purchase order app,
+I think the UI does not change, so yeah,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8031-0
+01:14:33.543 --> 01:14:36.613
+<v Hartmann, Nils>Yeah, exactly.
+So there would be no changes. Yeah,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8023-1
+01:14:34.748 --> 01:14:35.183
+<v Chinnakonda, Rajesh>okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8031-1
+01:14:36.613 --> 01:14:39.383
+<v Hartmann, Nils>we don't want to change there anything,
+yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8027-0
+01:14:36.903 --> 01:14:37.383
+<v Chinnakonda, Rajesh>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8053-0
+01:14:40.023 --> 01:14:44.699
+<v Chinnakonda, Rajesh>Okay, all right, thanks.
+And this should be tested against both</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8053-1
+01:14:44.699 --> 01:14:49.303
+<v Chinnakonda, Rajesh>the web GUI as well as the Fiori app,
+right, Nils? Yeah, okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8050-0
+01:14:47.703 --> 01:14:49.463
+<v Hartmann, Nils>Yes, exactly. Yep.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8065-0
+01:14:55.383 --> 01:14:59.623
+<v MRR WDF49 A2.24B (05) (Video)>Okay, if there are no questions further.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8057-0
+01:14:55.463 --> 01:14:55.943
+<v Chinnakonda, Rajesh>Thanks.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8089-0
+01:15:00.383 --> 01:15:05.308
+<v Chinnakonda, Rajesh>Yeah, I mean,
+a lot of questions running on our head,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8079-0
+01:15:02.103 --> 01:15:02.983
+<v MRR WDF49 A2.24B (05) (Video)>Yeah, yeah, I know that.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8077-0
+01:15:02.343 --> 01:15:02.503
+<v Hartmann, Nils>Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8081-0
+01:15:04.583 --> 01:15:04.663
+<v Hartmann, Nils>The.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8089-1
+01:15:05.308 --> 01:15:07.223
+<v Chinnakonda, Rajesh>but then, yeah, yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8083-0
+01:15:06.823 --> 01:15:07.063
+<v MRR WDF49 A2.24B (05) (Video)>Um...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8096-0
+01:15:07.303 --> 01:15:09.223
+<v Sundaramurthy Yogalingam, Sivakumar>Yeah, yeah, I, I...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8116-0
+01:15:08.303 --> 01:15:13.253
+<v Chinnakonda, Rajesh>So if he if he request for a follow on,
+we would you be able to handle right?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8098-0
+01:15:08.503 --> 01:15:09.863
+<v MRR WDF49 A2.24B (05) (Video)>Some people have already talked.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8116-1
+01:15:13.253 --> 01:15:16.743
+<v Chinnakonda, Rajesh>So I right now it's too much information
+for us, yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8110-0
+01:15:14.663 --> 01:15:14.823
+<v Hartmann, Nils>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8123-0
+01:15:16.983 --> 01:15:20.343
+<v MRR WDF49 A2.24B (05) (Video)>Yes, yes, I understand. You can always...</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8129-0
+01:15:18.823 --> 01:15:20.983
+<v Hartmann, Nils>You have seen we have planned some time.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8185-0
+01:15:22.023 --> 01:15:27.142
+<v MRR WDF49 A2.24B (05) (Video)>Yeah, so we will anyway have,
+I already discussed with Nils and next</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8128-0
+01:15:22.103 --> 01:15:22.743
+<v Chinnakonda, Rajesh>OK.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8185-1
+01:15:27.142 --> 01:15:32.335
+<v MRR WDF49 A2.24B (05) (Video)>week anyway we will have a handover
+meeting with the CGTO colleagues.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8185-2
+01:15:32.335 --> 01:15:37.157
+<v MRR WDF49 A2.24B (05) (Video)>We will try to plan that.
+And for this particular topic as well,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8185-3
+01:15:37.157 --> 01:15:42.647
+<v MRR WDF49 A2.24B (05) (Video)>I want you guys to go through the
+existing links and also the details and</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8185-4
+01:15:42.647 --> 01:15:43.463
+<v MRR WDF49 A2.24B (05) (Video)>everything.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8209-0
+01:15:43.783 --> 01:15:48.724
+<v MRR WDF49 A2.24B (05) (Video)>And also try to see, okay,
+what is there as of now? And then we can,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8209-1
+01:15:48.724 --> 01:15:51.875
+<v MRR WDF49 A2.24B (05) (Video)>anyway,
+we'll have further meetings for the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8209-2
+01:15:51.875 --> 01:15:54.023
+<v MRR WDF49 A2.24B (05) (Video)>follow up calls on this. Yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8232-0
+01:15:54.983 --> 01:15:59.164
+<v Sundaramurthy Yogalingam, Sivakumar>Yeah, one basic question.
+I don't know if you already covered this</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8232-1
+01:15:59.164 --> 01:16:02.221
+<v Sundaramurthy Yogalingam, Sivakumar>initially.
+So what was the problem statement for</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8232-2
+01:16:02.221 --> 01:16:07.089
+<v Sundaramurthy Yogalingam, Sivakumar>which we are doing this activity along
+text to replace to the new persistency</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8232-3
+01:16:07.089 --> 01:16:07.463
+<v Sundaramurthy Yogalingam, Sivakumar>table?</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8274-0
+01:16:10.623 --> 01:16:15.538
+<v MRR WDF49 A2.24B (05) (Video)>One is that all these nodes are actually
+in cluster tables,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8274-1
+01:16:15.538 --> 01:16:20.863
+<v MRR WDF49 A2.24B (05) (Video)>which are actually not directly
+accessible using this VDM views.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8274-2
+01:16:20.863 --> 01:16:27.335
+<v MRR WDF49 A2.24B (05) (Video)>And also it's not a part of even for
+search and also AI related, also for BDC,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8274-3
+01:16:27.335 --> 01:16:29.383
+<v MRR WDF49 A2.24B (05) (Video)>these are not accessible.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8268-0
+01:16:28.583 --> 01:16:29.063
+<v Sundaramurthy Yogalingam, Sivakumar>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8313-0
+01:16:29.423 --> 01:16:35.990
+<v MRR WDF49 A2.24B (05) (Video)>That is the first thing. And second,
+the method that we are currently using is</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8273-0
+01:16:30.903 --> 01:16:31.383
+<v Sundaramurthy Yogalingam, Sivakumar>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8313-1
+01:16:35.990 --> 01:16:42.640
+<v MRR WDF49 A2.24B (05) (Video)>we are actually relying on the views
+which are actually done as a for this ESH,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8313-2
+01:16:42.640 --> 01:16:47.295
+<v MRR WDF49 A2.24B (05) (Video)>like enterprise search.
+So we are we are relying on the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8300-0
+01:16:43.703 --> 01:16:44.583
+<v Sundaramurthy Yogalingam, Sivakumar>Sachin.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8313-3
+01:16:47.295 --> 01:16:49.623
+<v MRR WDF49 A2.24B (05) (Video)>replicated subscript tables.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8369-0
+01:16:50.263 --> 01:16:53.245
+<v MRR WDF49 A2.24B (05) (Video)>which is actually also not a correct
+approach.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8369-1
+01:16:53.245 --> 01:16:58.446
+<v MRR WDF49 A2.24B (05) (Video)>And we also got a few customer tickets as
+well about this because the data is not</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8369-2
+01:16:58.446 --> 01:17:01.809
+<v MRR WDF49 A2.24B (05) (Video)>consistent.
+Sometimes the formatting is not working,</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8369-3
+01:17:01.809 --> 01:17:06.503
+<v MRR WDF49 A2.24B (05) (Video)>those kind of things. So anyway,
+all these BDC and everything is actually</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8357-0
+01:17:04.343 --> 01:17:04.823
+<v Sundaramurthy Yogalingam, Sivakumar>Mhm.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8369-4
+01:17:06.503 --> 01:17:08.343
+<v MRR WDF49 A2.24B (05) (Video)>coming as a big topic for us.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8386-0
+01:17:09.223 --> 01:17:15.183
+<v MRR WDF49 A2.24B (05) (Video)>It is always recommended to move to this
+new persistency. That is the major.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8372-0
+01:17:10.903 --> 01:17:11.383
+<v Sundaramurthy Yogalingam, Sivakumar>Okay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8391-0
+01:17:14.743 --> 01:17:18.183
+<v Sundaramurthy Yogalingam, Sivakumar>Got it. OK, OK. Thank you.
+That makes sense. Thank you.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8389-0
+01:17:16.143 --> 01:17:16.663
+<v MRR WDF49 A2.24B (05) (Video)>Thank you.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8434-0
+01:17:19.463 --> 01:17:22.553
+<v MRR WDF49 A2.24B (05) (Video)>Okay,
+actually we are becoming late for the</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8434-1
+01:17:22.553 --> 01:17:26.415
+<v MRR WDF49 A2.24B (05) (Video)>next meeting.
+This is already started 10 minutes back.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8434-2
+01:17:26.415 --> 01:17:31.682
+<v MRR WDF49 A2.24B (05) (Video)>So maybe if you can go through this and
+then maybe we can have a follow up</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8434-3
+01:17:31.682 --> 01:17:34.983
+<v MRR WDF49 A2.24B (05) (Video)>meeting if needed, right,
+if that makes sense.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8449-0
+01:17:34.423 --> 01:17:37.354
+<v Chinnakonda, Rajesh>Yes, yes,
+we will for we will first go through and</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8449-1
+01:17:37.354 --> 01:17:41.263
+<v Chinnakonda, Rajesh>understand and brainstorm together,
+and yes, we'll come back, yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8442-0
+01:17:37.783 --> 01:17:39.143
+<v MRR WDF49 A2.24B (05) (Video)>Yes, yes, yes.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8451-0
+01:17:41.463 --> 01:17:42.423
+<v MRR WDF49 A2.24B (05) (Video)>Okay, yeah.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8457-0
+01:17:42.463 --> 01:17:44.663
+<v Chinnakonda, Rajesh>Thank you for the session, and thanks.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8474-0
+01:17:43.583 --> 01:17:47.057
+<v MRR WDF49 A2.24B (05) (Video)>Then thank you so much.
+We can stop the recording and thank you</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8461-0
+01:17:45.423 --> 01:17:45.943
+<v Sundaramurthy Yogalingam, Sivakumar>Thank you.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8474-1
+01:17:47.057 --> 01:17:48.903
+<v MRR WDF49 A2.24B (05) (Video)>everyone for attending. Thank you.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8479-0
+01:17:48.503 --> 01:17:50.903
+<v Sundaramurthy Yogalingam, Sivakumar>Thank you. Thanks, bye.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8473-0
+01:17:49.303 --> 01:17:49.783
+<v Chinnakonda, Rajesh>Thank you.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8478-0
+01:17:49.423 --> 01:17:50.343
+<v Babu, Christopher>Thank you, Sanjay.</v>
+
+ef371f2b-9aa7-4c31-abc0-31366a871625/8482-0
+01:17:55.143 --> 01:17:55.383
+<v MRR WDF49 A2.24B (05) (Video)>Good.</v>

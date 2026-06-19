@@ -1,0 +1,6 @@
+# Exclude large video files — exceed GitHub 100MB limit
+Knowledge/**/*.mp4
+Knowledge/**/*.MP4
+
+# Exclude temp Office lock files
+~$*
