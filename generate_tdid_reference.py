@@ -171,6 +171,75 @@ def cover():
         "  EKPO / F01 — Item General Note    (EBELP = item number)\n"
         "  EKPO / F02 — Item Delivery Text   (EBELP = item number)"
     ))
+    els.append(sp(10))
+
+    # ── Full forms section ────────────────────────────────────────────────────
+    els.append(Paragraph("Full Forms of All TD* Abbreviations", H2))
+    els.append(Paragraph(
+        "All SAP text framework field names start with the prefix TD — standing for "
+        "Text Definition. These abbreviations appear throughout SE16, SE11, ABAP code "
+        "and function module READ_TEXT / SAVE_TEXT.", BODY))
+    els.append(sp(5))
+
+    td_data = [
+        ["Abbreviation","Full Form","Description"],
+        ["TDID",       "Text ID",
+         "4-char key identifying the type of text. F01=General Note, F02=Delivery Text, F09=GR Text etc."],
+        ["TDNAME",     "Text Name",
+         "The document key the text belongs to. For PO header = PO number (e.g. 4500077744). "
+         "For PO item = PO number + item number (e.g. 450007774400010 — no space on this system)."],
+        ["TDOBJECT",   "Text Object",
+         "The business object type. EKKO = PO Header, EKPO = PO Item. "
+         "Other examples: VBBK = Sales Order, AUFK = Production Order."],
+        ["TDSPRAS",    "Text Language",
+         "Language key for the text. D = German, E = English. Same text can exist in multiple languages."],
+        ["TDFORMAT",   "Text Format",
+         "Line format indicator. * = normal text line (most common). "
+         "/: = special SAPscript formatting command."],
+        ["TDLINE",     "Text Line",
+         "The actual plain text content — one line of text, max 132 characters. "
+         "This is the main field in ZPO_LONGTEXT — stored decompressed and human-readable."],
+        ["STXH",       "SAP Text Header",
+         "Standard SAP table. Stores one row per text block — the header/index record. "
+         "Human-readable via SE16."],
+        ["STXL",       "SAP Text Lines",
+         "Standard SAP table. Stores compressed binary content of all text lines. "
+         "NOT human-readable — must use READ_TEXT to decompress."],
+    ]
+    hdr2 = [[Paragraph(h,TH) for h in td_data[0]]]
+    rows2 = []
+    for i, row in enumerate(td_data[1:]):
+        abbrv_color = SAP_DARK if row[0].startswith("TD") else TEAL
+        rows2.append([
+            Paragraph(row[0], ms(f"td{i}", fontSize=9, textColor=WHITE,
+                      fontName="Helvetica-Bold", alignment=TA_CENTER)),
+            Paragraph(row[1], ms(f"tf{i}", fontSize=8.5, textColor=SAP_DARK,
+                      fontName="Helvetica-Bold")),
+            Paragraph(row[2], BSML),
+        ])
+    tdt = Table(hdr2+rows2, colWidths=[2.5*cm, 3.5*cm, 11.5*cm])
+    style2 = [
+        ("BACKGROUND",    (0,0),(-1,0),  SAP_BLUE),
+        ("GRID",          (0,0),(-1,-1), 0.4, GREY_BDR),
+        ("TOPPADDING",    (0,0),(-1,-1), 5),
+        ("BOTTOMPADDING", (0,0),(-1,-1), 5),
+        ("LEFTPADDING",   (0,0),(-1,-1), 6),
+        ("VALIGN",        (0,0),(-1,-1), "MIDDLE"),
+    ]
+    td_colors = [SAP_DARK, SAP_DARK, SAP_DARK, SAP_DARK, SAP_DARK, SAP_DARK, TEAL, TEAL]
+    for i, col in enumerate(td_colors):
+        style2.append(("BACKGROUND", (0,i+1),(0,i+1), col))
+        style2.append(("BACKGROUND", (1,i+1),(-1,i+1), WHITE if i%2==0 else GREY_BG))
+    tdt.setStyle(TableStyle(style2))
+    els.append(tdt)
+    els.append(sp(6))
+    els.append(note_box(
+        "TD prefix = Text Definition — the SAP SAPscript/text framework prefix used since R/3.\n"
+        "STXH and STXL are the two underlying storage tables for ALL long texts in SAP "
+        "(not just PO texts — also Sales Orders, Material texts, Customer texts etc.).\n"
+        "ZPO_LONGTEXT is our custom table that makes PO text content accessible without "
+        "the STXL decompression requirement."
+    ))
     els.append(PageBreak())
     return els
 
