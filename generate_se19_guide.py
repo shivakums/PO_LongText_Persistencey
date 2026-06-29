@@ -8,7 +8,7 @@ from reportlab.platypus import (
 )
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY
 
-OUTPUT = r"C:\Users\I308878\PO_LongText_Persistencey\ZCL_PO_TEXT_BADI_IMPL_SE19_Guide.pdf"
+OUTPUT = r"C:\Users\I308878\PO_LongText_Persistencey\ZCL_PO_TEXT_BADI_IMPL_SE19_Guide_v2.pdf"
 
 SAP_DARK  = colors.HexColor("#003366")
 SAP_BLUE  = colors.HexColor("#0070F2")
@@ -237,21 +237,33 @@ def phaseB():
     for i,(a,d) in enumerate(steps,1):
         for row in step_row(i,a,d,SAP_BLUE): els.append(row)
     els.append(sp(5))
-
+    els.append(warn(
+        "⚠  TEST GUARD included — BAdI only fires for user SUNDARAMURTS during testing.\n"
+        "   Remove the 4 marked guard lines before moving to production (see Phase G)."
+    ))
+    els.append(sp(4))
     els.append(code([
         "METHOD if_ex_me_process_po_cust~process_header.",
+        "",
+        "  \" ══ TEST GUARD — REMOVE BEFORE PRODUCTION ══════════════════",
+        "  \" Only process POs saved by test user — protects other users",
+        "  IF sy-uname <> 'SUNDARAMURTS'.",
+        "    RETURN.",
+        "  ENDIF.",
+        "  \" ════════════════════════════════════════════════════════════",
         "",
         "  \" Get PO number from header object",
         "  DATA(lv_ebeln) = im_header->get_data( )-ebeln.",
         "",
-        "  \" PO number is initial when PO not yet committed — exit safely",
+        "  \" PO not yet committed — EBELN is initial — exit safely",
         "  IF lv_ebeln IS INITIAL.",
         "    RETURN.",
         "  ENDIF.",
         "",
         "  \" Read ALL header text entries for this PO from STXH dynamically",
-        "  \" This handles F01, F02, F03 etc. — no hardcoding of TDID needed",
-        "  DATA lt_stxh TYPE TABLE OF stxh.",
+        "  \" Handles F01 General Note, F02 Delivery Text, F03 etc.",
+        "  \" No TDID hardcoding — future text types handled automatically",
+        "  DATA lt_stxh   TYPE TABLE OF stxh.",
         "  DATA lv_tdname TYPE thead-tdname.",
         "  lv_tdname = lv_ebeln.",
         "",
@@ -261,7 +273,7 @@ def phaseB():
         "    WHERE tdobject = 'EKKO'",
         "      AND tdname   = @lv_tdname.",
         "",
-        "  \" Write each text type to ZPO_LONGTEXT",
+        "  \" Write each TDID to ZPO_LONGTEXT — EBELP = 00000 for all header texts",
         "  LOOP AT lt_stxh INTO DATA(ls_stxh).",
         "    zcl_po_longtext_handler=>write_to_persistence(",
         "      iv_ebeln    = lv_ebeln",
@@ -274,7 +286,6 @@ def phaseB():
         "ENDMETHOD.",
     ]))
     els.append(sp(5))
-
     for row in step_row(4,"Save","Ctrl+S",SAP_BLUE): els.append(row)
     els.append(PageBreak())
     return els
@@ -296,9 +307,15 @@ def phaseC():
     for i,(a,d) in enumerate(steps,1):
         for row in step_row(i,a,d,TEAL): els.append(row)
     els.append(sp(5))
-
     els.append(code([
         "METHOD if_ex_me_process_po_cust~process_item.",
+        "",
+        "  \" ══ TEST GUARD — REMOVE BEFORE PRODUCTION ══════════════════",
+        "  \" Only process POs saved by test user — protects other users",
+        "  IF sy-uname <> 'SUNDARAMURTS'.",
+        "    RETURN.",
+        "  ENDIF.",
+        "  \" ════════════════════════════════════════════════════════════",
         "",
         "  \" Get PO number and item number",
         "  DATA(lv_ebeln) = im_item->get_data( )-ebeln.",
@@ -309,12 +326,12 @@ def phaseC():
         "  ENDIF.",
         "",
         "  \" Build TDNAME for this item — NO SPACE (confirmed for this system)",
-        "  \" EKPO TDNAME = EBELN + EBELP without space: 450007774400010",
+        "  \" e.g. EBELN=4500077744 + EBELP=00010 → TDNAME=450007774400010",
         "  DATA lv_tdname TYPE thead-tdname.",
         "  CONCATENATE lv_ebeln lv_ebelp INTO lv_tdname.",
         "",
         "  \" Read ALL item text entries for this PO item from STXH dynamically",
-        "  \" Picks up F01, F02, F09 etc. — all TDIDs for this item",
+        "  \" Picks up F01 Item Note, F02 Delivery Text, F09 GR Text etc.",
         "  DATA lt_stxh TYPE TABLE OF stxh.",
         "",
         "  SELECT tdobject, tdid, tdspras, tdname",
@@ -323,7 +340,7 @@ def phaseC():
         "    WHERE tdobject = 'EKPO'",
         "      AND tdname   = @lv_tdname.",
         "",
-        "  \" Write each text type to ZPO_LONGTEXT",
+        "  \" Write each TDID to ZPO_LONGTEXT — EBELP = actual item number",
         "  LOOP AT lt_stxh INTO DATA(ls_stxh).",
         "    zcl_po_longtext_handler=>write_to_persistence(",
         "      iv_ebeln    = lv_ebeln",
@@ -339,10 +356,10 @@ def phaseC():
     for row in step_row(3,"Save","Ctrl+S",TEAL): els.append(row)
     els.append(sp(4))
     els.append(note(
-        "Why PROCESS_ITEM reads STXH dynamically:\n"
-        "  Each item may have different text types (F01, F02, F09 etc.).\n"
-        "  Reading from STXH ensures ALL text types for that item are migrated.\n"
-        "  No hardcoding of TDID needed — future text types are handled automatically."
+        "Why both methods read STXH dynamically:\n"
+        "  Each PO/item may have different text types (F01, F02, F09 etc.).\n"
+        "  Reading from STXH at runtime ensures ALL text types are migrated.\n"
+        "  No TDID hardcoding — adding a new text type in future requires no code change."
     ))
     els.append(PageBreak())
     return els
@@ -503,6 +520,133 @@ def phaseF():
     ))
     return els
 
+def phaseG():
+    els=[]
+    els.append(sec_hdr("G","Production Go-Live — Remove the Test Guard",
+                        "Delete 4 lines from both methods before transport to production",
+                        RED, RED))
+    els.append(sp(8))
+    els.append(warn(
+        "⚠  The test guard IF sy-uname <> 'SUNDARAMURTS' MUST be removed before production.\n"
+        "   With the guard in place: only POs saved by SUNDARAMURTS will be written to ZPO_LONGTEXT.\n"
+        "   All other users' POs will be silently skipped — ZPO_LONGTEXT will be incomplete."
+    ))
+    els.append(sp(6))
+
+    els.append(Paragraph("Lines to Remove from PROCESS_HEADER and PROCESS_ITEM", H2))
+    els.append(code([
+        "  \" ══ TEST GUARD — REMOVE BEFORE PRODUCTION ══════════════════",
+        "  \" Only process POs saved by test user — protects other users",
+        "  IF sy-uname <> 'SUNDARAMURTS'.",
+        "    RETURN.",
+        "  ENDIF.",
+        "  \" ════════════════════════════════════════════════════════════",
+    ]))
+    els.append(sp(6))
+
+    steps=[
+        ("Open PROCESS_HEADER in SE24",
+         "SE24 → ZCL_PO_TEXT_BADI_IMPL → Methods tab\n"
+         "Double-click IF_EX_ME_PROCESS_PO_CUST~PROCESS_HEADER"),
+        ("Delete the 6 guard lines",
+         "Select the 6 lines shown above (from \" ══ TEST GUARD to \" ════════)\n"
+         "Delete them completely — leave no blank lines in their place"),
+        ("Production PROCESS_HEADER should start like this",
+         "METHOD if_ex_me_process_po_cust~process_header.\n"
+         "  DATA(lv_ebeln) = im_header->get_data( )-ebeln.\n"
+         "  IF lv_ebeln IS INITIAL.\n"
+         "    RETURN.\n"
+         "  ENDIF.\n"
+         "  ... (rest of method unchanged)"),
+        ("Repeat for PROCESS_ITEM",
+         "Double-click IF_EX_ME_PROCESS_PO_CUST~PROCESS_ITEM\n"
+         "Delete the same 6 guard lines\n"
+         "Save"),
+        ("Activate",
+         "Ctrl+F3 → Activate\n"
+         "BAdI now processes ALL users — every PO save writes to ZPO_LONGTEXT"),
+        ("Test with another user",
+         "Ask a colleague to create a PO with text\n"
+         "SE16N → ZPO_LONGTEXT → filter EBELN = their PO number\n"
+         "Rows must appear → confirms guard is removed correctly"),
+    ]
+    for i,(a,d) in enumerate(steps,1):
+        for row in step_row(i,a,d,RED): els.append(row)
+
+    els.append(sp(8))
+    els.append(Paragraph("Production Code — PROCESS_HEADER (No Guard)", H2))
+    els.append(code([
+        "METHOD if_ex_me_process_po_cust~process_header.",
+        "",
+        "  DATA(lv_ebeln) = im_header->get_data( )-ebeln.",
+        "  IF lv_ebeln IS INITIAL.",
+        "    RETURN.",
+        "  ENDIF.",
+        "",
+        "  DATA lt_stxh   TYPE TABLE OF stxh.",
+        "  DATA lv_tdname TYPE thead-tdname.",
+        "  lv_tdname = lv_ebeln.",
+        "",
+        "  SELECT tdobject, tdid, tdspras, tdname",
+        "    FROM stxh",
+        "    INTO CORRESPONDING FIELDS OF TABLE @lt_stxh",
+        "    WHERE tdobject = 'EKKO'",
+        "      AND tdname   = @lv_tdname.",
+        "",
+        "  LOOP AT lt_stxh INTO DATA(ls_stxh).",
+        "    zcl_po_longtext_handler=>write_to_persistence(",
+        "      iv_ebeln    = lv_ebeln",
+        "      iv_ebelp    = '00000'",
+        "      iv_tdobject = ls_stxh-tdobject",
+        "      iv_tdid     = ls_stxh-tdid",
+        "      iv_tdspras  = ls_stxh-tdspras ).",
+        "  ENDLOOP.",
+        "",
+        "ENDMETHOD.",
+    ]))
+    els.append(sp(6))
+
+    els.append(Paragraph("Production Code — PROCESS_ITEM (No Guard)", H2))
+    els.append(code([
+        "METHOD if_ex_me_process_po_cust~process_item.",
+        "",
+        "  DATA(lv_ebeln) = im_item->get_data( )-ebeln.",
+        "  DATA(lv_ebelp) = im_item->get_data( )-ebelp.",
+        "  IF lv_ebeln IS INITIAL.",
+        "    RETURN.",
+        "  ENDIF.",
+        "",
+        "  DATA lv_tdname TYPE thead-tdname.",
+        "  CONCATENATE lv_ebeln lv_ebelp INTO lv_tdname.",
+        "",
+        "  DATA lt_stxh TYPE TABLE OF stxh.",
+        "",
+        "  SELECT tdobject, tdid, tdspras, tdname",
+        "    FROM stxh",
+        "    INTO CORRESPONDING FIELDS OF TABLE @lt_stxh",
+        "    WHERE tdobject = 'EKPO'",
+        "      AND tdname   = @lv_tdname.",
+        "",
+        "  LOOP AT lt_stxh INTO DATA(ls_stxh).",
+        "    zcl_po_longtext_handler=>write_to_persistence(",
+        "      iv_ebeln    = lv_ebeln",
+        "      iv_ebelp    = lv_ebelp",
+        "      iv_tdobject = ls_stxh-tdobject",
+        "      iv_tdid     = ls_stxh-tdid",
+        "      iv_tdspras  = ls_stxh-tdspras ).",
+        "  ENDLOOP.",
+        "",
+        "ENDMETHOD.",
+    ]))
+    els.append(sp(6))
+    els.append(ok(
+        "✅  Production ready when:\n"
+        "  Guard lines removed from both methods\n"
+        "  Class activated\n"
+        "  Tested with another user's PO — ZPO_LONGTEXT rows appear with SOURCE=D"
+    ))
+    return els
+
 # ── Build ─────────────────────────────────────────────────────────────────────
 def build():
     doc=SimpleDocTemplate(
@@ -520,6 +664,7 @@ def build():
     story.extend(phaseD())
     story.extend(phaseE())
     story.extend(phaseF())
+    story.extend(phaseG())
 
     def on_page(c,doc):
         c.saveState()
