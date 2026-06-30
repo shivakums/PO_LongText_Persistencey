@@ -852,58 +852,86 @@ def section9():
         widths=[3.5*cm,6*cm,5*cm,3*cm]
     ))
     els.append(sp(6))
-    els.append(Paragraph("PO Header Text Determination (EKKO)", H2))
-    els.append(code([
-        "Text Object:  EKKO",
-        "Text Schema:  0001 (or configured schema)",
-        "",
-        "Text ID   Description          Access Seq   Refer/Duplicate   Effect",
-        "F01       Header note          —             unchecked         COPY — user types own text",
-        "F02       Delivery text        001           checked           REFERENCE from Info Rec / Vendor",
-        "F03       Pricing types        —             unchecked         COPY",
-        "F04       Deadlines            —             unchecked         COPY",
-        "F05       Terms of delivery    002           checked           REFERENCE from Vendor Master",
-        "",
-        "Access Sequence 001 search order for EKKO F02:",
-        "  Priority 1: Purchasing Info Record (EINE/EINA) — vendor+material specific",
-        "  Priority 2: Vendor Master (LFA1/LFM1) — vendor general delivery text",
-        "  Priority 3: Nothing found → F02 stays empty in PO",
-    ]))
+    els.append(Paragraph("PO Header Text Types — EKKO (Confirmed from This System)", H2))
+    els.append(ibox(
+        "Source: SPRO → MM → Purchasing → Purchase Order → Texts for Purchase Order "
+        "→ Texts for Document Header. Doc. Category = F (Purchase Order).",
+        SAP_LIGHT, SAP_BLUE
+    ))
+    els.append(sp(4))
+    els.append(tbl(
+        ["Seq.","Description","TDID","EBELP in ZPO","Notes"],
+        [
+            ["01","Header text",           "F01","00000","User types directly — COPY"],
+            ["02","Header note",           "F02","00000","Usually referenced from Vendor Master"],
+            ["03","Pricing types",         "F03","00000","COPY"],
+            ["04","Deadlines",             "F04","00000","COPY"],
+            ["05","Terms of delivery",     "F05","00000","May reference from Vendor Master"],
+            ["06","Shipping instructions", "F06","00000","COPY or REF"],
+            ["07","Terms of payment",      "F07","00000","COPY"],
+            ["08","Warranties",            "F08","00000","COPY"],
+            ["09","Penalty for breach",    "F09","00000","COPY — NOTE: NOT GR text for EKKO"],
+            ["10","Guarantees",            "F10","00000","COPY"],
+            ["11","Contract riders",       "F11","00000","COPY"],
+            ["12","Attachment",            "F12","00000","COPY"],
+            ["13","Other contractual",     "F13","00000","COPY"],
+            ["14","Delivery",              "F14","00000","COPY"],
+            ["15","Vendor memo (general)", "F15","00000","COPY"],
+            ["16","Vendor memo (special)", "F16","00000","COPY"],
+        ],
+        widths=[1.2*cm,5.3*cm,1.8*cm,3*cm,6.2*cm]
+    ))
     els.append(sp(6))
-    els.append(Paragraph("PO Item Text Determination (EKPO)", H2))
-    els.append(code([
-        "Text Object:  EKPO",
-        "Text Schema:  0002 (or configured schema)",
-        "",
-        "Text ID   Description          Access Seq   Refer/Duplicate   Effect",
-        "F01       Item note            —             unchecked         COPY — user types per item",
-        "F02       Delivery text        001           checked           REFERENCE from Info Record",
-        "F09       GR text              003           checked           REFERENCE from Info Record",
-        "F11       Info rec PO text     002           checked           REFERENCE from Info Record",
-        "F12       Material PO text     004           checked           REFERENCE from Material Master",
-        "",
-        "Access Sequence 003 search order for EKPO F09 (GR text):",
-        "  Priority 1: Purchasing Info Record (EINE/EINA) — item specific",
-        "  Priority 2: Nothing found → F09 stays empty",
-    ]))
+
+    els.append(Paragraph("PO Item Text Types — EKPO (Confirmed from This System)", H2))
+    els.append(ibox(
+        "Source: SPRO → MM → Purchasing → Purchase Order → Texts for Purchase Order "
+        "→ Texts for Document Item. Doc. Category = F (Purchase Order).",
+        TEAL_LT, TEAL
+    ))
+    els.append(sp(4))
+    els.append(tbl(
+        ["Seq.","Description","TDID","EBELP in ZPO","Reference Source"],
+        [
+            ["01","Item text",                "F01","item no.","User types directly — COPY"],
+            ["02","Info record PO text",      "F02","item no.","REFERENCE from EINE/EINA info record"],
+            ["03","Material PO text",         "F03","item no.","REFERENCE from Material Master"],
+            ["04","Delivery text",            "F04","item no.","REFERENCE from Info Record / Vendor"],
+            ["05","Info record note",         "F05","item no.","REFERENCE from EINE/EINA info record"],
+            ["06","MRP Cockpit",              "F06","item no.","System generated — MRP"],
+            ["10","Item Text for SPEC2000",   "L01","item no.","SPEC2000 aerospace standard"],
+            ["11","Supplier Comments at Item","F11","item no.","Supplier-entered comments"],
+            ["12","Terms and Conditions",     "F12","item no.","REFERENCE from Info Record"],
+            ["13","PO Item Closure Text",     "F13","item no.","System generated on PO closure"],
+        ],
+        widths=[1.2*cm,5.3*cm,1.8*cm,3*cm,6.2*cm]
+    ))
+    els.append(sp(4))
+    els.append(warn(
+        "⚠  Important finding for this system:\n"
+        "  EKPO F09 = 'Penalty for breach of contract' on EKKO (header) — NOT GR text\n"
+        "  EKPO item list does NOT show F09 as GR text — GR text may use a different TDID or not be configured\n"
+        "  Always verify actual TDIDs via: SE16N → STXH → TDOBJECT=EKPO, TDNAME=<your PO>+item\n"
+        "  The actual TDIDs stored in STXH are the ground truth for migration handler coding"
+    ))
     els.append(sp(6))
 
     els.append(Paragraph("The 6 Reference Scenarios for PO", H2))
     scenarios=[
         ("1","PO from Vendor Master text",
          "Vendor master LFA1/LFM1 has delivery instructions. PO created for this vendor.",
-         "LFA1/LFM1","Vendor delivery note F02 appears in PO — referenced, not copied. "
+         "LFA1/LFM1","Header text F02 (Header note) appears in PO — referenced, not copied. "
          "If vendor updates delivery hours, ALL POs referencing it auto-update.",
          "EKKO → LFA1"),
         ("2","PO Item text from Purchasing Info Record",
-         "Info record (EINE/EINA) for vendor+material has a GR inspection note.",
-         "EINE/EINA","PO item F09 (GR text) references the info record. "
-         "Goods receiver sees the inspection instruction from the info record.",
+         "Info record (EINE/EINA) for vendor+material has a PO text or delivery note.",
+         "EINE/EINA","PO item F02 (Info record PO text) and F04 (Delivery text) reference the info record. "
+         "Text appears on PO without being stored per item.",
          "EKPO → EINE"),
         ("3","PO Item text from Material Master",
          "Material master has a standard purchase order text for the material.",
-         "MATERIAL","PO item F01 (General note) references material master. "
-         "Appears on PO output to vendor without storing per PO.",
+         "MATERIAL","PO item F03 (Material PO text) references material master. "
+         "Appears on PO output to vendor without storing per PO item.",
          "EKPO → MATERIAL"),
         ("4","PO from Purchase Requisition",
          "PO created with reference to PR 1000012345 which had requestor notes.",
