@@ -802,28 +802,55 @@ def section9():
                         PURPLE))
     els.append(sp(8))
 
-    els.append(Paragraph("Configuration Control — Transaction VOTXN (PO Path)", H2))
+    els.append(Paragraph("Configuration Control — VOTXN and SPRO Paths Clarified", H2))
     els.append(warn(
-        "⚠  VOTXN shows multiple Text Objects. The screenshot shown (Customer, Sales Document, "
-        "Delivery, Billing Doc.) is the SALES path. For Purchase Order you must navigate to the "
-        "PURCHASING section. See correct navigation path below."
+        "⚠  Two separate text configurations exist for PO — they serve DIFFERENT purposes:\n"
+        "  1. VOTXN / Text Determination = controls copy/reference rules when PO is CREATED\n"
+        "  2. SPRO → Messages → Texts for Messages → Define Texts for PO = controls which texts "
+        "are PRINTED on PO output form sent to vendor\n"
+        "  For REF fields and reference behaviour → use VOTXN (path 1)."
     ))
     els.append(sp(5))
-    els.append(Paragraph("Correct VOTXN Navigation for Purchase Order", H2))
+
+    els.append(Paragraph("Path 1 — Text Determination (Copy/Reference Rules): VOTXN", H2))
     els.append(code([
-        "Transaction: VOTXN",
+        "Transaction: VOTXN → press Enter",
         "",
-        "In the Text Object list — scroll to PURCHASING section:",
-        "  Purchasing Document",
-        "    ● Header   ← select this for EKKO header texts",
-        "    ○ Item     ← select this for EKPO item texts",
+        "Text Object list → scroll to find EKKO and EKPO:",
+        "  EKKO   ← Purchase Order Header — click + click 'Text types' button",
+        "  EKPO   ← Purchase Order Item   — click + click 'Text types' button",
         "",
-        "Alternative via SPRO:",
-        "  SPRO → Materials Management → Purchasing",
-        "    → Messages → Text Types / Text Schemas and Text Determination",
-        "      → Define Text Types for Purchase Order Header",
-        "      → Define Text Types for Purchase Order Item",
+        "Shows: Text ID, Description, Access Sequence, Refer/Duplicate flag",
+        "This controls: whether text is COPIED or REFERENCED when PO is created",
     ]))
+    els.append(sp(5))
+
+    els.append(Paragraph("Path 2 — Texts for Output Messages (What Gets Printed): SPRO", H2))
+    els.append(ibox(
+        "SPRO → Materials Management → Purchasing\n"
+        "  → Messages\n"
+        "    → Texts for Messages\n"
+        "      → Define Texts for Purchase Order    ← as shown in SPRO screenshot\n\n"
+        "Purpose: defines which Text IDs are included in the PO output message (print/email to vendor).\n"
+        "This is NOT about copy/reference rules — it is about which texts appear on the PO form.",
+        SAP_LIGHT, SAP_BLUE
+    ))
+    els.append(sp(5))
+
+    els.append(tbl(
+        ["Configuration","Transaction / SPRO Path","Controls","Used For REF Fields?"],
+        [
+            ["Text Determination",
+             "VOTXN → EKKO / EKPO → Text types",
+             "Copy or Reference rules per Text ID. Access Sequence priority.",
+             "YES — this is where REF_TEXT_OBJECT source is defined"],
+            ["Texts for Output Messages",
+             "SPRO → MM → Purchasing → Messages → Texts for Messages → Define Texts for PO",
+             "Which Text IDs are printed on PO output form sent to vendor",
+             "NO — output format only, no impact on REF fields"],
+        ],
+        widths=[3.5*cm,6*cm,5*cm,3*cm]
+    ))
     els.append(sp(6))
     els.append(Paragraph("PO Header Text Determination (EKKO)", H2))
     els.append(code([
