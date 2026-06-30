@@ -802,27 +802,62 @@ def section9():
                         PURPLE))
     els.append(sp(8))
 
-    els.append(Paragraph("Configuration Control — Transaction VOTXN", H2))
-    els.append(Paragraph(
-        "Transaction VOTXN controls whether text is COPIED or REFERENCED for each text type. "
-        "The Access Sequence defines which source objects are searched and in which priority.", BODY))
-    els.append(sp(4))
+    els.append(Paragraph("Configuration Control — Transaction VOTXN (PO Path)", H2))
+    els.append(warn(
+        "⚠  VOTXN shows multiple Text Objects. The screenshot shown (Customer, Sales Document, "
+        "Delivery, Billing Doc.) is the SALES path. For Purchase Order you must navigate to the "
+        "PURCHASING section. See correct navigation path below."
+    ))
+    els.append(sp(5))
+    els.append(Paragraph("Correct VOTXN Navigation for Purchase Order", H2))
     els.append(code([
-        "VOTXN → Purchasing → Purchase Order → Header/Item texts:",
+        "Transaction: VOTXN",
         "",
-        "  Text ID  Description       Refer/Duplicate  Access Seq",
-        "  F01      Header note        unchecked (COPY)  001",
-        "  F02      Delivery text      checked (REF)     002",
-        "  F09      GR text            checked (REF)     003",
+        "In the Text Object list — scroll to PURCHASING section:",
+        "  Purchasing Document",
+        "    ● Header   ← select this for EKKO header texts",
+        "    ○ Item     ← select this for EKPO item texts",
         "",
-        "  unchecked Refer/Duplicate = text is COPIED to PO",
-        "  checked   Refer/Duplicate = text is REFERENCED (pointer only)",
+        "Alternative via SPRO:",
+        "  SPRO → Materials Management → Purchasing",
+        "    → Messages → Text Types / Text Schemas and Text Determination",
+        "      → Define Text Types for Purchase Order Header",
+        "      → Define Text Types for Purchase Order Item",
+    ]))
+    els.append(sp(6))
+    els.append(Paragraph("PO Header Text Determination (EKKO)", H2))
+    els.append(code([
+        "Text Object:  EKKO",
+        "Text Schema:  0001 (or configured schema)",
         "",
-        "Access Sequence defines search priority:",
-        "  Priority 1: Purchasing Info Record (EINE/EINA)",
-        "  Priority 2: Vendor Master (LFA1/LFM1)",
-        "  Priority 3: Material Master (MARA)",
-        "  Priority 4: Nothing found → PO has no text",
+        "Text ID   Description          Access Seq   Refer/Duplicate   Effect",
+        "F01       Header note          —             unchecked         COPY — user types own text",
+        "F02       Delivery text        001           checked           REFERENCE from Info Rec / Vendor",
+        "F03       Pricing types        —             unchecked         COPY",
+        "F04       Deadlines            —             unchecked         COPY",
+        "F05       Terms of delivery    002           checked           REFERENCE from Vendor Master",
+        "",
+        "Access Sequence 001 search order for EKKO F02:",
+        "  Priority 1: Purchasing Info Record (EINE/EINA) — vendor+material specific",
+        "  Priority 2: Vendor Master (LFA1/LFM1) — vendor general delivery text",
+        "  Priority 3: Nothing found → F02 stays empty in PO",
+    ]))
+    els.append(sp(6))
+    els.append(Paragraph("PO Item Text Determination (EKPO)", H2))
+    els.append(code([
+        "Text Object:  EKPO",
+        "Text Schema:  0002 (or configured schema)",
+        "",
+        "Text ID   Description          Access Seq   Refer/Duplicate   Effect",
+        "F01       Item note            —             unchecked         COPY — user types per item",
+        "F02       Delivery text        001           checked           REFERENCE from Info Record",
+        "F09       GR text              003           checked           REFERENCE from Info Record",
+        "F11       Info rec PO text     002           checked           REFERENCE from Info Record",
+        "F12       Material PO text     004           checked           REFERENCE from Material Master",
+        "",
+        "Access Sequence 003 search order for EKPO F09 (GR text):",
+        "  Priority 1: Purchasing Info Record (EINE/EINA) — item specific",
+        "  Priority 2: Nothing found → F09 stays empty",
     ]))
     els.append(sp(6))
 
