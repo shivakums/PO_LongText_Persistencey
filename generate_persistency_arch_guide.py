@@ -146,12 +146,14 @@ def cover():
         [
             ["1","Three Persistency Approaches","Generic table, Own table, RAP Notes Reuse — table structures"],
             ["2","Sales SDD Table Design","SDTP_TEXT fields, ITF conversion, auth encoding"],
-            ["3","ZPO_LONGTEXT Current Design","Current Lift & Shift table structure"],
-            ["4","Full Comparison Table","All aspects side by side across all 3 approaches"],
-            ["5","Recommendation for PO","Which approach and why — proposed EKKT_TEXT design"],
-            ["6","SAPScript Handler Class","What it is, how it works, analogy"],
-            ["7","SDM — Silent Data Migration","What SDM does, step by step, how it connects to handler"],
-            ["8","Handler vs SDM — Key Difference","Summary table and one-line definitions"],
+            ["3","Full Comparison Table","All aspects side by side across all 3 approaches"],
+            ["4","Recommendation for PO","Which approach and why — proposed EKKT_TEXT design"],
+            ["5","SAPScript Handler Class","What it is, how it works, analogy"],
+            ["6","SDM — Silent Data Migration","What SDM does, step by step, how it connects to handler"],
+            ["7","Handler vs SDM — Key Difference","Summary table and one-line definitions"],
+            ["8","SDTP_TEXT REF Fields Explained","TEXT_OBJECT vs REF_TEXT_OBJECT — two row types, chain problem"],
+            ["9","PO Reference Notes — 6 Scenarios","VOTXN/SPRO paths, confirmed EKKO/EKPO text types, 6 scenarios"],
+            ["10","How to Find Full TDID List","4 methods: STXH, TTXID, PO range, distinct view + verification queries"],
         ],
         widths=[1.5*cm,5.5*cm,10.5*cm]
     ))
@@ -1006,6 +1008,147 @@ def section9():
     ))
     return els
 
+# ── Section 10: How to find full TDID list ────────────────────────────────────
+def section10():
+    els=[]
+    els.append(sec_hdr("10","How to Get the Full Text ID (TDID) List from STXH",
+                        "4 methods to find all TDIDs configured and used for EKKO and EKPO",
+                        SAP_DARK))
+    els.append(sp(8))
+
+    els.append(ibox(
+        "You need the complete TDID list for two reasons:\n"
+        "  1. Migration handler code — the handler class must know all TDIDs to migrate\n"
+        "  2. ZPO_LONGTEXT validation — confirm all TDIDs are correctly stored after migration"
+    ))
+    els.append(sp(6))
+
+    # Method 1
+    els.append(Paragraph("Method 1 — SE16N STXH: All EKPO entries (Quickest)", H2))
+    els.append(code([
+        "SE16N → Table: STXH",
+        "Filter:",
+        "  Text object: EKPO",
+        "  Text Name:   (leave empty — returns all POs)",
+        "  Text ID:     (leave empty — see all TDIDs)",
+        "  Language:    DE",
+        "",
+        "Execute (F8)",
+        "→ Returns ALL EKPO text entries in the system",
+        "→ Look at the Text ID column — every TDID that is actually in use",
+        "→ Sort by Text ID column to group them",
+    ]))
+    els.append(sp(6))
+
+    # Method 2
+    els.append(Paragraph("Method 2 — TTXID Table: Complete Configured List (Cleanest)", H2))
+    els.append(code([
+        "SE16N → Table: TTXID",
+        "Filter:",
+        "  TDOBJECT: EKKO   (for header text IDs)",
+        "  OR",
+        "  TDOBJECT: EKPO   (for item text IDs)",
+        "",
+        "Execute (F8)",
+        "→ One row per configured TDID",
+        "→ Columns: TDOBJECT, TDID, TDTEXT (description), VOTXNAME (text schema)",
+        "→ Shows ALL defined TDIDs — even those with no text entered yet",
+        "",
+        "This is the RECOMMENDED method for migration handler coding.",
+        "Cross-check with Method 1 to see which TDIDs have actual data.",
+    ]))
+    els.append(sp(6))
+
+    # Method 3
+    els.append(Paragraph("Method 3 — STXH for Specific PO Range (Item Texts)", H2))
+    els.append(code([
+        "SE16N → Table: STXH",
+        "Filter:",
+        "  Text object: EKPO",
+        "  Text Name (from): 450007774400000   ← PO# + 00000 (item 0)",
+        "  Text Name (to):   450007774499999   ← PO# + 99999 (all items)",
+        "  Language:         DE",
+        "",
+        "Execute (F8)",
+        "→ Shows all TDIDs for ALL items of PO 4500077744",
+        "→ Use this to confirm what is actually stored for your test PO",
+        "",
+        "For a specific item (e.g. item 00010):",
+        "  Text Name: 450007774400010   ← exact value (confirmed: no space for this system)",
+    ]))
+    els.append(sp(6))
+
+    # Method 4
+    els.append(Paragraph("Method 4 — SE16N STXH with Only TDID Column Displayed", H2))
+    els.append(code([
+        "SE16N → Table: STXH",
+        "Filter: Text object = EKPO  (or EKKO)",
+        "",
+        "Click: Settings → Fields for Display",
+        "  Uncheck all fields EXCEPT: TDOBJECT, TDID",
+        "",
+        "Execute (F8)",
+        "→ Clean list of TDOBJECT + TDID only",
+        "→ Sort by TDID column → group distinct values",
+        "→ Quickest way to see all unique TDIDs in use across the system",
+    ]))
+    els.append(sp(6))
+
+    # Comparison table
+    els.append(Paragraph("Which Method to Use When", H2))
+    els.append(tbl(
+        ["Method","Table","Best For","Returns"],
+        [
+            ["1 — SE16N STXH all EKPO",
+             "STXH","See all TDIDs actually used in system",
+             "All rows — with PO numbers and dates"],
+            ["2 — SE16N TTXID (Recommended)",
+             "TTXID","Migration handler coding — complete defined list",
+             "One row per TDID — with description"],
+            ["3 — STXH PO range",
+             "STXH","Verify specific PO texts after migration",
+             "All TDIDs for one PO — actual STXH data"],
+            ["4 — STXH TDID column only",
+             "STXH","Quick distinct TDID overview",
+             "Clean TDOBJECT+TDID list — no clutter"],
+        ],
+        widths=[4.5*cm,2.5*cm,5.5*cm,5*cm]
+    ))
+    els.append(sp(6))
+
+    # ZPO_LONGTEXT verification queries
+    els.append(Paragraph("Verify After Migration — SE16N ZPO_LONGTEXT", H2))
+    els.append(tbl(
+        ["What to Check","Filter Values","Expected Result"],
+        [
+            ["All header texts for one PO",
+             "EBELN=4500077744, EBELP=00000, TDOBJECT=EKKO",
+             "Rows for each TDID that has text — TDLINE plain readable"],
+            ["All item texts for item 10",
+             "EBELN=4500077744, EBELP=00010, TDOBJECT=EKPO",
+             "Rows for each TDID that has text on item 10"],
+            ["All texts for one PO (all items)",
+             "EBELN=4500077744",
+             "Header + all item rows — SOURCE=D (dual-write)"],
+            ["Count distinct TDIDs migrated",
+             "EBELN=4500077744 — check unique TDID values",
+             "Must match count from STXH for same PO"],
+            ["STXH vs ZPO_LONGTEXT match",
+             "Run ZCOUNT_PO_LONGTEXT report",
+             "STXH count = ZPO_LONGTEXT distinct text groups"],
+        ],
+        widths=[5*cm,5.5*cm,7*cm]
+    ))
+    els.append(sp(6))
+
+    els.append(ok(
+        "✅  Migration is complete for a PO when:\n"
+        "  Every TDID that exists in STXH for that PO also exists in ZPO_LONGTEXT\n"
+        "  TDLINE content in ZPO_LONGTEXT matches what READ_TEXT returns for same PO+TDID\n"
+        "  SOURCE = D (BAdI dual-write) or M (migration report)"
+    ))
+    return els
+
 # ── Build ─────────────────────────────────────────────────────────────────────
 def build():
     doc=SimpleDocTemplate(
@@ -1026,6 +1169,7 @@ def build():
     story.extend(section7())
     story.extend(section8())
     story.extend(section9())
+    story.extend(section10())
 
     def on_page(c,doc):
         c.saveState()
