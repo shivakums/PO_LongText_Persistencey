@@ -687,6 +687,235 @@ def section7():
     ))
     return els
 
+# ── Section 8: REF fields ─────────────────────────────────────────────────────
+def section8():
+    els=[]
+    els.append(sec_hdr("8","SDTP_TEXT — REF Fields vs TEXT Fields Explained",
+                        "What REF_TEXT_OBJECT, REF_TEXT_ID, REF_TEXT_NAME store and when they are populated",
+                        TEAL))
+    els.append(sp(8))
+
+    els.append(Paragraph("Identity Fields vs Reference Pointer Fields", H2))
+    els.append(tbl(
+        ["Field","Type","Populated When","Contains"],
+        [
+            ["TEXT_OBJECT",     "Identity",  "Always",
+             "Which SAP business object this text belongs to — e.g. VBBK or EKKO"],
+            ["TEXT_ID",         "Identity",  "Always",
+             "Which type of text within that object — e.g. F01, F02, F09"],
+            ["TEXT_CONTENT",    "Content",   "Only when text is a COPY (own text)",
+             "The actual plain text string the user typed — empty if reference"],
+            ["REF_TEXT_OBJECT", "Reference pointer","Only when text is a REFERENCE",
+             "Object to look up for real content — e.g. LFA1, MATERIAL, EINE, EKKO"],
+            ["REF_TEXT_ID",     "Reference pointer","Only when text is a REFERENCE",
+             "Text type to look up in the referenced object — e.g. 0002"],
+            ["REF_TEXT_NAME",   "Reference pointer","Only when text is a REFERENCE",
+             "Document/record ID to look up — e.g. vendor number 0000001000"],
+        ],
+        widths=[3.5*cm,2.8*cm,4*cm,7.2*cm]
+    ))
+    els.append(sp(6))
+
+    els.append(Paragraph("Two Types of Rows in SDTP_TEXT", H2))
+    els.append(code([
+        "TYPE A — Copy (own text — user typed it directly):",
+        "  SD_DOCUMENT_ID  = 230001",
+        "  TEXT_OBJECT     = VBBK",
+        "  TEXT_ID         = 0001",
+        "  TEXT_CONTENT    = 'Deliver before Christmas'  ← HAS CONTENT",
+        "  REF_TEXT_OBJECT = ''   ← EMPTY — not a reference",
+        "  REF_TEXT_ID     = ''   ← EMPTY",
+        "  REF_TEXT_NAME   = ''   ← EMPTY",
+        "",
+        "TYPE B — Reference (pointer to another document's text):",
+        "  SD_DOCUMENT_ID  = 230002",
+        "  TEXT_OBJECT     = VBBK",
+        "  TEXT_ID         = 0001",
+        "  TEXT_CONTENT    = ''   ← EMPTY — no own content",
+        "  REF_TEXT_OBJECT = 'KNA1'        ← Points to: Customer master",
+        "  REF_TEXT_ID     = '0001'         ← Points to: text type 0001 in KNA1",
+        "  REF_TEXT_NAME   = '0000012345'   ← Points to: Customer ID",
+        "",
+        "Reading Sales Order 230002 header note:",
+        "  → TEXT_CONTENT is empty → check REF fields",
+        "  → Go read KNA1/0001/0000012345 to get the actual text",
+    ]))
+    els.append(sp(6))
+
+    els.append(Paragraph("Where REF Fields Are Populated From", H2))
+    els.append(tbl(
+        ["Source","How REF Fields Are Set"],
+        [
+            ["During SDM Migration (historic documents)",
+             "Read from STXH fields: TDREF='X' → reference. "
+             "TDREFOBJ→REF_TEXT_OBJECT, TDREFNAME→REF_TEXT_NAME, TDREFID→REF_TEXT_ID. "
+             "If TDREF=' ' (copy) → TEXT_CONTENT set, REF fields empty."],
+            ["Runtime — Handler CREATE/CHANGE",
+             "SAVE_TEXT passes THEAD structure. If THEAD-TDREF='X' → store REF fields, TEXT_CONTENT=''. "
+             "If TDREF=' ' → convert ITF→string, store TEXT_CONTENT, clear REF fields."],
+            ["User edits a referenced text",
+             "CHANGE method detects content is being written → clears REF_TEXT_OBJECT, "
+             "REF_TEXT_ID, REF_TEXT_NAME → stores new content in TEXT_CONTENT. "
+             "Reference is permanently broken."],
+        ],
+        widths=[4.5*cm,13*cm]
+    ))
+    els.append(sp(6))
+
+    els.append(Paragraph("The Reference Chain Problem", H2))
+    els.append(code([
+        "Reference chain example (can be N levels deep):",
+        "",
+        "  KNA1 (Customer master)",
+        "    text 0001: 'Standard delivery instructions'",
+        "        │  REF_TEXT_OBJECT=KNA1, NAME=0000012345",
+        "        └── VBBK (Quotation 100001) references KNA1",
+        "                │  REF_TEXT_OBJECT=VBBK, NAME=100001",
+        "                └── VBBK (Sales Order 230001) references Quotation",
+        "                        │  REF_TEXT_OBJECT=VBBK, NAME=230001",
+        "                        └── VBBK (Delivery 800001) references Sales Order",
+        "",
+        "To read Delivery 800001 text:",
+        "  Step 1: Read SDTP_TEXT Delivery 800001 → empty → follow REF to Sales Order 230001",
+        "  Step 2: Read SDTP_TEXT Sales Order 230001 → empty → follow REF to Quotation 100001",
+        "  Step 3: Read SDTP_TEXT Quotation 100001 → empty → follow REF to KNA1",
+        "  Step 4: Read KNA1 text table → 'Standard delivery instructions' ✓",
+        "",
+        "CANNOT be resolved via CDS JOIN — chain depth is unknown.",
+        "Only 1-level self-join supported (like CRM solution).",
+        "Cross-object refs (EKKO→LFA1, EKKO→MATERIAL) impossible without missing CDS views.",
+    ]))
+    els.append(sp(4))
+    els.append(warn(
+        "⚠  ~2% of text records in customer systems have cross-object references. "
+        "98% are copy records or same-object references — these are manageable. "
+        "Cross-object references remain a known limitation — KBA note to customers required."
+    ))
+    els.append(PageBreak())
+    return els
+
+# ── Section 9: PO Reference Scenarios ────────────────────────────────────────
+def section9():
+    els=[]
+    els.append(sec_hdr("9","PO Reference Notes — 6 Scenarios",
+                        "When and why reference texts are created for EKKO and EKPO",
+                        PURPLE))
+    els.append(sp(8))
+
+    els.append(Paragraph("Configuration Control — Transaction VOTXN", H2))
+    els.append(Paragraph(
+        "Transaction VOTXN controls whether text is COPIED or REFERENCED for each text type. "
+        "The Access Sequence defines which source objects are searched and in which priority.", BODY))
+    els.append(sp(4))
+    els.append(code([
+        "VOTXN → Purchasing → Purchase Order → Header/Item texts:",
+        "",
+        "  Text ID  Description       Refer/Duplicate  Access Seq",
+        "  F01      Header note        unchecked (COPY)  001",
+        "  F02      Delivery text      checked (REF)     002",
+        "  F09      GR text            checked (REF)     003",
+        "",
+        "  unchecked Refer/Duplicate = text is COPIED to PO",
+        "  checked   Refer/Duplicate = text is REFERENCED (pointer only)",
+        "",
+        "Access Sequence defines search priority:",
+        "  Priority 1: Purchasing Info Record (EINE/EINA)",
+        "  Priority 2: Vendor Master (LFA1/LFM1)",
+        "  Priority 3: Material Master (MARA)",
+        "  Priority 4: Nothing found → PO has no text",
+    ]))
+    els.append(sp(6))
+
+    els.append(Paragraph("The 6 Reference Scenarios for PO", H2))
+    scenarios=[
+        ("1","PO from Vendor Master text",
+         "Vendor master LFA1/LFM1 has delivery instructions. PO created for this vendor.",
+         "LFA1/LFM1","Vendor delivery note F02 appears in PO — referenced, not copied. "
+         "If vendor updates delivery hours, ALL POs referencing it auto-update.",
+         "EKKO → LFA1"),
+        ("2","PO Item text from Purchasing Info Record",
+         "Info record (EINE/EINA) for vendor+material has a GR inspection note.",
+         "EINE/EINA","PO item F09 (GR text) references the info record. "
+         "Goods receiver sees the inspection instruction from the info record.",
+         "EKPO → EINE"),
+        ("3","PO Item text from Material Master",
+         "Material master has a standard purchase order text for the material.",
+         "MATERIAL","PO item F01 (General note) references material master. "
+         "Appears on PO output to vendor without storing per PO.",
+         "EKPO → MATERIAL"),
+        ("4","PO from Purchase Requisition",
+         "PO created with reference to PR 1000012345 which had requestor notes.",
+         "BANF/EBAN","PO text may reference PR text depending on VOTXN config. "
+         "Requestor's urgency note appears on PO without copying.",
+         "EKKO/EKPO → EBAN"),
+        ("5","PO from RFQ/Quotation",
+         "PO created with reference to RFQ 6000001234. Vendor terms noted in RFQ.",
+         "EKKO (RFQ)","PO header text references RFQ header text. "
+         "Vendor's quoted delivery terms appear in PO — reference chain EKKO→EKKO.",
+         "EKKO → EKKO"),
+        ("6","User edits referenced text in ME22N",
+         "User opens PO, sees referenced text, modifies it.",
+         "—","Reference BROKEN — becomes own copy. REF fields cleared. "
+         "TEXT_CONTENT set to new value. Changes to source no longer affect this PO.",
+         "EKKO: REF→COPY"),
+    ]
+
+    for num,title,when,source,result,chain in scenarios:
+        hdr=Table([[
+            Paragraph(num, ms(f"sn{num}",fontSize=12,textColor=WHITE,fontName="Helvetica-Bold",alignment=TA_CENTER)),
+            Paragraph(title, ms(f"st{num}",fontSize=9,textColor=WHITE,fontName="Helvetica-Bold")),
+            Paragraph(f"Chain: {chain}", ms(f"sc{num}",fontSize=8,textColor=colors.HexColor("#AACCFF"),fontName="Helvetica-Oblique")),
+        ]],colWidths=[1.2*cm,10.8*cm,5.5*cm])
+        hdr.setStyle(TableStyle([
+            ("BACKGROUND",(0,0),(0,0),PURPLE),
+            ("BACKGROUND",(1,0),(2,0),SAP_DARK),
+            ("TOPPADDING",(0,0),(-1,-1),6),("BOTTOMPADDING",(0,0),(-1,-1),6),
+            ("LEFTPADDING",(0,0),(-1,-1),8),("VALIGN",(0,0),(-1,-1),"MIDDLE"),
+        ]))
+        body_rows=[
+            [Paragraph("When",ms(f"bw{num}",fontSize=7.5,textColor=SAP_DARK,fontName="Helvetica-Bold")),
+             Paragraph(when, BSML)],
+            [Paragraph("Source",ms(f"bs{num}",fontSize=7.5,textColor=SAP_DARK,fontName="Helvetica-Bold")),
+             Paragraph(source, ms(f"bsv{num}",fontSize=8,textColor=TEAL,fontName="Helvetica-Bold"))],
+            [Paragraph("Result",ms(f"br{num}",fontSize=7.5,textColor=SAP_DARK,fontName="Helvetica-Bold")),
+             Paragraph(result, BSML)],
+        ]
+        body=Table(body_rows,colWidths=[2*cm,15.5*cm])
+        body.setStyle(TableStyle([
+            ("BACKGROUND",(0,0),(0,-1),GREY_BG),
+            ("BACKGROUND",(1,0),(1,-1),WHITE),
+            ("GRID",(0,0),(-1,-1),0.3,GREY_BDR),
+            ("TOPPADDING",(0,0),(-1,-1),4),("BOTTOMPADDING",(0,0),(-1,-1),4),
+            ("LEFTPADDING",(0,0),(-1,-1),8),("VALIGN",(0,0),(-1,-1),"TOP"),
+        ]))
+        bot=Table([[""]], colWidths=[17.5*cm],rowHeights=[2])
+        bot.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,-1),PURPLE)]))
+        els.append(KeepTogether([hdr,body,bot,sp(6)]))
+
+    els.append(sp(4))
+    els.append(Paragraph("Reference vs Copy — Decision Table", H2))
+    els.append(tbl(
+        ["Trigger","Reference Created","Copy Created"],
+        [
+            ["VOTXN: Refer/Duplicate = checked","✓",""],
+            ["VOTXN: Refer/Duplicate = unchecked","","✓"],
+            ["User types NEW text in ME21N/ME22N","","✓ Own text"],
+            ["User EDITS existing reference in ME22N","","✓ Reference broken → copy"],
+            ["No source text found in access sequence","","Neither — text empty"],
+        ],
+        widths=[8*cm,4.75*cm,4.75*cm]
+    ))
+    els.append(sp(6))
+    els.append(note(
+        "Migration Impact for PO EKKO/EKPO:\n"
+        "  Records with TEXT_CONTENT = '' and REF fields populated = REFERENCES\n"
+        "  During SDM: REF fields are migrated as-is (pointer preserved in new table)\n"
+        "  Cross-object references (EKKO→LFA1, EKPO→MATERIAL) cannot be resolved "
+        "in CDS joins because LFA1/MATERIAL text CDS views do not exist yet.\n"
+        "  Same-object references (EKKO→EKKO e.g. PO from RFQ) can be resolved with 1-level self-join."
+    ))
+    return els
+
 # ── Build ─────────────────────────────────────────────────────────────────────
 def build():
     doc=SimpleDocTemplate(
@@ -705,6 +934,8 @@ def build():
     story.extend(section5())
     story.extend(section6())
     story.extend(section7())
+    story.extend(section8())
+    story.extend(section9())
 
     def on_page(c,doc):
         c.saveState()
